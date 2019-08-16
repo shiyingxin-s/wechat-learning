@@ -1,0 +1,11 @@
+/**app.wxss**/
+page{
+  background: #f4f4f4;
+}
+.container {
+  background: #f4f4f4;
+  height:100%;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}

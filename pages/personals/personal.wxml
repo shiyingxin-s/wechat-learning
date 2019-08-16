@@ -1,0 +1,11 @@
+<!--personal.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="container" style='margin-top:{{height}}px'>
+ <i-cell-group>
+    <i-cell title="个人信息"  bindtap=""></i-cell>
+    <view>
+       史蒂夫·乔布斯（Steve Jobs），1955年2月24日生于美国加利福尼亚州旧金山，美国发明家、企业家、美国苹果公司联合创办人。
+    </view>
+    <i-cell title="我的订单" is-link></i-cell>
+</i-cell-group>
+</view>

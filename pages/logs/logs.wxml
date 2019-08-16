@@ -1,0 +1,7 @@
+<!--logs.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="container log-list" style='margin-top: {{height}}px'>
+  <block wx:for="{{logs}}" wx:for-item="log">
+    <text class="log-item">{{index + 1}}. {{log}}</text>
+  </block>
+</view>
