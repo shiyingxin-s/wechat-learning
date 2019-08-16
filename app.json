@@ -3,7 +3,7 @@
     "pages/personals/personal",
     "pages/learnings/learning",
     "pages/communitys/community",
-    "pages/studys/study",
+    "pages/informations/information",
     "pages/logs/logs"
   ],
   "window": {
@@ -30,10 +30,10 @@
         "selectedIconPath": "images/tab/community_hl.png"
       },
       {
-        "pagePath": "pages/studys/study",
+        "pagePath": "pages/informations/information",
         "text": "资讯",
-        "iconPath":"images/tab/study.png",
-        "selectedIconPath":"images/tab/study_hl.png"
+        "iconPath":"images/tab/information.png",
+        "selectedIconPath":"images/tab/information_hl.png"
       },
       {
         "pagePath": "pages/personals/personal",
