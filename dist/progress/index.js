@@ -1,23 +1,22 @@
-Component({
-    externalClasses: ['i-class'],
-
-    properties: {
-        percent: {
-            type: Number,
-            value: 0
-        },
-        // normal || active || wrong || success
-        status: {
-            type: String,
-            value: 'normal'
-        },
-        strokeWidth: {
-            type: Number,
-            value: 10
-        },
-        hideInfo: {
+import { VantComponent } from '../common/component';
+import { BLUE } from '../common/color';
+VantComponent({
+    props: {
+        inactive: Boolean,
+        percentage: Number,
+        pivotText: String,
+        pivotColor: String,
+        showPivot: {
             type: Boolean,
-            value: false
+            value: true
+        },
+        color: {
+            type: String,
+            value: BLUE
+        },
+        textColor: {
+            type: String,
+            value: '#fff'
         }
     }
 });
