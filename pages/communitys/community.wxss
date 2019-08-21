@@ -1,21 +1,91 @@
 /**index.wxss**/
-.userinfo {
+.createBtn{
+  text-align:center;
+  box-sizing:border-box;
+  width:71px;
+  padding:5px 16px;
+  color:#737373;
+  font-size:16px;
+  position:fixed;
+  left:0;
+  z-index:99999999;
+  top:0
+}
+.item{
+  border-top:1rpx solid #e4e4e4;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: #fff;
+  overflow: hidden;
 }
 
-.userinfo-avatar {
+.nickName{
+  height:88rpx;
+  line-height:98rpx;
+  padding:5px 0 0 5px;
+  color:#1e226d;
+}
+.item-left image{
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
   border-radius: 50%;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.item-right{
+  width:82%;
 }
-
-.usermotto {
-  margin-top: 200px;
+.item-d{
+  height:27px;
+  line-height:24px;
+}
+.item-d image{
+  width: 25px;
+  height:25px;
+  float: right;
+}
+.item-con{
+  margin-bottom: 10px;
+  color: #333333
+}
+.item-imgVoide video{
+  width: 100px;
+  height:157px;
+}
+/* .item-images{
+  flex: 1
+} */
+.item-images image{
+  width: 80px;
+  height: 80px;
+  margin:0 5px 2px 0;
+}
+.item-time{
+  color:#a6a6a6;
+  font-size:0.9rem;
+}
+.item-f{
+  background: #f4f4f4;
+}
+.triangle{
+  margin-left:8px;
+  width:0;
+  height:0;
+	border-right:8px solid transparent;
+	border-left:8px solid transparent;
+	border-bottom:8px solid #f4f4f4;
+}
+.likes, .review{
+  padding:3px 8px;
+  color:#335172;
+  font-size: 0.9rem;
+}
+.review {
+  border-top:1rpx solid #e7e8e9;
+}
+.review text{
+  color:#1a1a1a;
+  letter-spacing:2rpx;
+  font-size:0.8rem;
 }

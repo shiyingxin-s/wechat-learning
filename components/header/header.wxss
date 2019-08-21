@@ -22,17 +22,15 @@
   bottom: 0;
   margin: auto;
   font-size: 36rpx;
-  color: #2c2b2b;
-  font-weight: 600;
+  color: #4b4b4b;
 }
 
 .nav-capsule {
-  display: flex;
   align-items: center;
   margin-left: 30rpx;
   width: 140rpx;
-  justify-content: space-between;
   height: 100%;
+  font-size:36rpx;
 }
 
 .navbar-v-line {
@@ -52,4 +50,9 @@
   height: 40rpx;
   margin-top: 3rpx;
 }
-  
+.goBack{
+  color: #737373;
+}
+.backImg{
+  top:5px;
+}

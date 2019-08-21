@@ -1,8 +1,11 @@
 {
   "pages": [
+    "pages/splash/splash",
     "pages/personals/personal",
     "pages/learnings/learning",
     "pages/communitys/community",
+    "pages/buy/buy",
+    "pages/communitys/create/create",
     "pages/informations/information",
     "pages/logs/logs"
   ],

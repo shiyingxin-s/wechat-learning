@@ -1,0 +1,69 @@
+/**index.wxss**/
+.container{
+}
+.b-con{
+  padding:0 35rpx;
+  height:60px;
+}
+.b-con h2{
+  display: block;
+  color:#383838;
+  font-size: 36rpx;
+}
+.b-con text{
+  color:#f5463e;
+  font-size: 44rpx;
+  float: right;
+  margin-top:5px;
+}
+.b-con label text{
+  float: left;
+  color:#a1a1a1;
+  font-size:1rem;
+  margin-right: 24rpx;
+}
+.b-Img{
+  width: 100%;
+  height: 4px;
+  display:block;
+}
+.b-input{
+  padding:26rpx 35rpx ;
+  margin-bottom: 8rpx;
+}
+.b-input input{
+  font-size:35rpx;
+  width: 86%;
+  float:left;
+}
+.b-input label{
+  color:#a1a1a1;
+  margin-left:6px;
+  font-size:34rpx;
+}
+.b-footer{
+  padding:26rpx 35rpx ;
+  position:absolute;
+  bottom:0;
+  width:90.33333333333%;
+}
+.b-footer button{
+  width:270rpx;
+  background:#fe3c33;
+  color:#ffffff;
+  float:right;
+  border:0;
+  border-radius:0;
+  height:44px;
+  line-height:44px;
+  font-size:38rpx;
+}
+.b-footer label text{
+  color: #f5463e;
+  font-size:40rpx;
+  padding-top:9px;
+  display:inline-block;
+}
+.b-footer label text:first-child{
+  color: #2e2e2e;
+}

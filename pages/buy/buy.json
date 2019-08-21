@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "myHeader": "../../../components/header/header",
+    "van-action-sheet": "../../../dist/action-sheet/index",
+    "van-field": "../../../dist/field/index"
+  }
+}

@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container">
+  <image class="splash" src="../../images/common/splash.png" mode="cover"></image>
+  <view class="userinfo">
+    <button wx:if="{{!userData.avatarUrl || !userData.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  </view>
+</view>

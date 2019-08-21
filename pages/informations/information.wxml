@@ -1,13 +1,49 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<!--information.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="container"  style='margin-top:{{viewHeight* 2 + 20}}px'>
+  <van-tabs bind:click="onClick">
+    <van-tab title="视频资讯">
+        <block>
+          <video class="myVideo" id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"  enable-danmu danmu-btn controls>
+          </video>
+          <view class="margin-bottom bgColor padding textStyle">
+            <text class="text">仓颉造字(一)</text>
+            <text>天天学习</text><text>6条评论</text><text>15分钟前</text>
+          </view>
+        </block>
+        <block>
+          <view class="margin-bottom bgColor padding videoList">
+              <view class="v-left textStyle">
+                <view class="v-con">j今天学习状态超级棒，为自己点赞，加油努力吧！努力学习让自己更丰富。</view>
+                <text class="text">天天学习</text><text>6条评论</text><text>15分钟前</text>
+              </view>
+              <view class="v-right">
+                  <image  src="../../images/common/2.png" ></image>
+              </view>
+          </view>
+          <view class="margin-bottom bgColor padding videoList">
+              <view class="v-left textStyle">
+                <view class="v-con">j今天学习状态超级棒，为自己点赞，加油努力吧！努力学习让自己更丰富。</view>
+                <text class="text">天天学习</text><text>6条评论</text><text>15分钟前</text>
+              </view>
+              <view class="v-right">
+                  <image  src="../../images/common/2.png" ></image>
+              </view>
+          </view>
+          <view class="margin-bottom bgColor padding videoList">
+              <view class="v-left textStyle">
+                <view class="v-con">j今天学习状态超级棒，为自己点赞，加油努力吧！努力学习让自己更丰富。</view>
+                <text class="text">天天学习</text><text>6条评论</text><text>15分钟前</text>
+              </view>
+              <view class="v-right">
+                  <image  src="../../images/common/2.png" ></image>
+              </view>
+          </view>
+        </block>
+    </van-tab>
+    <van-tab title="成人字帖">
+      <view class="w-view"><text>《草行》中级</text><text class="buyed direction">已购买</text></view>
+      <view class="w-view"><text>《草行》中级</text><text bindtap="buy" class="buy direction">购买</text></view>
+    </van-tab>
+  </van-tabs>
 </view>
