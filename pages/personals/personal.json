@@ -3,6 +3,8 @@
   "usingComponents": {
     "myHeader": "../../components/header/header",
     "van-cell": "../../dist/cell/index",
-    "van-cell-group": "../../dist/cell-group/index"
+    "van-cell-group": "../../dist/cell-group/index",
+    "van-collapse": "../../dist/collapse/index",
+    "van-collapse-item": "../../dist/collapse-item/index"
   }
 }
