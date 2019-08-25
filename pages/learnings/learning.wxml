@@ -1,13 +1,86 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!--learning.wxml-->
+<view class='learning-box' style='padding-top:{{height}}px'>
+  <view class='header-box'>
+    <view class='header'>
+      <view class='scan'>
+        <image src='{{scanPic}}'></image>
+      </view>
+      <view class='search'>
+        <van-cell-group border="{{ false }}">
+          <van-field custom-style="border-radius:20px;" left-icon="search" input-class="searchInput" value="{{ searchValue }}" placeholder="搜索课程..." border="{{ false }}" bind:change="onChange">
+          </van-field>
+        </van-cell-group>
+        <image src="{{recordIcon}}"></image>
+      </view>
+      <view class='message'>
+        <image src='{{messagePic}}'></image>
+      </view>
+    </view>
+    <view class='statistics'>
+      <view class='statistics-box'>
+        <view class='statistics-top'>
+          53
+        </view>
+        <view class='statistics-bottom'>
+          本年学时
+        </view>
+      </view>
+      <view class='statistics-box'>
+        <view class='statistics-top'>
+          220
+        </view>
+        <view class='statistics-bottom'>
+          文字总数
+        </view>
+      </view>
+      <view class='statistics-box'>
+        <view class='statistics-top'>
+          120
+        </view>
+        <view class='statistics-bottom'>
+          准备学习
+        </view>
+      </view>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+</view>
+
+<view class='box'>
+  <view class='content-box'>
+    <view class='content-box-top'>
+      <view>
+        <image src='{{studyIcon}}'></image>
+      </view>
+      <view>我的学习</view>
+    </view>
+    <view class='content-box-bottom'>
+      <view class='listItemInfo'>
+       <scroll-view scroll-y style="height: 132px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"
+       scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <van-cell-group>
+            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="{{index}}" title="{{item.name}}" value="{{item.value}}" border="{{ false }}"/>
+        </van-cell-group>
+      </scroll-view>
+      </view>
+    </view>
+  </view>
+
+  <view class='content-box'>
+    <view class='content-box-top'>
+      <view>
+        <image src='{{knowledgeIcon}}'></image>
+      </view>
+      <view>知识超市</view>
+    </view>
+    <view class='content-box-bottom'>
+      <view class='listItemInfo'>
+      <scroll-view scroll-y style="height:308px" bindscrolltoupper="upper2" bindscrolltolower="lower2" bindscroll="scroll2"
+       scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <van-cell-group>
+          <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.name}}" value="{{item.value}}" border="{{ false }}"/>
+        </van-cell-group>
+        </scroll-view>
+      </view>
+    </view>
   </view>
 </view>

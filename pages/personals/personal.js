@@ -17,6 +17,10 @@ Page({
       isBackPer: false, //不显示返回按钮,
       bgColor:'#ffffff' //导航背景色
     },
+
+    //折叠面板名称
+    activeNames:'1'
+
   },
   //事件处理函数
   bindViewTap: function() {
@@ -59,5 +63,13 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+
+  //onchange
+  onChange:function(event){
+    console.log("onChange event",event)
+    this.setData({
+      activeNames: event.detail
+    });
   }
 })

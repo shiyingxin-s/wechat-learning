@@ -7,23 +7,24 @@
     "pages/buy/buy",
     "pages/communitys/create/create",
     "pages/informations/information",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/learnings/classrom/classrom"
   ],
   "window": {
     "backgroundColor": "#f4f4f4",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationStyle":"custom"
+    "navigationStyle": "custom"
   },
   "sitemapLocation": "sitemap.json",
-  "tabBar":{
+  "tabBar": {
     "color": "#9d9d9d",
-    "selectedColor":"#009afe",
+    "selectedColor": "#009afe",
     "backgroundColor": "#f4f4f4",
-    "list":[
+    "list": [
       {
-        "pagePath":"pages/learnings/learning",
+        "pagePath": "pages/learnings/learning",
         "text": "教学",
-        "iconPath":"images/tab/learning.png",
+        "iconPath": "images/tab/learning.png",
         "selectedIconPath": "images/tab/learning_hl.png"
       },
       {
@@ -35,8 +36,8 @@
       {
         "pagePath": "pages/informations/information",
         "text": "资讯",
-        "iconPath":"images/tab/information.png",
-        "selectedIconPath":"images/tab/information_hl.png"
+        "iconPath": "images/tab/information.png",
+        "selectedIconPath": "images/tab/information_hl.png"
       },
       {
         "pagePath": "pages/personals/personal",
@@ -46,5 +47,4 @@
       }
     ]
   }
-
 }

@@ -1,0 +1,6 @@
+<!--personal.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="container" style='margin-top:{{height}}px'>
+  <van-cell title="个人信息" is-link  arrow-direction="down" />
+  <van-cell title="我的订单" is-link  arrow-direction="down" />
+</view>

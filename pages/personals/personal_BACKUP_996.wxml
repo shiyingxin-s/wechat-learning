@@ -1,6 +1,15 @@
 <!--personal.wxml-->
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
 <view class="container" style='margin-top:{{height}}px'>
+<<<<<<< HEAD
+  <van-cell-group  border="false">
+    <van-cell van-cell--hover title="个人信息" is-link  arrow-direction="down" border="false" />
+  </van-cell-group>
+  <van-cell-group  border="false">
+    <van-cell title="我的订单" is-link  arrow-direction="down" border="false"/>
+  </van-cell-group>
+</view>
+=======
   <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
   <van-collapse-item title="个人信息" name="1" content-class="removePadding">
       <van-cell-group border="{{false}}">
@@ -18,3 +27,4 @@
   </van-collapse-item>
 </van-collapse>
 </view>
+>>>>>>> origin/dev
