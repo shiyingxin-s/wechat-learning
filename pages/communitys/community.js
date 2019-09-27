@@ -24,14 +24,6 @@ Page({
   onShow:function(){
     let wxs = this
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
   previewImage:function(e) {
     var current='../../images/common/2.png';
     wx.previewImage({

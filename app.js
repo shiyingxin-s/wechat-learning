@@ -1,3 +1,4 @@
+const common = require('/utils/common.js');
 //app.js
 
 App({
@@ -31,30 +32,32 @@ App({
              */
           
             wxs.httpRequest({
-              api: '/authentication/login',
+              api: '/xbg-api/api/login',
               method: "post",
               data: {
-                code: code,
+                code: resData.code,
                 appId: wxs.appId,
               },
               success: function (res) {
-                if (res.code === 200) {
-                  wxs.userData.openId = res.data.openId
-                  wxs.userData.token = res.token
-                  wxs.userData.avatarUrl = res.data.headPic
-                  wxs.userData.nickName = res.data.nickName
-                  wxs.userData.telephone = res.data.bindNumber
+                if (res.code === 0) {
+                  wxs.userData.openId = res.data.openid
+                  wxs.userData.token = res.data.token
+                  wxs.userData.avatarUrl = res.data.avatar
+                  wxs.userData.nickName = res.data.nikiname
+                  wxs.userData.telephone = res.data.phoneno
+                  wxs.userData.userNo = res.data.userno,
+                  wxs.userData.grade = res.data.grade
                   common.setStorageSync('userData', wxs.userData)
                   //promise机制放回成功数据
                   resolve(res);
                 } else {
                   reject('error');
-                  common.showToast(res.message, 3000)
+                  common.showToast(res.msg, 3000)
                 }
               },
               fail: function(res) {
                 reject(res);
-                common.showToast(res.message, 3000)
+                common.showToast(res.msg, 3000)
               },
               complete: () => {
                 //complete接口执行后的回调函数，无论成功失败都会调用
@@ -85,7 +88,7 @@ App({
     if (userData && userData.token) {
       header = {
         'Content-Type': ContentType,
-        'Authorization': 'bearer ' + userData.token
+        'token': userData.token
       }
     } else {
       wxs.wxLogin()
@@ -107,7 +110,7 @@ App({
     var header = {}
     var apiName = cfg.api
     // 调用header 设置方法
-    if (apiName =='/authentication/login')
+    if (apiName =='/xbg-api/api/login')
     {
       header = {}
     } else {
@@ -128,8 +131,8 @@ App({
             return
           }
           // 登录失败
-          if(res.data.code !== 200 && res.data.code !== 401 && cfg.api ==='/authentication/login') {
-            common.showToast('服务器异常，请稍后重试~')
+          if(res.data.code !== 0 && cfg.api ==='/xbg-api/api/login') {
+            common.showToast(res.data.msg)
             return
           }
           cfg.success(res.data, cfg.data)
@@ -221,7 +224,7 @@ App({
   //  自动更新小程序-------------------结束------------------------ 
   
   globalServiceUrl:{
-    "serviceUrl":"https:",
+    "serviceUrl":"http://94.191.22.209:8099",
     "serviceStaticUrl": 'https:'
   },
   appId: 'wxf3c74ca9e1ecf5d5',
@@ -232,6 +235,8 @@ App({
     openId: null, // openId
     token: null, // token
     avatarUrl: null, // 用户头像
-    nickName: null // 用户昵称
+    nickName: null, // 用户昵称
+    userNo: null, // 用户编号
+    grade: null // 年级
   },
 })

@@ -3,5 +3,6 @@
   <image class="splash" src="../../images/common/splash.png" mode="cover"></image>
   <view class="userinfo">
     <button wx:if="{{!userData.avatarUrl || !userData.nickName}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <button wx:elif="{{!userData.telephone}}" open-type="getPhoneNumber" bindgetphonenumber='getPhoneNumber'>获取手机号</button>
   </view>
 </view>
