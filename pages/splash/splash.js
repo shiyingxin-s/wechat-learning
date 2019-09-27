@@ -47,7 +47,7 @@ Page({
   },
   /**
    * 获取用户 -- 头像、昵称、手机号 数据处理
-   * @param {number} type, 1 -- 昵称，头像；2 -- 手机号
+   * @param {number} type, 1 -- 昵称，头像；2 -- 手机号(2暂时废弃)
    * 
    */
   userInfoHandle(type,user) {
