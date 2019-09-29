@@ -1,0 +1,19 @@
+<!--pages/learnings/learningClassrom/learningClassrom.wxml-->
+<view class="videoBox" style='padding-top:{{height}}px'>
+  <video src="{{videoDemo}}" autoplay="false" height="100%" width="100%" controls></video>
+</view>
+<view class='module1'>
+  <view>笔顺</view>
+  <view>书写</view>
+  <view>重写</view>
+  <view>笔画</view>
+</view>
+<view class='module2'>
+  <view class='module2-title'>
+    
+  </view>
+  <view class='module2-content1'>
+  
+  </view>
+  <view class='module2-content2'></view>
+</view>

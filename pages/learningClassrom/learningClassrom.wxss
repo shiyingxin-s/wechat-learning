@@ -1,0 +1,4 @@
+/* pages/learnings/learningClassrom/learningClassrom.wxss */
+
+.videoBox{width: 100%;}
+.videoBox video{width: 100%;}

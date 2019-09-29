@@ -5,7 +5,7 @@
     "pages/communitys/community",
     "pages/informations/information",
     "pages/logs/logs",
-    "pages/learnings/classrom/classrom"
+    "pages/learningClassrom/learningClassrom"
   ],
   "window": {
     "backgroundColor": "#f4f4f4",
