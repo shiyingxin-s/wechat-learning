@@ -58,7 +58,7 @@
        <scroll-view scroll-y style="height: 132px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"
        scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
         <van-cell-group>
-            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="{{index}}" title="{{item.name}}" value="{{item.value}}" border="{{ false }}"/>
+            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="{{index}}" title="{{item.name}}" value="{{item.value}}" border="{{ false }}" bindtap="goDetails"/>
         </van-cell-group>
       </scroll-view>
       </view>

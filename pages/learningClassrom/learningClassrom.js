@@ -1,10 +1,43 @@
-// pages/learnings/classrom/classrom.js
+//index.js
+//获取应用实例
+const app = getApp()
+
+// pages/learnings/learningClassrom/learningClassrom.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.navHeight * 2,
+    //视频demo
+    videoDemo:'http://gsxcxbucket-1254282420.coscd.myqcloud.com/staticResource/video/index/show.mp4',
+    //课程标题信息
+    courseTitle:"第十二课 生字",
+    //生字数据
+    newWordList:[
+      {
+        //生字名称
+        newWord:'美',
+        //偏旁
+        component:'羊',
+        //结构
+        structure:'上下结构',
+        //读音
+        pronunciation:'mei',
+        //词组
+        wordGroup:[
+          '美丽',
+          '美好',
+          '完美',
+          '美丑',
+          '美术',
+          '美工'
+        ]
+
+      }
+    ]
 
   },
 
