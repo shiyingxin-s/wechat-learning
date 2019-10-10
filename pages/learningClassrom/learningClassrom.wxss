@@ -1,5 +1,6 @@
 /* pages/learnings/learningClassrom/learningClassrom.wxss */
 
+<<<<<<< HEAD
 page {
   background: #f3f3f3;
 }
@@ -106,3 +107,7 @@ writing-mode: tb-rl;
   margin-bottom: 40rpx;
   color:#3f9ee1;
 }
+=======
+.videoBox{width: 100%;}
+.videoBox video{width: 100%;}
+>>>>>>> 07e43d74cd70c4a69082a6b33a9afabaae5ae171

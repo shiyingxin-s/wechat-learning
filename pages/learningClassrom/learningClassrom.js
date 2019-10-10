@@ -2,8 +2,6 @@
 //获取应用实例
 const app = getApp()
 
-const common = require('../../utils/common.js');
-
 // pages/learnings/learningClassrom/learningClassrom.js
 Page({
 
@@ -36,71 +34,18 @@ Page({
           '美丑',
           '美术',
           '美工'
-        ],
-
-        sbujectId:''
+        ]
 
       }
-    ],
+    ]
 
-
-    nvabarData: {
-      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '视频课堂', //导航栏 中间的标题,
-      isBackPer: true, //不显示返回按钮,
-      bgColor: 'none' //导航背景色
-    },
-
-  },
-
-  //视频课堂
-  getVoideos:function(){
-    let wxs = this
-
-
-    app.httpRequest({
-      api: '/xbg-api/api/course/all',
-      method: "POST",
-      data: {
-        token: common.getStorageSync('userData').token,
-        sbujectId: wxs.data.sbujectId
-      },
-      success: function (res) {
-        console.log("获取视频课堂数据的响应", res)
-        if (res.code === 0) {
-          wxs.setData({
-            marketList: wxs.data.marketList.concat(res.page.list),
-            page: res.page.currPage,
-            totalPage: res.page.totalPage,
-            total: res.page.total
-          })
-
-        } else {
-
-          common.showToast(res.msg, 3000)
-        }
-      },
-      fail: function (res) {
-
-        common.showToast(res.msg, 3000)
-      },
-      complete: () => {
-        //complete接口执行后的回调函数，无论成功失败都会调用
-      }
-    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options){
-      
-      this.setData({
-        sbujectId: options.sbujectId
-      })
-      this.getVoideos();
-    }
+
   },
 
   /**

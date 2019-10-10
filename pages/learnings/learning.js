@@ -192,6 +192,25 @@ Page({
       hasUserInfo: true
     })
   },
+<<<<<<< HEAD
+=======
+
+  //跳转到详情页
+  goDetails:function(e){
+    wx.navigateTo({
+      url: '/pages/learningClassrom/learningClassrom',
+    })
+  },
+  upper: function (e) {
+    console.log(e)
+  },
+  lower: function (e) {
+    console.log(e)
+  },
+  scroll: function (e) {
+    console.log(e)
+  },
+>>>>>>> 07e43d74cd70c4a69082a6b33a9afabaae5ae171
 
   //跳转到详情页
   goDetails: function(e) {
