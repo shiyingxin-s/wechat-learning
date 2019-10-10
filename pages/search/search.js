@@ -1,10 +1,10 @@
+// pages/search/search.js
 //index.js
 //获取应用实例
 const app = getApp()
 
 const common = require('../../utils/common.js');
 
-// pages/learnings/learningClassrom/learningClassrom.js
 Page({
 
   /**
@@ -13,36 +13,17 @@ Page({
   data: {
     // 此页面 页面内容距最顶部的距离
     height: app.globalData.navHeight * 2,
-    //视频demo
-    videoDemo:'http://gsxcxbucket-1254282420.coscd.myqcloud.com/staticResource/video/index/show.mp4',
-    //课程标题信息
-    courseTitle:"第十二课 生字",
-    //生字数据
-    newWordList:[
-      {
-        //生字名称
-        newWord:'美',
-        //偏旁
-        component:'羊',
-        //结构
-        structure:'上下结构',
-        //读音
-        pronunciation:'mei',
-        //词组
-        wordGroup:[
-          '美丽',
-          '美好',
-          '完美',
-          '美丑',
-          '美术',
-          '美工'
-        ],
+    motto: 'Hello World',
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
 
-        sbujectId:''
-
-      }
-    ],
-
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '我的', //导航栏 中间的标题,
+      isBackPer: false, //不显示返回按钮,
+      bgColor: '#ffffff' //导航背景色
+    },
 
     nvabarData: {
       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
@@ -51,25 +32,52 @@ Page({
       bgColor: 'none' //导航背景色
     },
 
+    //扫码图标
+    scanPic: '../../images/common/scan.png',
+    //搜索课程
+    searchValue: '',
+    //消息图标
+    messagePic: '../../images/common/message.png',
+    //搜索图标
+    searchIcon: '../../images/common/search.png',
+    //录音图标
+    recordIcon: '../../images/common/record.png',
+
+    //搜索内容
+    searchTxt: "",
+
+    searchList:[]
   },
 
-  //视频课堂
-  getVoideos:function(){
+  bindKeyInput: function (e) {
+    console.log("e", e)
+    this.setData({
+      searchTxt: e.detail
+    })
+  },
+
+  searchFun: function () {
+    console.log("searchTxt", this.data.searchTxt)
+    this.searchSbujectList()
+  },
+
+  //课程检索
+  searchSbujectList() {
     let wxs = this
 
-
     app.httpRequest({
-      api: '/xbg-api/api/course/all',
+      api: '/xbg-api/api/course/search',
       method: "POST",
       data: {
-        token: common.getStorageSync('userData').token,
-        sbujectId: wxs.data.sbujectId
+        page: "1",
+        limit: "999",
+        keyWord: wxs.data.searchTxt
       },
       success: function (res) {
-        console.log("获取视频课堂数据的响应", res)
+        console.log("res", res)
         if (res.code === 0) {
           wxs.setData({
-            marketList: wxs.data.marketList.concat(res.page.list),
+            searchList: res.page.list,
             page: res.page.currPage,
             totalPage: res.page.totalPage,
             total: res.page.total
@@ -94,13 +102,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options){
-      
-      this.setData({
-        sbujectId: options.sbujectId
-      })
-      this.getVoideos();
-    }
+
   },
 
   /**

@@ -19,9 +19,84 @@ Page({
     },
 
     //折叠面板名称
-    activeNames:'1'
+    activeNames:'1',
+
+    //个人信息
+    userInfo:{},
+
+    //收货地址
+    address:{}
 
   },
+
+
+  //获取个人信息
+  getUserInfoApi:function(){
+    let wxs = this
+
+    app.httpRequest({
+      api: '/xbg-api/api/user/getUserInfo',
+      method: "POST",
+      data: {
+
+      },
+      success: function (res) {
+        console.log("获取个人信息的响应", res)
+        if (res.code === 0) {
+
+          wxs.setData({
+            userInfo: res.data,
+          })
+
+        } else {
+
+          common.showToast(res.msg, 3000)
+        }
+      },
+      fail: function (res) {
+
+        common.showToast(res.msg, 3000)
+      },
+      complete: () => {
+        //complete接口执行后的回调函数，无论成功失败都会调用
+      }
+    })
+  },
+
+
+  //获取我的订单
+  getUserOrder:function(){
+    let wxs = this
+
+    app.httpRequest({
+      api: '/xbg-api/api/user/getUserInfo',
+      method: "POST",
+      data: {
+
+      },
+      success: function (res) {
+        console.log("获取我的订单的响应", res)
+        if (res.code === 0) {
+
+          wxs.setData({
+            
+          })
+
+        } else {
+
+          common.showToast(res.msg, 3000)
+        }
+      },
+      fail: function (res) {
+
+        common.showToast(res.msg, 3000)
+      },
+      complete: () => {
+        //complete接口执行后的回调函数，无论成功失败都会调用
+      }
+    })
+  },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
@@ -55,6 +130,10 @@ Page({
         }
       })
     }
+
+    this.getUserInfoApi()
+    this.getUserOrder()
+    this.getAddress()
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -71,5 +150,18 @@ Page({
     this.setData({
       activeNames: event.detail
     });
-  }
+  },
+
+  //获取用户收货地址
+  getAddress:function(){
+    let wxs = this
+    wx.chooseAddress({
+      success(res) {
+        console.log("获取用户收货地址",res)
+        wxs.setData({
+          address:res
+        })
+      }
+    })
+  },
 })

@@ -114,6 +114,7 @@ App({
     {
       header = {}
     } else {
+      
       header = wxs.settingHeader(cfg)
     }
     // 服务请求

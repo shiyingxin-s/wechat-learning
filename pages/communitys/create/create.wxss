@@ -2,7 +2,8 @@
 .container{
  background: #ffffff;
  height: -webkit-fill-available;
- position: fixed
+ position: fixed;
+ width:100%;
 }
 .addImg{
   background: #ededed;

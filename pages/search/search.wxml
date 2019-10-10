@@ -1,0 +1,26 @@
+<!--pages/search/search.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class='learning-box' style='padding-top:{{height}}px'>
+  <view class='header-box'>
+    <view class='header'>
+      <view class='scan'>
+        <image src='{{scanPic}}'></image>
+      </view>
+      <view class='search'>
+        <van-cell-group border="{{ false }}">
+          <van-field custom-style="border-radius:20px;" left-icon="search" input-class="searchInput" bindinput="bindKeyInput" placeholder="搜索课程..." border="{{ false }}" bind:change="searchFun" bindtap="goSearch">
+          </van-field>
+        </van-cell-group>
+        <image src="{{recordIcon}}"></image>
+      </view>
+      <view class='message'>
+        <image src='{{messagePic}}'></image>
+      </view>
+    </view> 
+    <view class='searchBox'>
+      <van-cell-group>
+        <van-cell color="#ffd31e" wx:for="{{searchList}}" wx:key="{{index}}" title="{{item.coursename}}" border="{{ false }}" bindtap="goDetails" />
+      </van-cell-group>
+    </view>
+  </view>
+</view>
