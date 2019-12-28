@@ -53,13 +53,20 @@ Page({
     //总页数
     totalPage: "10",
     //搜索内容
-    searchTxt:""
+    searchTxt: ""
 
   },
   //进入搜索页面
-  goSearch:function(){
+  goSearch: function() {
     wx.navigateTo({
       url: '../search/search',
+    })
+  },
+
+  //进入视频课堂页面
+  goStudentDetail:function(){
+    wx.navigateTo({
+      url: '../learningClassrom/learningClassrom',
     })
   },
 
@@ -75,8 +82,8 @@ Page({
     console.log("加载我的学习课程列表 ", e)
   },
 
-  bindKeyInput: function (e) {
-    console.log("e",e)
+  bindKeyInput: function(e) {
+    console.log("e", e)
     this.setData({
       searchTxt: e.detail
     })
@@ -96,8 +103,8 @@ Page({
         limit: wxs.data.pageSize
       },
       success: function(res) {
-        console.log("res", res)
-        if (res.code === 0) {
+        console.log("查询我的学习响应", res)
+        if (res.code == 0) {
           wxs.setData({
             studyList: res.page.list,
             page: res.page.currPage,
@@ -123,7 +130,7 @@ Page({
   },
 
   //查询知识超市列表数据
-  getSbujectList:function(){
+  getSbujectList: function() {
 
     let wxs = this
 
@@ -134,9 +141,9 @@ Page({
         page: wxs.data.page,
         limit: "5"
       },
-      success: function (res) {
-        console.log("res", res)
-        if (res.code === 0) {
+      success: function(res) {
+        console.log("查询知识超市", res)
+        if (res.code == 0) {
           wxs.setData({
             marketList: wxs.data.marketList.concat(res.page.list),
             page: res.page.currPage,
@@ -149,7 +156,7 @@ Page({
           common.showToast(res.msg, 3000)
         }
       },
-      fail: function (res) {
+      fail: function(res) {
 
         common.showToast(res.msg, 3000)
       },
@@ -160,12 +167,12 @@ Page({
   },
 
   //上拉加载知识超市列表数据
-  lowerGetSbujectList:function(e){
+  lowerGetSbujectList: function(e) {
     let wxs = this
     console.log("知识超市列表数据", e)
-    console.log("wxs.data.page",wxs.data.page)
+    console.log("wxs.data.page", wxs.data.page)
     console.log("wxs.data.totalPage", wxs.data.totalPage)
-    if(wxs.data.page < wxs.data.totalPage){
+    if (wxs.data.page < wxs.data.totalPage) {
       wxs.setData({
         page: (wxs.data.page + 1).toString()
       })
@@ -173,7 +180,7 @@ Page({
     }
   },
 
-  searchFun: function () {
+  searchFun: function() {
     console.log("searchTxt", this.data.searchTxt)
     this.searchSbujectList()
   },
@@ -192,31 +199,29 @@ Page({
       hasUserInfo: true
     })
   },
-<<<<<<< HEAD
-=======
-
-  //跳转到详情页
-  goDetails:function(e){
-    wx.navigateTo({
-      url: '/pages/learningClassrom/learningClassrom',
-    })
-  },
-  upper: function (e) {
-    console.log(e)
-  },
-  lower: function (e) {
-    console.log(e)
-  },
-  scroll: function (e) {
-    console.log(e)
-  },
->>>>>>> 07e43d74cd70c4a69082a6b33a9afabaae5ae171
 
   //跳转到详情页
   goDetails: function(e) {
-    console.log("e",e)
-    wx.navigateTo({
-      url: '../learningClassrom/learningClassrom?sbujectId=' + e.currentTarget.dataset.courseno,
-    })
-  }
+    console.log("e", e)
+    if (e.currentTarget.dataset.hasbuy == 1) {
+      wx.navigateTo({
+        url: '/pages/buy/buy',
+      })
+    } else {
+      wx.navigateTo({
+        url: '../learningClassrom/learningClassrom?sbujectId=' + e.currentTarget.dataset.courseno,
+      })
+    }
+
+  },
+  upper: function(e) {
+    console.log(e)
+  },
+  lower: function(e) {
+    console.log(e)
+  },
+  scroll: function(e) {
+    console.log(e)
+  },
+
 })

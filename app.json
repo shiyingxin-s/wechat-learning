@@ -8,12 +8,8 @@
     "pages/communitys/create/create",
     "pages/informations/information",
     "pages/logs/logs",
-<<<<<<< HEAD
     "pages/learningClassrom/learningClassrom",
     "pages/search/search"
-=======
-    "pages/learningClassrom/learningClassrom"
->>>>>>> 07e43d74cd70c4a69082a6b33a9afabaae5ae171
   ],
   "window": {
     "backgroundColor": "#f4f4f4",

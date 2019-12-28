@@ -1,8 +1,5 @@
 <!--pages/learnings/learningClassrom/learningClassrom.wxml-->
-<<<<<<< HEAD
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
-=======
->>>>>>> 07e43d74cd70c4a69082a6b33a9afabaae5ae171
 <view class="videoBox" style='padding-top:{{height}}px'>
   <video src="{{videoDemo}}" autoplay="false" height="100%" width="100%" controls></video>
 </view>
@@ -14,7 +11,6 @@
 </view>
 <view class='module2'>
   <view class='module2-title'>
-<<<<<<< HEAD
     第12课 生字
   </view>
   <view class='module2-content1'>
@@ -64,12 +60,4 @@
       </view>
     </view>
   </view>
-=======
-    
-  </view>
-  <view class='module2-content1'>
-  
-  </view>
-  <view class='module2-content2'></view>
->>>>>>> 07e43d74cd70c4a69082a6b33a9afabaae5ae171
 </view>

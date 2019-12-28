@@ -51,25 +51,18 @@
     <view class='content-box-top'>
       <view>
         <image src='{{studyIcon}}'></image>
-      </view>
+      </view> 
       <view>我的学习</view>
     </view>
     <view class='content-box-bottom'>
       <view class='listItemInfo'>
-<<<<<<< HEAD
+
         <scroll-view scroll-y style="height: 132px;" bindscrolltolower="lowerGetMySbujectList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
           <van-cell-group>
-            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="{{index}}" title="{{item.coursename}}" value="{{item.status === 0 ? '学习中':'已学完'}}" border="{{ false }}"  />
+            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" bindtap="goStudentDetail" wx:key="{{index}}" title="{{item.coursename}}" value="{{item.status === 0 ? '学习中':'已学完'}}" border="{{ false }}"  />
           </van-cell-group>
         </scroll-view>
-=======
-       <scroll-view scroll-y style="height: 132px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"
-       scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-        <van-cell-group>
-            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="{{index}}" title="{{item.name}}" value="{{item.value}}" border="{{ false }}" bindtap="goDetails"/>
-        </van-cell-group>
-      </scroll-view>
->>>>>>> 07e43d74cd70c4a69082a6b33a9afabaae5ae171
+
       </view>
     </view>
   </view>
@@ -85,7 +78,7 @@
       <view class='listItemInfo'>
         <scroll-view scroll-y style="height:218px" bindscrolltolower="lowerGetSbujectList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
           <van-cell-group>
-            <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.coursename}}" value="{{item.status === 0 ? '购买': '已购买'}}" border="{{ false }}" value-class="{{item.status === 0 ? 'fontColorFf7672':'fontColorBebebe'}}" bindtap="goDetails" data-courseno="{{item.courseno}}"/>
+            <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.coursename}}" value="{{item.hasBuy === 0 ? '已购买': '购买'}}" border="{{ false }}" value-class="{{item.status === 0 ? 'fontColorFf7672':'fontColorBebebe'}}" data-hasBuy="{{item.hasBuy}}" bindtap="goDetails" data-courseno="{{item.courseno}}"/>
           </van-cell-group>
         </scroll-view>
       </view>
