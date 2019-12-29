@@ -224,7 +224,7 @@ App({
   //  自动更新小程序-------------------结束------------------------ 
   
   globalServiceUrl:{
-    "serviceUrl":"http://94.191.22.209:8099",
+    "serviceUrl":"http://119.3.180.1:8088",
     "serviceStaticUrl": 'https:'
   },
   appId: 'wxf3c74ca9e1ecf5d5',
