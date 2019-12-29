@@ -4,10 +4,10 @@
   <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
   <van-collapse-item title="个人信息" name="1" content-class="removePadding">
       <van-cell-group border="{{false}}">
-        <van-cell title="昵称" value="wangzai" />
-        <van-cell title="年龄" value="15岁" />
-        <van-cell title="年级" value="八年级"/>
-        <van-cell title="收货地址" value="山西省 运城市 盐湖区 解放路115号"/>
+        <van-cell title="昵称" value="{{userInfo.nikiname}}" />
+        <van-cell title="年龄" value="{{userInfo.age}}" />
+        <van-cell title="年级" value="{{userIfno.grade}}"/>
+        <van-cell title="收货地址" value="{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}"/>
       </van-cell-group>
   </van-collapse-item>
   <van-collapse-item title="我的订单" name="2" content-class="removePadding">

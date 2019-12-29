@@ -1,4 +1,5 @@
 <!--learning.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
 <view class='learning-box' style='padding-top:{{height}}px'>
   <view class='header-box'>
     <view class='header'>
@@ -7,7 +8,7 @@
       </view>
       <view class='search'>
         <van-cell-group border="{{ false }}">
-          <van-field custom-style="border-radius:20px;" left-icon="search" input-class="searchInput" value="{{ searchValue }}" placeholder="搜索课程..." border="{{ false }}" bind:change="onChange">
+          <van-field custom-style="border-radius:20px;" left-icon="search" input-class="searchInput" bindinput="bindKeyInput" placeholder="搜索课程..." border="{{ false }}" bindtap="goSearch">
           </van-field>
         </van-cell-group>
         <image src="{{recordIcon}}"></image>
@@ -50,17 +51,18 @@
     <view class='content-box-top'>
       <view>
         <image src='{{studyIcon}}'></image>
-      </view>
+      </view> 
       <view>我的学习</view>
     </view>
     <view class='content-box-bottom'>
       <view class='listItemInfo'>
-       <scroll-view scroll-y style="height: 132px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"
-       scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-        <van-cell-group>
-            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="{{index}}" title="{{item.name}}" value="{{item.value}}" border="{{ false }}"/>
-        </van-cell-group>
-      </scroll-view>
+
+        <scroll-view scroll-y style="height: 132px;" bindscrolltolower="lowerGetMySbujectList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <van-cell-group>
+            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" bindtap="goStudentDetail" wx:key="{{index}}" title="{{item.coursename}}" value="{{item.status === 0 ? '学习中':'已学完'}}" border="{{ false }}"  />
+          </van-cell-group>
+        </scroll-view>
+
       </view>
     </view>
   </view>
@@ -74,11 +76,10 @@
     </view>
     <view class='content-box-bottom'>
       <view class='listItemInfo'>
-      <scroll-view scroll-y style="height:308px" bindscrolltoupper="upper2" bindscrolltolower="lower2" bindscroll="scroll2"
-       scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-        <van-cell-group>
-          <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.name}}" value="{{item.value}}" border="{{ false }}"/>
-        </van-cell-group>
+        <scroll-view scroll-y style="height:218px" bindscrolltolower="lowerGetSbujectList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <van-cell-group>
+            <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.coursename}}" value="{{item.hasBuy === 0 ? '已购买': '购买'}}" border="{{ false }}" value-class="{{item.status === 0 ? 'fontColorFf7672':'fontColorBebebe'}}" data-hasBuy="{{item.hasBuy}}" bindtap="goDetails" data-courseno="{{item.courseno}}"/>
+          </van-cell-group>
         </scroll-view>
       </view>
     </view>

@@ -32,6 +32,7 @@ page {
   display: flex;
   flex-direction: row;
   height:204rpx;
+  justify-content: space-between;
 }
 .v-left{
   text-align: left !important

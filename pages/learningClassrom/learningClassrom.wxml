@@ -1,0 +1,63 @@
+<!--pages/learnings/learningClassrom/learningClassrom.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="videoBox" style='padding-top:{{height}}px'>
+  <video src="{{videoDemo}}" autoplay="false" height="100%" width="100%" controls></video>
+</view>
+<view class='module1'>
+  <view>笔顺</view>
+  <view>书写</view>
+  <view>重写</view>
+  <view>笔画</view>
+</view>
+<view class='module2'>
+  <view class='module2-title'>
+    第12课 生字
+  </view>
+  <view class='module2-content1'>
+    <view>美</view>
+    <view>好</view>
+    <view>快</view>
+    <view>勤</view>
+    <view>开</view>
+  </view>
+  <view class='module2-content2'>
+    <view class="top">
+      <view class="lt">
+        字体结构
+      </view>
+      <view class="rt">
+        <view class="module">
+          <view class="module-top">部首</view>
+          <view class="module-bottom">羊</view>
+        </view>
+        <view class="module">
+          <view class="module-top">结构</view>
+          <view class="module-bottom">上下结构</view>
+        </view>
+        <view class="module">
+          <view class="module-top">读音</view>
+          <view class="module-bottom">mei</view>
+        </view>
+      </view>
+    </view>
+    <view class="top">
+      <view class="lt">
+        词组
+      </view>
+      <view class="rt">
+        <view class="module">
+          <view class="module-top">部首</view>
+          <view class="module-bottom">羊</view>
+        </view>
+        <view class="module">
+          <view class="module-top">结构</view>
+          <view class="module-bottom">上下结构</view>
+        </view>
+        <view class="module">
+          <view class="module-top">读音</view>
+          <view class="module-bottom">mei</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
