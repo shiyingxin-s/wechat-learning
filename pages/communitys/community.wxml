@@ -31,7 +31,7 @@
         </view>
         <block wx:if="{{item.likesUser || item.reviews}}">
           <view class="triangle"></view>
-          <view class="item-f">
+          <view class="item-f" wx:if="{{item.likesUser || item.reviews}}">
             <view class="likes">
               <block wx:for="{{item.likesUser}}" wx:key="{{idx}}" wx:for-item="items">
                 {{items.nikiname}},
