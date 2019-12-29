@@ -5,9 +5,28 @@ App({
   onLaunch: function () {
     wx.getSystemInfo({
       success: (res) => {
+        console.log("系统信息",res)
         this.globalData.navHeight = res.statusBarHeight
       }
     })
+
+    let systemInfo = wx.getSystemInfoSync()
+	  // px转换到rpx的比例
+      let pxToRpxScale = 750 / systemInfo.windowWidth;
+      // 状态栏的高度
+      let ktxStatusHeight = systemInfo.statusBarHeight * pxToRpxScale
+      // 导航栏的高度
+      let navigationHeight = 44 * pxToRpxScale
+      // window的宽度
+      let ktxWindowWidth = systemInfo.windowWidth * pxToRpxScale
+      // window的高度
+      let ktxWindowHeight = systemInfo.windowHeight * pxToRpxScale
+      // 屏幕的高度
+      let ktxScreentHeight = systemInfo.screenHeight * pxToRpxScale
+      // 底部tabBar的高度
+      let tabBarHeight = ktxScreentHeight - ktxStatusHeight - navigationHeight - ktxWindowHeight
+
+      this.globalData.tabBarHeight = tabBarHeight
   },
   // 生命周期回调——监听小程序启动或切前台。
   onShow: function() {
@@ -230,7 +249,8 @@ App({
   },
   appId: 'wxf3c74ca9e1ecf5d5',
   globalData: {
-    navHeight: 0
+    navHeight: 0,
+    tabBarHeight:0
   },
   userData: {
     openId: null, // openId

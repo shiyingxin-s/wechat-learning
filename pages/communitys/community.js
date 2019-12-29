@@ -19,7 +19,7 @@ Page({
       isBackPer: false //不显示返回按钮,
     },
     scrollHeight: '',
-    communityList:[],
+    communityList: [],
     //分页参数
     //当前页
     page: "1",
@@ -31,10 +31,13 @@ Page({
     pageSize: "5",
     //总页数
     totalPage: "10",
+    inputText:"",
+    isInputShow:false,
+    inputBottom:""
   },
 
   //社区列表
-  getCommunityList: function() {
+  getCommunityList: function () {
     let wxs = this
 
     app.httpRequest({
@@ -44,7 +47,7 @@ Page({
         page: wxs.data.page,
         limit: wxs.data.pageSize
       },
-      success: function(res) {
+      success: function (res) {
         console.log("获取视频课堂数据的响应", res)
         if (res.code === 0) {
           wxs.setData({
@@ -59,7 +62,7 @@ Page({
           common.showToast(res.msg, 3000)
         }
       },
-      fail: function(res) {
+      fail: function (res) {
 
         common.showToast(res.msg, 3000)
       },
@@ -71,7 +74,7 @@ Page({
 
 
   //点赞
-  clickLikes:function(e){
+  clickLikes: function (e) {
     let wxs = this
     console.log("e", e)
     console.log("userData", common.getStorageSync('userData'))
@@ -85,7 +88,8 @@ Page({
       success: function (res) {
         console.log("点赞的响应", res)
         if (res.code === 0) {
-
+          common.showToast(res.msg, 3000)
+          wxs.getCommunityList()
 
         } else {
 
@@ -103,7 +107,7 @@ Page({
   },
 
   //上拉加载社区列表数据
-  lowerGetCommunityList: function(e) {
+  lowerGetCommunityList: function (e) {
     let wxs = this
     console.log("加载社区列表数据", e)
     if (wxs.data.page < wxs.data.totalPage) {
@@ -114,32 +118,117 @@ Page({
     }
   },
 
-  onLoad: function() {
+  onLoad: function () {
     let wxs = this
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         wxs.setData({
           scrollHeight: res.windowHeight - 20
         })
       },
     })
-    
+
     this.getCommunityList()
   },
-  onShow: function() {
+  onShow: function () {
     let wxs = this
   },
-  previewImage: function(e) {
-    var current = '../../images/common/2.png';
+  previewImage: function (e) {
+    console.log("e",e)
+    let imgUrlList = e.currentTarget.dataset.imglist.map(item=>
+      item.url
+    )
+    console.log("imgUrlList",imgUrlList)
+    
     wx.previewImage({
-      current: current, // 当前显示图片的http链接
-      urls: this.data.imgalist // 需要预览的图片http链接列表
+      current: e.currentTarget.dataset.url, // 当前显示图片的http链接
+      urls: imgUrlList // 需要预览的图片http链接列表
     })
   },
-  create: function() {
+  create: function () {
     let wxs = this
     wx.navigateTo({
       url: '../communitys/create/create'
     })
-  }
+  },
+
+  //获得焦点
+  foucus: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: e.detail.height + app.globalData.tabBarHeight + 80
+    })
+  },
+
+  getInputText:function(e){
+    console.log("e",e)
+    this.setData({
+      inputText:e.detail.value
+    })
+  },
+
+  review:function(e){
+    this.setData({
+      isInputShow:true,
+      communityno:e.currentTarget.dataset.communityno,
+    })
+  },
+
+
+  //失去聚焦
+  blur: function (e) {
+    var that = this;
+    that.setData({
+      inputBottom: 0,
+      isInputShow:false,
+      inputText:""
+    })
+  },
+
+  //用户输入内容--提交输入
+  submit: function () {
+    var that = this;
+    console.info(that.data.inputText);
+    if (!that.data.inputText) {
+      wx.showToast({
+        icon: 'none',
+        title: '请输入评论内容'
+      })
+      return false;
+    }
+
+    let wxs = this
+
+    app.httpRequest({
+      api: '/xbg-api/api/comment/save',
+      method: "POST",
+      data: {
+        dynamicId: wxs.data.communityno,
+        userId: common.getStorageSync('userData').userNo,
+        content:wxs.data.inputText
+      },
+      success: function (res) {
+        console.log("评论的响应", res)
+        if (res.code === 0) {
+          common.showToast("评论成功", 3000)
+          wxs.setData({
+            inputText:"",
+            isInputShow:false
+          })
+          wxs.getCommunityList()
+        } else {
+
+          common.showToast(res.msg, 3000)
+        }
+      },
+      fail: function (res) {
+
+        common.showToast(res.msg, 3000)
+      },
+      complete: () => {
+        //complete接口执行后的回调函数，无论成功失败都会调用
+      }
+    })
+
+  },
 })
