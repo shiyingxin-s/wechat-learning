@@ -37,7 +37,13 @@ Page({
         ]
 
       }
-    ]
+    ],
+
+    //课程ID
+    courseno:"",
+
+    //课程详情
+    course:null
 
   },
 
@@ -45,7 +51,44 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.courseno){
+      this.setData({
+        courseno:options.courseno
+      })
+      this.getSbujectList()
+    }
+  },
 
+  //查看知识详细介绍
+  getSbujectList:function(){
+    let wxs = this
+
+    app.httpRequest({
+      api: '/xbg-api/api/course/info',
+      method: "POST",
+      data: {
+        courseno:wxs.data.courseno
+      },
+      success: function(res) {
+        console.log("查看知识详细介绍", res)
+        if (res.code == 0) {
+          wxs.setData({
+            course:res.data.course
+          })
+
+        } else {
+
+          common.showToast(res.msg, 3000)
+        }
+      },
+      fail: function(res) {
+
+        common.showToast(res.msg, 3000)
+      },
+      complete: () => {
+        //complete接口执行后的回调函数，无论成功失败都会调用
+      }
+    })
   },
 
   /**

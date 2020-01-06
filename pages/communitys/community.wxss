@@ -28,13 +28,17 @@
   padding:5px 0 0 5px;
   color:#1e226d;
 }
+.item-left{
+  width:128rpx;
+}
 .item-left image{
   width: 128rpx;
   height: 128rpx;
   border-radius: 50%;
 }
 .item-right{
-  width:82%;
+  flex: 1;
+  margin-left: 10rpx;
 }
 .item-d{
   height:27px;
@@ -89,3 +93,44 @@
   letter-spacing:2rpx;
   font-size:0.8rem;
 }
+
+
+
+.inputBottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  left: 0rpx;
+  bottom: 0rpx;
+  background: #fff;
+  height: 100rpx;
+  box-sizing: border-box;
+  padding: 18rpx 15rpx;
+  }
+   
+  .inputBottom .textInput{
+  /* border-bottom: 2rpx solid #000; */
+  display: inline-block;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 10rpx;
+  height: 75rpx;
+  padding: 0 15rpx;
+  }
+   
+  .inputBottom .textInputPlaceHolder{
+  font-size: 30rpx;
+  }
+   
+  .inputBottom .submit{
+  font-size: 34rpx;
+  display: inline-block;
+  text-align: center;
+  float: right;
+  background: green;
+  border-radius: 10rpx;
+  color: #fff;
+  padding: 5rpx 10rpx;
+  }

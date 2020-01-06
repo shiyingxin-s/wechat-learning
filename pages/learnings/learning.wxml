@@ -59,7 +59,7 @@
 
         <scroll-view scroll-y style="height: 132px;" bindscrolltolower="lowerGetMySbujectList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
           <van-cell-group>
-            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" bindtap="goStudentDetail" wx:key="{{index}}" title="{{item.coursename}}" value="{{item.status === 0 ? '学习中':'已学完'}}" border="{{ false }}"  />
+            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="index" bindtap="goStudentDetail" data-courseno="{{item.courseno}}" wx:key="{{index}}" title="{{item.coursename}}" value="{{item.status === 0 ? '学习中':'已学完'}}" border="{{ false }}"  />
           </van-cell-group>
         </scroll-view>
 

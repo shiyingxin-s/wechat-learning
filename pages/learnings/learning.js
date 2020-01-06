@@ -95,12 +95,12 @@ Page({
     let wxs = this
 
     app.httpRequest({
-      api: '/xbg-api/api/user/getMyCourseList',
+      api: '/xbg-api/api/user/getMyGradeList',
       method: "POST",
       data: {
-        userId: 8,
-        page: wxs.data.page,
-        limit: wxs.data.pageSize
+        // userId: 8,
+        // page: wxs.data.page,
+        // limit: wxs.data.pageSize
       },
       success: function(res) {
         console.log("查询我的学习响应", res)

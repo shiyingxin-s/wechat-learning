@@ -1,10 +1,12 @@
 <!--社区.wxml-->
-<view class="createBtn" bindtap="create" style='height:{{viewHeight*2 + 20}}px; line-height:{{viewHeight*2 + 33}}px;'>创建</view>
+<view class="createBtn" bindtap="create" style='height:{{viewHeight*2 + 20}}px; line-height:{{viewHeight*2 + 33}}px;'>创建
+</view>
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
 
 
 <view class="container" style='margin-top:{{viewHeight* 2 + 14}}px'>
-  <scroll-view scroll-y style="height: {{scrollHeight}}px" bindscrolltolower="lowerGetCommunityList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  <scroll-view scroll-y style="height: {{scrollHeight}}px" bindscrolltolower="lowerGetCommunityList"
+    scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="item" wx:for="{{communityList}}" wx:key="{{index}}">
       <view class="item-left">
         <image class="userinfo-avatar" src="{{item.userinfoEntity.avatar}}" mode="cover"></image>
@@ -15,19 +17,21 @@
         <view class="item-imgVoide">
 
           <view class="item-images">
-            <image bindtap="previewImage" wx:for="{{item.images}}" wx:key='{{idx}}' wx:for-item="items" src="{{items.url}}"></image>
+            <image bindtap="previewImage" data-url="{{items.url}}" data-imgList="{{item.images}}" wx:for="{{item.images}}" wx:key='{{idx}}' wx:for-item="items"
+              src="{{items.url}}"></image>
           </view>
         </view>
         <view class="item-d">
           <wxs module="filter" src="../../utils/filter.wxs"></wxs>
           <text class="item-time">{{filter.getDateDiff(item.createtime)}}</text>
-          <image src="../../images/common/review.png"></image>
-          <image src="../../images/common/likes.png" data-communityno="{{item.communityno}}" bindtap="clickLikes"></image>
+          <image src="../../images/common/review.png" data-communityno="{{item.communityno}}" bindtap="review"></image>
+          <image src="../../images/common/likes.png" data-communityno="{{item.communityno}}" bindtap="clickLikes">
+          </image>
 
         </view>
         <block wx:if="{{item.likesUser || item.reviews}}">
           <view class="triangle"></view>
-          <view class="item-f">
+          <view class="item-f" wx:if="{{item.likesUser || item.reviews}}">
             <view class="likes">
               <block wx:for="{{item.likesUser}}" wx:key="{{idx}}" wx:for-item="items">
                 {{items.nikiname}},
@@ -42,72 +46,14 @@
         </block>
       </view>
     </view>
-    <!-- <view class="item">
-      <view class="item-left">
-        <image class="userinfo-avatar" src="../../images/common/avatar.png" mode="cover"></image>
-      </view>
-      <view class="item-right">
-        <view class="nickName">Ann</view>
-        <view class="item-con">今天状态棒棒的，我的青春我做主啦啦啦啦啦</view>
-        <view class="item-imgVoide">
-          <block>
-            <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
-              enable-danmu danmu-btn controls></video>
-          </block>
 
-        </view>
-        <view class="item-d">
-          <text class="item-time">15分钟前</text>
-          <image src="../../images/common/review.png"></image>
-          <image src="../../images/common/likes.png"></image>
-
-        </view>
-        <block>
-          <view class="triangle"></view>
-          <view class="item-f">
-            <view class="likes">Ann; 花湖，嫩嫩，电话，但还是符合</view>
-
-          </view>
-        </block>
-      </view>
-    </view> -->
-    <!-- <view class="item">
-      <view class="item-left">
-        <image class="userinfo-avatar" src="../../images/common/avatar.png" mode="cover"></image>
-      </view>
-      <view class="item-right">
-        <view class="nickName">Ann</view>
-        <view class="item-con">今天状态棒棒的，我的青春我做主啦啦啦啦啦</view>
-        <view class="item-imgVoide">
-
-          <view class="item-images">
-            <image src="../../images/common/2.png" bindtap="previewImage"></image>
-            <image src="../../images/common/1.png"></image>
-            <image src="../../images/common/2.png"></image>
-            <image src="../../images/common/2.png"></image>
-          </view>
-        </view>
-        <view class="item-d">
-          <text class="item-time">15分钟前</text>
-          <image src="../../images/common/review.png"></image>
-          <image src="../../images/common/likes.png"></image>
-
-        </view>
-        <block>
-          <view class="triangle"></view>
-          <view class="item-f">
-
-            <view class="review">
-              <view>Ann :
-                <text>决的基础的说法的说法不</text>
-              </view>
-              <view>花花 :
-                <text>三家分晋鼠标垫付款技术部覅五不</text>
-              </view>
-            </view>
-          </view>
-        </block>
-      </view>
-    </view> -->
   </scroll-view>
+
+
+  <view class='inputBottom' style='bottom:{{inputBottom}}px' wx:if="{{isInputShow}}">
+    <input type='text' auto-focus="true" class='textInput' value='{{inputText}}' placeholder-class='textInputPlaceHolder'
+      placeholder='输入你想要说的...' bindinput='getInputText' bindfocus="foucus" bindblur="blur" bindconfirm='submit'
+      adjust-position='{{false}}'></input>
+    <text bindtap='submit' class='submit'>评论</text>
+  </view>
 </view>
