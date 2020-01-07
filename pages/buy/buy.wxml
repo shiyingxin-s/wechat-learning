@@ -2,32 +2,37 @@
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
 <view class="container" style='margin-top:{{viewHeight* 2 + 30}}px'>
     <view class="b-con">
-        <h2>六年级 (下册)</h2>
+        <h2>{{course.gradename}}</h2>
         <label>
             <text>人教部编</text>
-            <text>共16课时</text>
-            <text>188字</text>
+            <text>共{{course.courseCount}}课时</text>
+            <text>{{course.charCount}}字</text>
         </label>
-        <text>￥100</text>
+        <text>￥{{course.price}}</text>
     </view>
     <block>
         <image class="b-Img" src="../../images/common/buy.png" ></image>
         <view class="b-input bgColor">
-            <input maxlength="11" type="number" placeholder="手机号"  auto-focus/>
+            <input maxlength="11" type="number" placeholder="手机号" value="{{phone}}"  auto-focus bindinput="bindPhone"/>
             <label>必填</label>
         </view>
         <view class="b-input bgColor">
-            <input type="text" placeholder="备注：本人使用；赠送他人" />
+            <input bindtap="getAddress" placeholder="请选择收货地址" value="{{address}}" bindinput="bindAddress"/>
             <label>必填</label>
+        </view>
+        <view class="b-input bgColor">
+            <input type="text" placeholder="备注：本人使用；赠送他人" value="{{remarks}}" bindinput="bindRemark"/>
+            <label></label>
         </view>
     </block>
     <footer>
         <view class="b-footer bgColor" style="height:{{viewHeight*2}}px;">
             <label>
                 <text>总金额：</text>
-                <text>￥100</text>
+                <text>￥{{course.price}}</text>
             </label>
-            <button>确认支付</button>
+            <button wx:if="{{!orderNo}}" bindtap="payBtn">确认支付</button>
+            <button wx:if="{{orderNo}}" bindtap="toPayBtn">去支付</button>
         </view>
     </footer>
 </view>

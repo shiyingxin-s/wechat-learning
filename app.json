@@ -14,7 +14,8 @@
   "window": {
     "backgroundColor": "#f4f4f4",
     "navigationBarBackgroundColor": "#ffffff",
-    "navigationStyle": "custom"
+    "navigationStyle": "custom",
+    "withShareTicket":true
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {

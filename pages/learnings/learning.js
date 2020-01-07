@@ -205,7 +205,7 @@ Page({
     console.log("e", e)
     if (e.currentTarget.dataset.hasbuy == 1) {
       wx.navigateTo({
-        url: '/pages/buy/buy',
+        url: '/pages/buy/buy?id='+ e.currentTarget.dataset.id,
       })
     } else {
       wx.navigateTo({
@@ -223,5 +223,15 @@ Page({
   scroll: function(e) {
     console.log(e)
   },
+   /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
+    return {
+      title: '教每一个学生写好字', //转发页面的标题
+      imageUrl: "/images/common/share.jpeg",
+      path: '/pages/learning/learning',
+    }
+  }
 
 })

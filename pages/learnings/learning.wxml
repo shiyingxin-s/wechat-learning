@@ -81,7 +81,7 @@
             <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.gradename}}"
              value="{{item.hasBuy === 0 ? '已购买': '购买'}}" border="{{ false }}" 
              value-class="{{item.status === 0 ? 'fontColorFf7672':'fontColorBebebe'}}" 
-             data-hasBuy="{{item.hasBuy}}" bindtap="goDetails" data-courseno="{{item.courseno}}"/>
+             data-hasBuy="{{item.hasBuy}}" bindtap="goDetails" data-id="{{item.id}}" data-courseno="{{item.courseno}}"/>
           </van-cell-group>
         </scroll-view>
       </view>
