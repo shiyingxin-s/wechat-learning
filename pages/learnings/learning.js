@@ -116,7 +116,7 @@ Page({
 
         } else {
 
-          common.showToast(res.msg, 3000)
+          
         }
       },
       fail: function (res) {
