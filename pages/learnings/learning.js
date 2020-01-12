@@ -34,10 +34,10 @@ Page({
     studyIcon: '../../images/common/study.png',
     //知识超市图标
     knowledgeIcon: '../../images/common/knowledge.png',
-
+    activeNames:"",
     //我的学习数据集合
     studyList: [],
-
+    courseList: [],
     //知识超市的数据集合
     marketList: [],
 
@@ -57,41 +57,82 @@ Page({
 
   },
   //进入搜索页面
-  goSearch: function() {
+  goSearch: function () {
     wx.navigateTo({
       url: '../search/search',
     })
   },
 
   //进入视频课堂页面
-  goStudentDetail:function(){
+  goStudentDetail: function () {
     wx.navigateTo({
       url: '../learningClassrom/learningClassrom',
     })
   },
 
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
 
   //上拉加载我的学习课程列表
-  lowerGetMySbujectList: function(e) {
+  lowerGetMySbujectList: function (e) {
     console.log("加载我的学习课程列表 ", e)
   },
 
-  bindKeyInput: function(e) {
+  bindKeyInput: function (e) {
     console.log("e", e)
     this.setData({
       searchTxt: e.detail
     })
   },
 
+  onChangeCourse: function (event) {
+    console.log("event", event)
+    this.setData({
+      activeNames:event.detail
+    })
+    let wxs = this
+
+    app.httpRequest({
+      api: '/xbg-api/api/user/getMyCourseList',
+      method: "POST",
+      data: {
+        gradeNo: event.detail[0],
+        page: "1",
+        limit: "999"
+      },
+      success: function (res) {
+        console.log("查询课程响应", res)
+        if (res.code == 0) {
+          wxs.setData({
+            courseList: res.page.list,
+            // page: res.page.currPage,
+            // totalPage: res.page.totalPage,
+            // total: res.page.total
+          })
+
+        } else {
+
+          common.showToast(res.msg, 3000)
+        }
+      },
+      fail: function (res) {
+
+        common.showToast(res.msg, 3000)
+      },
+      complete: () => {
+        //complete接口执行后的回调函数，无论成功失败都会调用
+      }
+    })
+  },
+
+
 
   //查询我的学习课程列表
-  getMySbujectList: function() {
+  getMySbujectList: function () {
     let wxs = this
 
     app.httpRequest({
@@ -102,14 +143,14 @@ Page({
         // page: wxs.data.page,
         // limit: wxs.data.pageSize
       },
-      success: function(res) {
+      success: function (res) {
         console.log("查询我的学习响应", res)
         if (res.code == 0) {
           wxs.setData({
-            studyList: res.page.list,
-            page: res.page.currPage,
-            totalPage: res.page.totalPage,
-            total: res.page.total
+            studyList: res.page,
+            // page: res.page.currPage,
+            // totalPage: res.page.totalPage,
+            // total: res.page.total
           })
 
         } else {
@@ -117,7 +158,7 @@ Page({
           common.showToast(res.msg, 3000)
         }
       },
-      fail: function(res) {
+      fail: function (res) {
 
         common.showToast(res.msg, 3000)
       },
@@ -130,7 +171,7 @@ Page({
   },
 
   //查询知识超市列表数据
-  getSbujectList: function() {
+  getSbujectList: function () {
 
     let wxs = this
 
@@ -141,7 +182,7 @@ Page({
         page: wxs.data.page,
         limit: "5"
       },
-      success: function(res) {
+      success: function (res) {
         console.log("查询知识超市", res)
         if (res.code == 0) {
           wxs.setData({
@@ -156,7 +197,7 @@ Page({
           common.showToast(res.msg, 3000)
         }
       },
-      fail: function(res) {
+      fail: function (res) {
 
         common.showToast(res.msg, 3000)
       },
@@ -167,7 +208,7 @@ Page({
   },
 
   //上拉加载知识超市列表数据
-  lowerGetSbujectList: function(e) {
+  lowerGetSbujectList: function (e) {
     let wxs = this
     console.log("知识超市列表数据", e)
     console.log("wxs.data.page", wxs.data.page)
@@ -180,18 +221,18 @@ Page({
     }
   },
 
-  searchFun: function() {
+  searchFun: function () {
     console.log("searchTxt", this.data.searchTxt)
     this.searchSbujectList()
   },
 
 
 
-  onLoad: function() {
+  onLoad: function () {
     this.getMySbujectList()
     this.getSbujectList()
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -201,7 +242,7 @@ Page({
   },
 
   //跳转到详情页
-  goDetails: function(e) {
+  goDetails: function (e) {
     console.log("e", e)
     if (e.currentTarget.dataset.hasbuy == 1) {
       wx.navigateTo({
@@ -214,13 +255,13 @@ Page({
     }
 
   },
-  upper: function(e) {
+  upper: function (e) {
     console.log(e)
   },
-  lower: function(e) {
+  lower: function (e) {
     console.log(e)
   },
-  scroll: function(e) {
+  scroll: function (e) {
     console.log(e)
   },
 
