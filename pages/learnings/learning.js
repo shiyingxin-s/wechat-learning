@@ -53,8 +53,17 @@ Page({
     //总页数
     totalPage: "10",
     //搜索内容
-    searchTxt: ""
+    searchTxt: "",
+    statistical:{
+     current: 0,
+     words: 0,
+     readyLearn: 0
+    }
 
+  },
+  onShow:function(){
+    let wxs = this
+    wxs.getStatistical()
   },
   //进入搜索页面
   goSearch: function() {
@@ -88,7 +97,29 @@ Page({
       searchTxt: e.detail
     })
   },
-
+  // 获取统计
+  getStatistical: function() {
+    let wxs = this
+    app.httpRequest({
+      api: '/xbg-api/api/statistics/getStatisticsInfo',
+      method: "POST",
+      data: {},
+      success: function(res) {
+        if (res.code == 0) {
+          let datas = res.data
+          wxs.setData({
+            statistical:{
+              current: datas.totalCourse,
+              readyLearn: datas.unLearnCourse,
+              words: datas.totalCharacter
+             }
+          })
+        } else {
+          common.showToast(res.msg, 3000)
+        }
+      }
+    })  
+  },
 
   //查询我的学习课程列表
   getMySbujectList: function() {

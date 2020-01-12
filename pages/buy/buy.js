@@ -99,7 +99,7 @@ Page({
     const wxs = this
     let data = {
       openId: wxs.data.openId,
-      gradeId: wxs.data.course.gradeId,  //购买课程必须以年级为单位
+      gradeId: wxs.data.course.id,  //购买课程必须以年级为单位
       phone: wxs.data.phone, //如果是赠送就填受赠人的电话
       address: wxs.data.address, //收货地址
       remarks: wxs.data.remarks //0.自购，1.赠送

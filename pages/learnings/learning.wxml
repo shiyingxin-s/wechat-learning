@@ -20,7 +20,7 @@
     <view class='statistics'>
       <view class='statistics-box'>
         <view class='statistics-top'>
-          53
+          {{statistical.current}}
         </view>
         <view class='statistics-bottom'>
           本年学时
@@ -28,7 +28,7 @@
       </view>
       <view class='statistics-box'>
         <view class='statistics-top'>
-          220
+          {{statistical.words}}
         </view>
         <view class='statistics-bottom'>
           文字总数
@@ -36,7 +36,7 @@
       </view>
       <view class='statistics-box'>
         <view class='statistics-top'>
-          120
+          {{statistical.readyLearn}}
         </view>
         <view class='statistics-bottom'>
           准备学习
