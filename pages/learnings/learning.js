@@ -34,7 +34,7 @@ Page({
     studyIcon: '../../images/common/study.png',
     //知识超市图标
     knowledgeIcon: '../../images/common/knowledge.png',
-    activeNames:"",
+    activeNames: "",
     //我的学习数据集合
     studyList: [],
     courseList: [],
@@ -64,9 +64,10 @@ Page({
   },
 
   //进入视频课堂页面
-  goStudentDetail: function () {
+  goStudentDetail: function (e) {
+    console.log("e", e)
     wx.navigateTo({
-      url: '../learningClassrom/learningClassrom',
+      url: '../learningClassrom/learningClassrom?courseno=' + e.currentTarget.dataset.courseno,
     })
   },
 
@@ -92,7 +93,7 @@ Page({
   onChangeCourse: function (event) {
     console.log("event", event)
     this.setData({
-      activeNames:event.detail
+      activeNames: event.detail
     })
     let wxs = this
 
@@ -116,7 +117,7 @@ Page({
 
         } else {
 
-          
+
         }
       },
       fail: function (res) {

@@ -18,6 +18,7 @@ Page({
     //informationList
     informationList:[],
     copyBookList:[],
+    
 
     //分页参数
     //当前页
@@ -39,7 +40,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         wxs.setData({
-          scrollHeight: res.windowHeight -306
+          scrollHeight: res.windowHeight - 108
         })
       },
     })

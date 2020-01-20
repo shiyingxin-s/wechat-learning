@@ -69,3 +69,5 @@ page {
 .w-view .buyed{
   color:#c8c8c8;
 }
+
+.w-view-none{display: flex;height:100rpx;align-items: center;justify-content: center;}

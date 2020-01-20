@@ -14,7 +14,8 @@
           <text>{{filter.getDateDiff(item.createtime)}}</text>
         </view>
       </block>
-      <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerGetMySbujectList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerGetMySbujectList"
+        scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
 
         <block>
           <view class="margin-bottom bgColor padding videoList" wx:for="{{informationList}}" wx:key="{{index}}">
@@ -56,12 +57,14 @@
 
     </van-tab>
     <van-tab title="成人字帖">
-        <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerGetMySbujectList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-      <view class="w-view" wx:for="{{copyBookList}}" wx:key="{{idx}}">
-        <text>{{item.coursename}}</text>
-        <text class="buyed direction">已购买</text>
-      </view>
-        </scroll-view>
+      <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerGetMySbujectList"
+        scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <view class="w-view" wx:if="{{copyBookList.length != 0}}" wx:for="{{copyBookList}}" wx:key="{{idx}}">
+          <text>{{item.coursename}}</text>
+          <text class="buyed direction">已购买</text>
+        </view>
+        <view wx:if="{{copyBookList.length == 0}}">暂无数据</view>
+      </scroll-view>
     </van-tab>
   </van-tabs>
 </view>
