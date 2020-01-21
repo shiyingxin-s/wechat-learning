@@ -8,7 +8,8 @@
       </view>
       <view class='search'>
         <van-cell-group border="{{ false }}">
-          <van-field custom-style="border-radius:20px;" left-icon="search" input-class="searchInput" bindinput="bindKeyInput" placeholder="搜索课程..." border="{{ false }}" bindtap="goSearch">
+          <van-field custom-style="border-radius:20px;" left-icon="search" input-class="searchInput"
+            bindinput="bindKeyInput" placeholder="搜索课程..." border="{{ false }}" bindtap="goSearch">
           </van-field>
         </van-cell-group>
         <image src="{{recordIcon}}"></image>
@@ -51,16 +52,31 @@
     <view class='content-box-top'>
       <view>
         <image src='{{studyIcon}}'></image>
-      </view> 
+      </view>
       <view>我的学习</view>
     </view>
     <view class='content-box-bottom'>
       <view class='listItemInfo'>
 
-        <scroll-view scroll-y style="height: 132px;" bindscrolltolower="lowerGetMySbujectList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-          <van-cell-group>
-            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="index" bindtap="goStudentDetail" data-courseno="{{item.courseno}}" wx:key="{{index}}" title="{{item.coursename}}" value="{{item.status === 0 ? '学习中':'已学完'}}" border="{{ false }}"  />
-          </van-cell-group>
+        <scroll-view scroll-y style="height: 132px;" bindscrolltolower="lowerGetMySbujectList"
+          scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <!-- <van-cell-group>
+            <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="index" bindtap="goStudentDetail"
+              data-courseno="{{item.courseno}}" wx:key="{{index}}" title="{{item.gradename}}"
+              value="{{item.status === 0 ? '学习中':'已学完'}}" border="{{ false }}" />
+          </van-cell-group> -->
+          <van-collapse value="{{ activeNames }}" bind:change="onChangeCourse">
+            <van-collapse-item title="个人信息" wx:for="{{studyList}}" data-courseno="{{item.courseno}}" wx:key="{{index}}"
+              title="{{item.gradename}}" value="{{item.status === 0 ? '学习中':'已学完'}}" border="{{ false }}" name="{{item.courseno}}"
+              content-class="removePadding">
+                <van-cell-group>
+                  <van-cell icon="add" color="#ffd31e" wx:for="{{courseList}}" wx:key="index" bindtap="goStudentDetail"
+                    data-courseno="{{item.courseno}}" wx:key="{{index}}" title="{{item.coursename}}"
+                    value="{{item.status === 0 ? '学习中':'已学完'}}" border="{{ false }}" />
+                </van-cell-group>
+
+            </van-collapse-item>
+          </van-collapse>
         </scroll-view>
 
       </view>
@@ -76,12 +92,20 @@
     </view>
     <view class='content-box-bottom'>
       <view class='listItemInfo'>
-        <scroll-view scroll-y style="height:218px" bindscrolltolower="lowerGetSbujectList" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <scroll-view scroll-y style="height:218px" bindscrolltolower="lowerGetSbujectList" scroll-into-view="{{toView}}"
+          scroll-top="{{scrollTop}}">
           <van-cell-group>
+<<<<<<< HEAD
             <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.gradename}}"
              value="{{item.hasBuy === 0 ? '已购买': '购买'}}" border="{{ false }}" 
              value-class="{{item.status === 0 ? 'fontColorFf7672':'fontColorBebebe'}}" 
              data-hasBuy="{{item.hasBuy}}" bindtap="goDetails" data-id="{{item.id}}" data-courseno="{{item.courseno}}"/>
+=======
+            <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.coursename}}"
+              value="{{item.hasBuy === 0 ? '已购买': '购买'}}" border="{{ false }}"
+              value-class="{{item.status === 0 ? 'fontColorFf7672':'fontColorBebebe'}}" data-hasBuy="{{item.hasBuy}}"
+              bindtap="goDetails" data-courseno="{{item.courseno}}" />
+>>>>>>> origin/dev
           </van-cell-group>
         </scroll-view>
       </view>

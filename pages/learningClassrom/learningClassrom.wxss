@@ -46,19 +46,43 @@ page {
 
 .module2 .module2-content1 {
   margin-top: 7rpx;
-  padding: 0 40rpx;
+  padding: 40rpx;
+  display:inline-block;
+  background:#fff;
+}
+
+.module2 .module2-content1 .fontBox{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background: #fff;
+  white-space: nowrap;
 }
 
-.module2 .module2-content1 view{
-  width:18%;
-  display: flex;
+.module2 .module2-content1 .font{
+  width:20%;
+  display: inline-block;
   align-items: center;
   justify-content: center;
-  height:155rpx;
+  height:120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.module2 .module2-content1 .font view{
+  width:120rpx;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  height:120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  font-size: 84rpx;
+  font-family:SimSun;
 }
 
 .module2 .module2-content2 {

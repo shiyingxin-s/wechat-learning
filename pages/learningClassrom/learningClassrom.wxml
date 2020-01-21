@@ -1,7 +1,7 @@
 <!--pages/learnings/learningClassrom/learningClassrom.wxml-->
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
 <view class="videoBox" style='padding-top:{{height}}px'>
-  <video src="{{videoDemo}}" autoplay="false" height="100%" width="100%" controls></video>
+  <video wx:if="{{course.charList.length != 0}}" src="{{defaultCourseDetail.url}}" autoplay="false" height="100%" width="100%" controls></video>
 </view>
 <view class='module1'>
   <view>笔顺</view>
@@ -11,51 +11,51 @@
 </view>
 <view class='module2'>
   <view class='module2-title'>
-    第12课 生字
+    {{course.gradeName}}  {{course.coursename}}
   </view>
   <view class='module2-content1'>
-    <view>美</view>
-    <view>好</view>
-    <view>快</view>
-    <view>勤</view>
-    <view>开</view>
+    <scroll-view scroll-x class="fontBox">
+      <view wx:for="{{course.charList}}" wx:key="{{item.characterno}}" class="font">
+        <view bindtap="showDetail" data-character="{{item.character}}" style="background-image: url({{font_bg}})">{{item.character}}</view>
+      </view>
+    </scroll-view>
   </view>
   <view class='module2-content2'>
-    <view class="top">
+    <view class="top" wx:if="{{course.charList.length != 0}}">
       <view class="lt">
         字体结构
       </view>
       <view class="rt">
         <view class="module">
           <view class="module-top">部首</view>
-          <view class="module-bottom">羊</view>
+          <view class="module-bottom">{{defaultCourseDetail.startposition}}</view>
         </view>
         <view class="module">
           <view class="module-top">结构</view>
-          <view class="module-bottom">上下结构</view>
+          <view class="module-bottom">{{defaultCourseDetail.phrase}}</view>
         </view>
         <view class="module">
           <view class="module-top">读音</view>
-          <view class="module-bottom">mei</view>
+          <view class="module-bottom">{{defaultCourseDetail.pronunciation}}</view>
         </view>
       </view>
     </view>
-    <view class="top">
+    <view class="top" wx:if="{{course.charList.length != 0}}">
       <view class="lt">
         词组
       </view>
       <view class="rt">
         <view class="module">
           <view class="module-top">部首</view>
-          <view class="module-bottom">羊</view>
+          <view class="module-bottom">{{defaultCourseDetail.phrase}}</view>
         </view>
         <view class="module">
           <view class="module-top">结构</view>
-          <view class="module-bottom">上下结构</view>
+          <view class="module-bottom">{{defaultCourseDetail.phrase}}</view>
         </view>
         <view class="module">
           <view class="module-top">读音</view>
-          <view class="module-bottom">mei</view>
+          <view class="module-bottom">{{defaultCourseDetail.phrase}}</view>
         </view>
       </view>
     </view>
