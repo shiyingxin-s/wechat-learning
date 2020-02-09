@@ -64,6 +64,8 @@ Page({
   onShow:function(){
     let wxs = this
     wxs.getStatistical()
+    wxs.getMySbujectList()
+    wxs.getSbujectList()
   },
   //进入搜索页面
   goSearch: function () {
@@ -98,7 +100,7 @@ Page({
       searchTxt: e.detail
     })
   },
-<<<<<<< HEAD
+  
   // 获取统计
   getStatistical: function() {
     let wxs = this
@@ -122,7 +124,6 @@ Page({
       }
     })  
   },
-=======
 
   onChangeCourse: function (event) {
     console.log("event", event)
@@ -164,8 +165,6 @@ Page({
     })
   },
 
-
->>>>>>> origin/dev
 
   //查询我的学习课程列表
   getMySbujectList: function () {
@@ -264,10 +263,7 @@ Page({
 
 
 
-  onLoad: function () {
-    this.getMySbujectList()
-    this.getSbujectList()
-  },
+ 
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -284,11 +280,12 @@ Page({
       wx.navigateTo({
         url: '/pages/buy/buy?id='+ e.currentTarget.dataset.id,
       })
-    } else {
-      wx.navigateTo({
-        url: '../learningClassrom/learningClassrom?sbujectId=' + e.currentTarget.dataset.courseno,
-      })
-    }
+    } 
+    // else {
+    //   wx.navigateTo({
+    //     url: '../learningClassrom/learningClassrom?sbujectId=' + e.currentTarget.dataset.courseno,
+    //   })
+    // }
 
   },
   upper: function (e) {

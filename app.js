@@ -2,6 +2,23 @@ const common = require('/utils/common.js');
 //app.js
 
 App({
+  globalServiceUrl:{
+    "serviceUrl":"https://xbgxizi.com",
+    "serviceStaticUrl": 'https:'
+  },
+  appId: 'wxf3c74ca9e1ecf5d5',
+  globalData: {
+    navHeight: 0,
+    tabBarHeight:0
+  },
+  userData: {
+    openId: null, // openId
+    token: null, // token
+    avatarUrl: null, // 用户头像
+    nickName: null, // 用户昵称
+    userNo: null, // 用户编号
+    grade: null // 年级
+  },
   onLaunch: function () {
     wx.getSystemInfo({
       success: (res) => {
@@ -32,62 +49,7 @@ App({
   onShow: function() {
     this.autoUpdate()
   },
-  /**
-   *  微信登陆方法
-   *  返回：code
-   */
-  wxLogin: function() {
-    var wxs = this
-    return new Promise(function(resolve, reject) {
-      // 调用登录接口
-      wx.login({
-        success: function(resData) {
-          if (resData.code) {
-             console.log("用户登录授权code为：" + resData.code);
-            /**
-             *  登陆接口调用 调用wxs.httpRequest请求传递code凭证换取用户openid，并获取后台用户信息
-             *  参数：res.code 微信请求code
-             *  成功后 存储及加密数据
-             */
-          
-            wxs.httpRequest({
-              api: '/xbg-api/api/login',
-              method: "post",
-              data: {
-                code: resData.code,
-                appId: wxs.appId,
-              },
-              success: function (res) {
-                if (res.code === 0) {
-                  wxs.userData.openId = res.data.openid
-                  wxs.userData.token = res.data.token
-                  wxs.userData.avatarUrl = res.data.avatar
-                  wxs.userData.nickName = res.data.nikiname
-                  wxs.userData.telephone = res.data.phoneno
-                  wxs.userData.userNo = res.data.userno,
-                  wxs.userData.grade = res.data.grade
-                  common.setStorageSync('userData', wxs.userData)
-                  //promise机制放回成功数据
-                  resolve(res);
-                } else {
-                  reject('error');
-                  common.showToast(res.msg, 3000)
-                }
-              },
-              fail: function(res) {
-                reject(res);
-                common.showToast(res.msg, 3000)
-              },
-              complete: () => {
-                //complete接口执行后的回调函数，无论成功失败都会调用
-              }
-            }) 
-          }
-        }
-      })
-    })
-  },
-  /**  
+   /**  
    *  设置 http 请求 header
    *  参数：method
    *  返回：header
@@ -243,21 +205,68 @@ App({
     },
   //  自动更新小程序-------------------结束------------------------ 
   
-  globalServiceUrl:{
-    "serviceUrl":"http://xbgxizi.com:8088",
-    "serviceStaticUrl": 'https:'
+ 
+  /**
+   *  微信登陆方法
+   *  返回：code
+   */
+  wxLogin: function() {
+    var wxs = this
+    return new Promise(function(resolve, reject) {
+      // 调用登录接口
+      wx.login({
+        success: function(resData) {
+          if (resData.code) {
+             console.log("用户登录授权code为：" + resData.code);
+            /**
+             *  登陆接口调用 调用wxs.httpRequest请求传递code凭证换取用户openid，并获取后台用户信息
+             *  参数：res.code 微信请求code
+             *  成功后 存储及加密数据
+             */
+            
+            wxs.httpRequest({
+              api: '/xbg-api/api/login',
+              method: "post",
+              data: {
+                code: resData.code,
+                appId: wxs.appId,
+              },
+              success: function (res) {
+                if (res.code === 0) {
+                  wxs.userData.openId = res.data.openid
+                  wxs.userData.token = res.data.token
+                  wxs.userData.avatarUrl = res.data.avatar
+                  wxs.userData.nickName = res.data.nikiname
+                  wxs.userData.telephone = res.data.phoneno
+                  wxs.userData.userNo = res.data.userno,
+                  wxs.userData.grade = res.data.grade
+                  common.setStorageSync('userData', wxs.userData)
+                  //promise机制放回成功数据
+                  resolve(res);
+                } else {
+                  reject('error');
+                  if(res){
+                    common.showToast(res.msg, 3000)
+                  }
+                  
+                }
+              },
+              fail: function(res) {
+                if(res){
+                  reject(res);
+                  common.showToast(res.msg, 3000)
+                }else{
+                  reject('error');
+                }
+              },
+              complete: () => {
+                //complete接口执行后的回调函数，无论成功失败都会调用
+              }
+            }) 
+          }
+        }
+      })
+    })
   },
-  appId: 'wxf3c74ca9e1ecf5d5',
-  globalData: {
-    navHeight: 0,
-    tabBarHeight:0
-  },
-  userData: {
-    openId: null, // openId
-    token: null, // token
-    avatarUrl: null, // 用户头像
-    nickName: null, // 用户昵称
-    userNo: null, // 用户编号
-    grade: null // 年级
-  },
+ 
 })

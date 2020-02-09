@@ -40,7 +40,7 @@ Page({
     if(wxs.data.userData.avatarUrl && wxs.data.userData.telephone){
       setTimeout(function () {
         wx.switchTab({
-          url: '../communitys/community',
+          url: '/pages/learnings/learning',
         })
       }, 1000)
     }

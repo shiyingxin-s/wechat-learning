@@ -152,7 +152,7 @@ Page({
       data: data,
       success: function(res) {
         if (res.code == 0) {
-          wxs.requestPayment(res.data)
+          wxs.requestPayment(res.resp)
         } else {
           common.showToast(res.msg, 3000)
         }

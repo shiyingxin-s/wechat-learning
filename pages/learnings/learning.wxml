@@ -95,17 +95,16 @@
         <scroll-view scroll-y style="height:218px" bindscrolltolower="lowerGetSbujectList" scroll-into-view="{{toView}}"
           scroll-top="{{scrollTop}}">
           <van-cell-group>
-<<<<<<< HEAD
             <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.gradename}}"
              value="{{item.hasBuy === 0 ? '已购买': '购买'}}" border="{{ false }}" 
              value-class="{{item.status === 0 ? 'fontColorFf7672':'fontColorBebebe'}}" 
              data-hasBuy="{{item.hasBuy}}" bindtap="goDetails" data-id="{{item.id}}" data-courseno="{{item.courseno}}"/>
-=======
-            <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.coursename}}"
+
+            <!-- <van-cell wx:for="{{marketList}}" wx:key="{{index}}" title="{{item.coursename}}"
               value="{{item.hasBuy === 0 ? '已购买': '购买'}}" border="{{ false }}"
               value-class="{{item.status === 0 ? 'fontColorFf7672':'fontColorBebebe'}}" data-hasBuy="{{item.hasBuy}}"
               bindtap="goDetails" data-courseno="{{item.courseno}}" />
->>>>>>> origin/dev
+>>>>>>> origin/dev -->
           </van-cell-group>
         </scroll-view>
       </view>
