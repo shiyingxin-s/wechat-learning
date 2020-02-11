@@ -71,3 +71,5 @@ page {
 }
 
 .w-view-none{display: flex;height:100rpx;align-items: center;justify-content: center;}
+.fontColorFf7672{color:#Ff7672 !important;}
+.fontColorBebebe{color:#bebebe !important;}

@@ -1,10 +1,10 @@
 <!--information.wxml-->
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
 <view class="container" style='margin-top:{{viewHeight* 2 + 20}}px'>
-  <van-tabs bind:click="onClick">
-    <van-tab title="视频资讯">
+  <!-- <van-tabs bind:click="onClick">
+    <van-tab title="视频资讯"> -->
       <block>
-        <video class="myVideo" id="myVideo" src="{{informationList[0].video}}" enable-danmu danmu-btn controls>
+        <video class="myVideo" id="myVideo" src="{{informationList[0].video}}" autoplay="false" enable-danmu danmu-btn controls>
         </video>
         <view class="margin-bottom bgColor padding textStyle">
           <text class="text">{{informationList[0].contenttext}}</text>
@@ -14,7 +14,7 @@
           <text>{{filter.getDateDiff(item.createtime)}}</text>
         </view>
       </block>
-      <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerGetMySbujectList"
+      <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerGetInformationList"
         scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
 
         <block>
@@ -55,16 +55,17 @@
         </block>
       </scroll-view>
 
-    </van-tab>
+    <!-- </van-tab>
     <van-tab title="成人字帖">
-      <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerGetMySbujectList"
+      <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerCopyBookList"
         scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-        <view class="w-view" wx:if="{{copyBookList.length != 0}}" wx:for="{{copyBookList}}" wx:key="{{idx}}">
+        <view class="w-view" wx:if="{{copyBookList.length !== 0}}" wx:for="{{copyBookList}}" wx:key="{{idx}}"   
+        data-hasBuy="{{item.hasBuy}}" bindtap="goBuy" data-id="{{item.id}}">
           <text>{{item.coursename}}</text>
-          <text class="buyed direction">已购买</text>
+          <text class="buyed direction {{item.hasBuy === 0 ? 'fontColorFf7672':'fontColorBebebe'}}" >{{item.hasBuy === 0 ? '购买':'已购买'}}</text>
         </view>
-        <view wx:if="{{copyBookList.length == 0}}">暂无数据</view>
+        <view class="w-view" style="text-align: center;" wx:if="{{copyBookList.length === 0}}">暂无数据</view>
       </scroll-view>
     </van-tab>
-  </van-tabs>
+  </van-tabs> -->
 </view>

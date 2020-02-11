@@ -17,7 +17,7 @@ Page({
       isBackPer: false, //不显示返回按钮,
       bgColor:'#ffffff' //导航背景色
     },
-
+    scrollHeight:'',
     //折叠面板名称
     activeNames:'1',
 
@@ -25,7 +25,15 @@ Page({
     userInfo:{},
 
     //收货地址
-    address:{}
+    address:{},
+    page: "1",
+    //总记录数
+    total: 1,
+    //每页记录数
+    pageSize: "10",
+    //总页数
+    totalPage: 0,
+    orderList: [],
 
   },
 
@@ -37,24 +45,18 @@ Page({
     app.httpRequest({
       api: '/xbg-api/api/user/getUserInfo',
       method: "POST",
-      data: {
-
-      },
+      data: {},
       success: function (res) {
         console.log("获取个人信息的响应", res)
         if (res.code === 0) {
-
           wxs.setData({
             userInfo: res.data,
           })
-
         } else {
-
           common.showToast(res.msg, 3000)
         }
       },
       fail: function (res) {
-
         common.showToast(res.msg, 3000)
       },
       complete: () => {
@@ -62,33 +64,29 @@ Page({
       }
     })
   },
-
-
-  //获取我的订单
-  getUserOrder:function(){
+  getOrderList(){
     let wxs = this
 
     app.httpRequest({
-      api: '/xbg-api/api/user/getUserInfo',
+      api: '/xbg-api/api/orderinfo/list',
       method: "POST",
       data: {
-
+        page: wxs.data.page +'',
+        limit: wxs.data.pageSize
       },
       success: function (res) {
-        console.log("获取我的订单的响应", res)
         if (res.code === 0) {
-
           wxs.setData({
-            
+            orderList: wxs.data.orderList.concat(res.page.list),
+            page: res.page.currPage,
+            totalPage: res.page.totalPage,
+            total: res.page.total
           })
-
         } else {
-
           common.showToast(res.msg, 3000)
         }
       },
       fail: function (res) {
-
         common.showToast(res.msg, 3000)
       },
       complete: () => {
@@ -130,10 +128,18 @@ Page({
         }
       })
     }
-
+    wx.getSystemInfo({
+      success: res=> {
+        this.setData({
+          scrollHeight: res.windowHeight - 108
+        })
+      },
+    })
     this.getUserInfoApi()
-    this.getUserOrder()
     this.getAddress()
+  },
+  onShow:function(){
+    this.getOrderList()
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -151,7 +157,17 @@ Page({
       activeNames: event.detail
     });
   },
-
+ //上拉加载社区列表数据
+ lowerGetOrderList: function (e) {
+  let wxs = this
+  console.log("加载社区列表数据", e)
+  if (wxs.data.page < wxs.data.totalPage) {
+    wxs.setData({
+      page: (wxs.data.page + 1).toString()
+    })
+    wxs.getOrderList()
+  }
+},
   //获取用户收货地址
   getAddress:function(){
     let wxs = this

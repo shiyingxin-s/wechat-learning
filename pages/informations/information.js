@@ -44,19 +44,20 @@ Page({
         })
       },
     })
-
+  
+  },
+  onShow:function(){
     this.getInformationList()
-    this.getCopybookList()
+    // this.getCopybookList()
   },
   //资讯列表
   getInformationList:function(){
     let wxs = this
-
     app.httpRequest({
       api: '/xbg-api/api/news/list',
       method: "POST",
       data: {
-        page: wxs.data.page,
+        page: wxs.data.page + '',
         limit: wxs.data.pageSize
       },
       success: function (res) {
@@ -64,19 +65,17 @@ Page({
         if (res.code === 0) {
 
           wxs.setData({
-            informationList: res.page.list,
+            informationList: wxs.data.informationList.concat(res.page.list),
             page: res.page.currPage,
             totalPage: res.page.totalPage,
             total: res.page.total
           })
 
         } else {
-
           common.showToast(res.msg, 3000)
         }
       },
       fail: function (res) {
-
         common.showToast(res.msg, 3000)
       },
       complete: () => {
@@ -88,19 +87,17 @@ Page({
   //成人字帖列表
   getCopybookList:function(){
     let wxs = this
-
     app.httpRequest({
       api: '/xbg-api/api/course/list',
       method: "POST",
       data: {
-        page: wxs.data.page,
+        page: wxs.data.page +'',
         limit: wxs.data.pageSize,
         gradeNo:0
       },
       success: function (res) {
         console.log("成人字帖列表数据响应", res)
         if (res.code === 0) {
-
           wxs.setData({
             copyBookList: res.page.list,
             page: res.page.currPage,
@@ -122,18 +119,35 @@ Page({
       }
     })
   },
-
+   //上拉加载社区列表数据
+   lowerGetInformationList: function (e) {
+    let wxs = this
+    if (wxs.data.page < wxs.data.totalPage) {
+      wxs.setData({
+        page: (wxs.data.page + 1).toString()
+      })
+      wxs.getInformationList()
+    }
+  },
   // 切换tab
   onClick(event) {
+    let wxs = this
+    if(event.detail.index === 0){
+      wxs.getInformationList()
+    }else{
+      wxs.getCopybookList()
+    }
     // wx.showToast({
     //   title: `点击标签 ${event.detail.index + 1}`,
     //   icon: 'none'
     // });
   },
-  buy:function(){
-    let wxs = this
-    wx.navigateTo({
-      url: '../buy/buy'
-    })
+  goBuy:function(e){
+    debugger
+    if (e.currentTarget.dataset.hasbuy === 0) {
+      wx.navigateTo({
+        url: '/pages/buy/buy?id='+ e.currentTarget.dataset.id,
+      })
+    } 
   }
 })

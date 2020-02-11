@@ -104,11 +104,16 @@ Page({
       address: wxs.data.address, //收货地址
       remarks: wxs.data.remarks //0.自购，1.赠送
     }
+    const reg = /^1\d{10}$/
     if(!data.phone){
       common.showToast('请填写手机号码', 3000)
       return
+    } 
+    if(!reg.test(data.phone)){
+      common.showToast('请输入正确的手机号码', 3000)
+      return
     }
-    if(!data.address){
+    if(!data.address && wxs.data.course.type === 1){
       common.showToast('请选择收货地址', 3000)
       return
     }

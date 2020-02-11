@@ -16,12 +16,12 @@
             <input maxlength="11" type="number" placeholder="手机号" value="{{phone}}"  auto-focus bindinput="bindPhone"/>
             <label>必填</label>
         </view>
-        <view class="b-input bgColor">
+        <view class="b-input bgColor" wx:if="{{course.type === 1}}">
             <input bindtap="getAddress" placeholder="请选择收货地址" value="{{address}}" bindinput="bindAddress"/>
             <label>必填</label>
         </view>
         <view class="b-input bgColor">
-            <input type="text" placeholder="备注：本人使用；赠送他人" value="{{remarks}}" bindinput="bindRemark"/>
+            <input type="text" placeholder="备注：本人使用；若赠送他人留手机号或微信号" value="{{remarks}}" bindinput="bindRemark"/>
             <label></label>
         </view>
     </block>

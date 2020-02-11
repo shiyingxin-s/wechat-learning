@@ -10,7 +10,13 @@ Page({
    */
   data: {
     // 此页面 页面内容距最顶部的距离
-    height: app.globalData.navHeight * 2,
+    viewHeight: app.globalData.navHeight,
+    nvabarData: {
+      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
+      title: '课程', //导航栏 中间的标题,
+      isBackPer: true, //显示返回按钮,
+      bgColor:'#ffffff' //导航背景色
+    },
     //视频demo
     videoDemo: 'http://gsxcxbucket-1254282420.coscd.myqcloud.com/staticResource/video/index/show.mp4',
     //课程标题信息
@@ -48,7 +54,11 @@ Page({
     font_bg: '../../images/common/font_bg.jpg',
 
   },
-
+  onReady(e) {
+    this.videoContext = wx.createVideoContext('myVideo'); //创建播放器
+    this.initAudio()
+    this.initRecord();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -60,7 +70,10 @@ Page({
       this.getSbujectList()
     }
   },
-
+  bindButtonRate(e){
+    let rate = e.currentTarget.dataset.rate
+    this.videoContext.playbackRate(Number(rate))
+  },
   //查看知识详细介绍
   getSbujectList: function () {
     let wxs = this

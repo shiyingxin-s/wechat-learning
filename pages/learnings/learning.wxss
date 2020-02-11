@@ -2,6 +2,10 @@
 
 
 
+  #myHeader .nav-title{
+    color: #ffffff;
+  }
+
 
 /* 教学底图 */
 
@@ -68,7 +72,7 @@
 .content-box>view>view:last-child{margin-left: 20rpx;}
 
 .listItemInfo{width:100%;}
-.box{position:absolute;width: 100%;top:220px;}
+.box{position:absolute;width: 100%;}
 
 .fontColorFf7672{color:#Ff7672 !important;}
 .fontColorBebebe{color:#bebebe !important;}

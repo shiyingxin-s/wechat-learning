@@ -17,19 +17,12 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
     nvabarData: {
       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '我的', //导航栏 中间的标题,
-      isBackPer: false, //不显示返回按钮,
-      bgColor: '#ffffff' //导航背景色
-    },
-
-    nvabarData: {
-      showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '视频课堂', //导航栏 中间的标题,
+      title: '习字格', //导航栏 中间的标题,
       isBackPer: true, //不显示返回按钮,
-      bgColor: 'none' //导航背景色
+      bgColor: '#5773fd', //导航背景色
+      textcolor:'#ffffff'
     },
 
     //扫码图标
@@ -152,5 +145,11 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  //进入视频课堂页面
+  goStudentDetail: function (e) {
+    wx.navigateTo({
+      url: '../learningClassrom/learningClassrom?courseno=' + e.currentTarget.dataset.courseno,
+    })
+  },
 })

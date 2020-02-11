@@ -23,28 +23,29 @@ Page({
     //分页参数
     //当前页
     page: "1",
-    //总页数
-    pageSize: 1,
     //总记录数
     total: 1,
     //每页记录数
     pageSize: "5",
     //总页数
-    totalPage: "10",
+    totalPage: 0,
     inputText:"",
     isInputShow:false,
-    inputBottom:""
+    inputBottom:"",
+    showLoading:true
   },
 
   //社区列表
   getCommunityList: function () {
     let wxs = this
-
+    wxs.setData({
+      showLoading: true
+    })
     app.httpRequest({
       api: '/xbg-api/api/community/list',
       method: "POST",
       data: {
-        page: wxs.data.page,
+        page: wxs.data.page +'',
         limit: wxs.data.pageSize
       },
       success: function (res) {
@@ -67,6 +68,9 @@ Page({
         common.showToast(res.msg, 3000)
       },
       complete: () => {
+        wxs.setData({
+          showLoading: false
+        })
         //complete接口执行后的回调函数，无论成功失败都会调用
       }
     })
@@ -76,8 +80,6 @@ Page({
   //点赞
   clickLikes: function (e) {
     let wxs = this
-    console.log("e", e)
-    console.log("userData", common.getStorageSync('userData'))
     app.httpRequest({
       api: '/xbg-api/api/community/clickLikes',
       method: "POST",
@@ -86,13 +88,15 @@ Page({
         userId: common.getStorageSync('userData').userNo
       },
       success: function (res) {
-        console.log("点赞的响应", res)
         if (res.code === 0) {
-          common.showToast(res.msg, 3000)
+          wxs.setData({
+            communityList: [],
+            page: "1",
+            pageSize: "5",
+            totalPage: 0
+          })
           wxs.getCommunityList()
-
         } else {
-
           common.showToast(res.msg, 3000)
         }
       },
@@ -127,11 +131,10 @@ Page({
         })
       },
     })
-
-    this.getCommunityList()
   },
   onShow: function () {
     let wxs = this
+    wxs.getCommunityList()
   },
   previewImage: function (e) {
     console.log("e",e)
@@ -210,14 +213,16 @@ Page({
       success: function (res) {
         console.log("评论的响应", res)
         if (res.code === 0) {
-          common.showToast("评论成功", 3000)
           wxs.setData({
             inputText:"",
-            isInputShow:false
+            isInputShow:false,
+            communityList: [],
+            page: "1",
+            pageSize: "5",
+            totalPage: 0
           })
           wxs.getCommunityList()
         } else {
-
           common.showToast(res.msg, 3000)
         }
       },

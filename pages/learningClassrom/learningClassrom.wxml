@@ -1,10 +1,13 @@
 <!--pages/learnings/learningClassrom/learningClassrom.wxml-->
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
-<view class="videoBox" style='padding-top:{{height}}px'>
-  <video wx:if="{{course.charList.length != 0}}" src="{{defaultCourseDetail.url}}" autoplay="false" height="100%" width="100%" controls></video>
+<view class="videoBox" style='margin-top:{{viewHeight* 2 + 20}}px'>
+  <video  id="myVideo" wx:if="{{course.charList.length != 0}}" 
+  src="{{defaultCourseDetail.url}}" autoplay="false" 
+  height="100%" width="100%" 
+  controls></video>
 </view>
 <view class='module1'>
-  <view>笔顺</view>
+  <view bindtap="bindButtonRate" data-rate='1'>慢放</view>
   <view>书写</view>
   <view>重写</view>
   <view>笔画</view>
@@ -32,7 +35,7 @@
         </view>
         <view class="module">
           <view class="module-top">结构</view>
-          <view class="module-bottom">{{defaultCourseDetail.phrase}}</view>
+          <view class="module-bottom">{{defaultCourseDetail.structure}}</view>
         </view>
         <view class="module">
           <view class="module-top">读音</view>
@@ -45,18 +48,18 @@
         词组
       </view>
       <view class="rt">
-        <view class="module">
-          <view class="module-top">部首</view>
-          <view class="module-bottom">{{defaultCourseDetail.phrase}}</view>
+        <view class="module" wx:for="{{defaultCourseDetail.phraseList}}">
+          <!-- <view class="module-top">部首</view> -->
+          <view class="module-bottom">{{item}}</view>
         </view>
-        <view class="module">
+        <!-- <view class="module">
           <view class="module-top">结构</view>
           <view class="module-bottom">{{defaultCourseDetail.phrase}}</view>
         </view>
         <view class="module">
           <view class="module-top">读音</view>
           <view class="module-bottom">{{defaultCourseDetail.phrase}}</view>
-        </view>
+        </view> -->
       </view>
     </view>
   </view>

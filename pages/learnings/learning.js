@@ -15,11 +15,12 @@ Page({
 
     nvabarData: {
       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '我的', //导航栏 中间的标题,
+      title: '习字格', //导航栏 中间的标题,
       isBackPer: false, //不显示返回按钮,
-      bgColor: 'none' //导航背景色
+      bgColor: '#5773fd', //导航背景色
+      textcolor:'#ffffff'
     },
-
+    showLoading: true,
     //扫码图标
     scanPic: '../../images/common/scan.png',
     //搜索课程
@@ -44,12 +45,10 @@ Page({
     //分页参数
     //当前页
     page: "1",
-    //总页数
-    pageSize: 1,
     //总记录数
     total: 1,
     //每页记录数
-    pageSize: "10",
+    pageSize: "8",
     //总页数
     totalPage: "10",
     //搜索内容
@@ -61,11 +60,42 @@ Page({
     }
 
   },
+  onLoad: function () {
+    if (app.globalData.userInfo) {
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true
+      })
+    } else if (this.data.canIUse){
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      app.userInfoReadyCallback = res => {
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+      }
+    } else {
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+        }
+      })
+    }
+  },
   onShow:function(){
     let wxs = this
+    wxs.setData({
+      showLoading:true,
+      page: '1',
+      marketList:[],
+   })
     wxs.getStatistical()
-    wxs.getMySbujectList()
-    wxs.getSbujectList()
   },
   //进入搜索页面
   goSearch: function () {
@@ -116,8 +146,9 @@ Page({
               current: datas.totalCourse,
               readyLearn: datas.unLearnCourse,
               words: datas.totalCharacter
-             }
+             },
           })
+          wxs.getMySbujectList()
         } else {
           common.showToast(res.msg, 3000)
         }
@@ -187,7 +218,7 @@ Page({
             // totalPage: res.page.totalPage,
             // total: res.page.total
           })
-
+          wxs.getSbujectList()
         } else {
 
           common.showToast(res.msg, 3000)
@@ -214,8 +245,8 @@ Page({
       api: '/xbg-api/api/course/all',
       method: "POST",
       data: {
-        page: wxs.data.page,
-        limit: "5"
+        page: wxs.data.page + '',
+        limit: "8"
       },
       success: function (res) {
         console.log("查询知识超市", res)
@@ -237,6 +268,9 @@ Page({
         common.showToast(res.msg, 3000)
       },
       complete: () => {
+        wxs.setData({
+          showLoading:false
+       })
         //complete接口执行后的回调函数，无论成功失败都会调用
       }
     })

@@ -1,6 +1,6 @@
 <!--pages/search/search.wxml-->
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
-<view class='learning-box' style='padding-top:{{height}}px'>
+<view class='learning-box' style='margin-top:{{height+20}}px'>
   <view class='header-box'>
     <view class='header'>
       <view class='scan'>
@@ -19,7 +19,8 @@
     </view> 
     <view class='searchBox'>
       <van-cell-group>
-        <van-cell color="#ffd31e" wx:for="{{searchList}}" wx:key="{{index}}" title="{{item.coursename}}" border="{{ false }}" bindtap="goDetails" />
+        <van-cell color="#ffd31e" wx:for="{{searchList}}" wx:key="{{index}}"  data-courseno="{{item.courseno}}" 
+        title="{{item.coursename}}" border="{{ false }}" bindtap="goStudentDetail" />
       </van-cell-group>
     </view>
   </view>
