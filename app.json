@@ -36,12 +36,6 @@
         "selectedIconPath": "images/tab/community_hl.png"
       },
       {
-        "pagePath": "pages/informations/information",
-        "text": "资讯",
-        "iconPath": "images/tab/information.png",
-        "selectedIconPath": "images/tab/information_hl.png"
-      },
-      {
         "pagePath": "pages/personals/personal",
         "text": "我的",
         "iconPath": "images/tab/personal.png",

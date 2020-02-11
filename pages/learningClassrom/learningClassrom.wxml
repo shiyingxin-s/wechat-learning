@@ -8,9 +8,8 @@
 </view>
 <view class='module1'>
   <view bindtap="bindButtonRate" data-rate='1'>慢放</view>
-  <view>书写</view>
+  <view>正常</view>
   <view>重写</view>
-  <view>笔画</view>
 </view>
 <view class='module2'>
   <view class='module2-title'>
