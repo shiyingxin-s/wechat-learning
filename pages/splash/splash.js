@@ -7,6 +7,7 @@ Page({
   },
 
   onLoad: function () {
+    common.removeStorageSync('userData')
   },
   onShow: function(){
     let wxs = this

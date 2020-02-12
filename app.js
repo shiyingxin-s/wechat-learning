@@ -114,14 +114,12 @@ App({
         if (typeof cfg.success === 'function') {
           //  token验证：401
           if(res.data.code === 401) {
-            // 自动登陆
-            wxs.wxLogin()
-            return
-          }
-          // 登录失败
-          if(res.data.code !== 0 && cfg.api ==='/xbg-api/api/login') {
-            common.showToast(res.data.msg)
-            return
+            if(cfg.api ==='/xbg-api/api/login'){
+              common.showToast(res.data.msg)
+            } else {
+              common.removeStorageSync('userData')
+            
+            }
           }
           cfg.success(res.data, cfg.data)
         }
