@@ -18,7 +18,7 @@
   <view class='module2-content1'>
     <scroll-view scroll-x class="fontBox">
       <view wx:for="{{course.charList}}" wx:key="{{item.characterno}}" class="font">
-        <view bindtap="showDetail" data-character="{{item.character}}" style="background-image: url({{font_bg}})">{{item.character}}</view>
+        <view bindtap="showDetail" data-character="{{item.character}}" class="learning-fontBgImg" >{{item.character}}</view>
       </view>
     </scroll-view>
   </view>

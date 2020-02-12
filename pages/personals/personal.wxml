@@ -20,7 +20,7 @@
             value="已支付" />
           </block>
         </block>
-        <block wx:if="{{orderList.length > 0}}">
+        <block wx:if="{{orderList.length === 0}}">
           <div style="text-align: center;display: block;line-height: 47px;"> 暂无订单</div>
         </block>
       </van-cell-group>
