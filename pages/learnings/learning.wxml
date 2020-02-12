@@ -75,6 +75,9 @@
                 </van-cell-group>
 
             </van-collapse-item>
+            <block wx:if="{{studyList.length === 0}}">
+              <div style="text-align: center;display: block;line-height: 47px;"> 请购买学习任务</div>
+            </block>
           </van-collapse>
         </scroll-view>
 

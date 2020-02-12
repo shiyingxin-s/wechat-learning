@@ -170,8 +170,9 @@ Page({
       },
       success: function (res) {
         if (res.code === 0) {
+          let list = res.page.list.filter(item=> item.paystatus)
           wxs.setData({
-            orderList: wxs.data.orderList.concat(res.page.list),
+            orderList: wxs.data.orderList.concat(list),
             page: res.page.currPage,
             totalPage: res.page.totalPage,
             total: res.page.total

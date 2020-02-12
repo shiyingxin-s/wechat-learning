@@ -26,6 +26,7 @@
       </scroll-view>
     </van-collapse-item>
   </van-collapse>
+
 </view>
 
 <van-popup show="{{ show }}" bind:close="onClose" custom-class="vanpopup">

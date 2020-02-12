@@ -49,10 +49,7 @@ Page({
     //课程详情
     course: null,
 
-    defaultCourseDetail: null,
-
-    font_bg: '../../images/common/font_bg.jpg',
-
+    defaultCourseDetail: null
   },
   onReady(e) {
     this.videoContext = wx.createVideoContext('myVideo'); //创建播放器
