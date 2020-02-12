@@ -171,7 +171,7 @@ Page({
       },
       success: function (res) {
         console.log("查询课程响应", res)
-        if (res.code == 0) {
+        if (res.code === 0) {
           wxs.setData({
             courseList: res.page.list,
             // page: res.page.currPage,
@@ -209,7 +209,7 @@ Page({
       },
       success: function (res) {
         console.log("查询我的学习响应", res)
-        if (res.code == 0) {
+        if (res.code === 0) {
           wxs.setData({
             studyList: res.page,
             // page: res.page.currPage,
