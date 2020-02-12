@@ -17,6 +17,10 @@
             <label>必填</label>
         </view>
         <view class="b-input bgColor" wx:if="{{course.type === 1}}">
+            <input type="number" min="1" placeholder="购买数量" value="{{count}}" bindinput="bindCount"/>
+            <label>必填</label>
+        </view>
+        <view class="b-input bgColor" wx:if="{{course.type === 1}}">
             <input bindtap="getAddress" placeholder="请选择收货地址" value="{{address}}" bindinput="bindAddress"/>
             <label>必填</label>
         </view>
