@@ -17,13 +17,12 @@
 }
 
 .vanpopup{
+  border-radius:10px;
   padding: 30rpx;
   width:80%;
 }
 
 .vanpopup-btn{
+  
   padding: 20rpx 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

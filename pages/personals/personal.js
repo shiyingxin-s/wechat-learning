@@ -77,15 +77,15 @@ Page({
   //修改个人信息
   updateUserInfo:function(){
     let wxs = this
-    if(wxs.data.nikiname == ""){
+    if(wxs.data.nikiname === ""){
       Toast.fail("昵称不能为空")
       return false
     }
-    if(wxs.data.age == ""){
+    if(wxs.data.age === ""){
       Toast.fail("年龄不能为空")
       return false
     }
-    if(wxs.data.grade == ""){
+    if(wxs.data.grade === ""){
       Toast.fail("年级不能为空")
       return false
     }
@@ -283,7 +283,7 @@ Page({
           success: function (res) {
             console.log("修改个人信息的相应", res)
             if (res.code === 0) {
-              Toast.success('修改成功');
+              // Toast.success('修改成功');
               wxs.setData({ show: false });
               wxs.getUserInfoApi()
             } else {

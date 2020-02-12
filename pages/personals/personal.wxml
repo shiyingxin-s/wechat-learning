@@ -40,7 +40,7 @@
         required />
     </view>
     <view class="vanpopup-btn">
-      <van-button type="default" bind:click="updateUserInfo">修改</van-button>
+      <van-button type="primary" bind:click="updateUserInfo" block color="#42a2fd" >修改</van-button>
     </view>
   </van-cell-group>
 </van-popup>
