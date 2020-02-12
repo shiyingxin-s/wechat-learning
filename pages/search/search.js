@@ -50,6 +50,10 @@ Page({
   },
 
   searchFun: function () {
+    this.setData({
+      searchList:"",
+      
+    })
     console.log("searchTxt", this.data.searchTxt)
     this.searchSbujectList()
   },

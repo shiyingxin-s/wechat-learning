@@ -1,6 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import Toast from '../../dist/toast/toast';
+const common = require('../../utils/common.js');
 
 Page({
   data: {
@@ -35,8 +37,93 @@ Page({
     totalPage: 0,
     orderList: [],
 
+    show: false,
+
+    nikiname:"",
+    age:"",
+    grade:""
+
   },
 
+  showPopup() {
+    this.setData({ show: true });
+  },
+
+  onClose() {
+    this.setData({ show: false });
+  },
+
+  inputNikiname(e){
+    console.log("e",e)
+    this.setData({
+      nikiname:e.detail
+    })
+  },
+
+  inputAge(e){
+    console.log("e",e)
+    this.setData({
+      age:e.detail
+    })
+  },
+
+  inputGrade(e){
+    console.log("e",e)
+    this.setData({
+      grade:e.detail
+    })
+  },
+
+  //修改个人信息
+  updateUserInfo:function(){
+    let wxs = this
+    if(wxs.data.nikiname == ""){
+      Toast.fail("昵称不能为空")
+      return false
+    }
+    if(wxs.data.age == ""){
+      Toast.fail("年龄不能为空")
+      return false
+    }
+    if(wxs.data.grade == ""){
+      Toast.fail("年级不能为空")
+      return false
+    }
+
+    console.log("wxs.data.userInfo.grade",wxs.data.userInfo.grade)
+    
+
+      app.httpRequest({
+        api: '/xbg-api/api/user/editUserInfo',
+        method: "POST",
+        data: {
+          "userno":wxs.data.userInfo.userno,
+          "nikiname":wxs.data.nikiname,
+          "phoneno":wxs.data.userInfo.phoneno,
+          "age": wxs.data.age,
+          "grade":wxs.data.grade,
+          "openid":wxs.data.userInfo.openid,
+        },
+        success: function (res) {
+          console.log("修改个人信息的相应", res)
+          if (res.code === 0) {
+            Toast.success('修改成功');
+            wxs.setData({ show: false });
+            wxs.getUserInfoApi()
+          } else {
+            common.showToast(res.msg, 3000)
+          }
+        },
+        fail: function (res) {
+          common.showToast(res.msg, 3000)
+        },
+        complete: () => {
+          //complete接口执行后的回调函数，无论成功失败都会调用
+        }
+      })
+    
+
+  },
 
   //获取个人信息
   getUserInfoApi:function(){
@@ -51,7 +138,14 @@ Page({
         if (res.code === 0) {
           wxs.setData({
             userInfo: res.data,
+            nikiname:res.data.nikiname,
+            age:res.data.age,
+            grade:res.data.grade
           })
+          if(!wxs.data.userInfo.address){
+            wxs.getAddress()
+
+          }
         } else {
           common.showToast(res.msg, 3000)
         }
@@ -136,7 +230,7 @@ Page({
       },
     })
     this.getUserInfoApi()
-    this.getAddress()
+
   },
   onShow:function(){
     this.getOrderList()
@@ -176,6 +270,32 @@ Page({
         console.log("获取用户收货地址",res)
         wxs.setData({
           address:res
+        })
+
+        app.httpRequest({
+          api: '/xbg-api/api/user/editUserInfo',
+          method: "POST",
+          data: {
+            "userno":wxs.data.userInfo.userno,
+            "address":wxs.data.address.provinceName + wxs.data.address.cityName + wxs.data.address.countyName + wxs.data.address.detailInfo,
+            "openid":wxs.data.userInfo.openid,
+          },
+          success: function (res) {
+            console.log("修改个人信息的相应", res)
+            if (res.code === 0) {
+              Toast.success('修改成功');
+              wxs.setData({ show: false });
+              wxs.getUserInfoApi()
+            } else {
+              common.showToast(res.msg, 3000)
+            }
+          },
+          fail: function (res) {
+            common.showToast(res.msg, 3000)
+          },
+          complete: () => {
+            //complete接口执行后的回调函数，无论成功失败都会调用
+          }
         })
       }
     })
