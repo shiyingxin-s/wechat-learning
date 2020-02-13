@@ -39,7 +39,7 @@
               </block>
             </view>
             <view class="review">
-              <view wx:for="{{item.reviews}}" wx:key="{{dix}}" wx:for-item="items">{{items.userName}}
+              <view wx:for="{{item.reviews}}" wx:key="{{dix}}" wx:for-item="items">{{items.userName}}:
                 <text>{{items.commenttext}}</text>
               </view>
             </view>

@@ -33,7 +33,7 @@
         <view class="b-footer bgColor" style="height:{{viewHeight*2}}px;">
             <label>
                 <text>总金额：</text>
-                <text>￥{{course.price}}</text>
+                <text>￥{{ course.type === 1 ? course.price * count : course.price}}</text>
             </label>
             <button wx:if="{{!orderNo}}" bindtap="payBtn">确认支付</button>
             <button wx:if="{{orderNo}}" bindtap="toPayBtn">去支付</button>
