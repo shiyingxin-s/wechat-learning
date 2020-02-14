@@ -8,7 +8,7 @@
       </view>
       <view class='search'>
         <van-cell-group border="{{ false }}">
-          <van-field custom-style="border-radius:20px;" left-icon="search" input-class="searchInput" bindinput="bindKeyInput" placeholder="搜索课程..." border="{{ false }}" bind:change="searchFun" bindtap="goSearch">
+          <van-field maxlength="1" custom-style="border-radius:20px;" left-icon="search" input-class="searchInput" bindinput="bindKeyInput" placeholder="搜索课程..." border="{{ false }}" bind:change="searchFun" bindtap="goSearch">
           </van-field>
         </van-cell-group>
         <image src="{{recordIcon}}"></image>
@@ -17,11 +17,18 @@
         <image src='{{messagePic}}'></image>
       </view>
     </view> 
-    <view class='searchBox'>
-      <van-cell-group>
-        <van-cell color="#ffd31e" wx:for="{{searchList}}" wx:key="{{index}}"  data-courseno="{{item.courseno}}" 
-        title="{{item.coursename}}" border="{{ false }}" bindtap="goStudentDetail" />
-      </van-cell-group>
-    </view>
   </view>
+</view>
+
+<view class='searchBox'>
+  <block wx:if="{{searchList.length != 0 && words.length != 0}}">
+    <van-cell-group>
+      <van-cell color="#ffd31e" wx:if="{{words && words.length != 0}}" title="{{words[0].character}}" border="{{ false }}" bindtap="goWordsDetail" data-item="{{words[0]}}" />
+      <van-cell color="#ffd31e" wx:if="{{searchList.length != 0}}" wx:for="{{searchList}}" wx:key="{{index}}"  data-courseno="{{item.courseno}}" 
+      title="{{item.coursename}}" border="{{ false }}" bindtap="goStudentDetail" />
+    </van-cell-group>
+  </block>
+  <block wx:else>
+    <div style="text-align: center;display: block;line-height: 47px;">暂无数据</div>
+  </block>
 </view>

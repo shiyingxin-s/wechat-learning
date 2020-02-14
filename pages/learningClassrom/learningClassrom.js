@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const common = require('../../utils/common.js');
 
 // pages/learnings/learningClassrom/learningClassrom.js
 Page({
@@ -49,7 +50,9 @@ Page({
     //课程详情
     course: null,
 
-    defaultCourseDetail: null
+    defaultCourseDetail: null,
+
+    character:""
   },
   onReady(e) {
     this.videoContext = wx.createVideoContext('myVideo'); //创建播放器
@@ -61,10 +64,20 @@ Page({
    */
   onLoad: function (options) {
     if (options) {
-      this.setData({
-        courseno: options.courseno
-      })
-      this.getSbujectList()
+      if(options.courseno){
+        this.setData({
+          courseno: options.courseno
+        })
+        this.getSbujectList()
+      }
+
+
+      if(options.character){
+        this.setData({
+          character:options.character
+        })
+        this.showCharacter()
+      }
     }
   },
   bindButtonRate(e){
@@ -108,6 +121,41 @@ Page({
       }
     })
   },
+
+  //显示生字信息
+    showCharacter: function () {
+      let wxs = this
+      app.httpRequest({
+        api: '/xbg-api/api/course/search',
+        method: "POST",
+        data: {
+          page: "1",
+          limit: "999",
+          keyWord: wxs.data.character
+        },
+        success: function (res) {
+          console.log("课程检索", res)
+          if (res.code == 0) {
+            wxs.setData({
+              defaultCourseDetail: res.words[0]
+            })
+  
+  
+          } else {
+  
+            common.showToast(res.msg, 3000)
+          }
+        },
+        fail: function (res) {
+  
+          common.showToast(res.msg, 3000)
+        },
+        complete: () => {
+          //complete接口执行后的回调函数，无论成功失败都会调用
+        }
+      })
+  
+    },
 
   //切换生字
   showDetail: function (e) {

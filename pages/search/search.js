@@ -39,7 +39,9 @@ Page({
     //搜索内容
     searchTxt: "",
 
-    searchList:[]
+    searchList:[],
+
+    words:[],
   },
 
   bindKeyInput: function (e) {
@@ -47,12 +49,19 @@ Page({
     this.setData({
       searchTxt: e.detail
     })
+
+    if(e.detail == ""){
+      this.setData({
+        words:{},
+        searchList:[]
+      })
+    }
   },
 
   searchFun: function () {
     this.setData({
       searchList:"",
-      
+
     })
     console.log("searchTxt", this.data.searchTxt)
     this.searchSbujectList()
@@ -73,12 +82,16 @@ Page({
       success: function (res) {
         console.log("res", res)
         if (res.code === 0) {
-          wxs.setData({
-            searchList: res.page.list,
-            page: res.page.currPage,
-            totalPage: res.page.totalPage,
-            total: res.page.total
-          })
+          if(res.page || res.words){
+            wxs.setData({
+              searchList: res.page.list,
+              words:res.words,
+              page: res.page.currPage,
+              totalPage: res.page.totalPage,
+              total: res.page.total
+            })
+          }
+
 
         } else {
 
@@ -155,5 +168,13 @@ Page({
     wx.navigateTo({
       url: '../learningClassrom/learningClassrom?courseno=' + e.currentTarget.dataset.courseno,
     })
+  },
+
+  //进入学字详情
+  goWordsDetail:function(e){
+    console.log("e",e.currentTarget.dataset.item.character)
+    wx.navigateTo({
+      url: '../learningClassrom/learningClassrom?character=' + e.currentTarget.dataset.item.character,
+    })   
   },
 })

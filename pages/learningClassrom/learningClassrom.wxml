@@ -12,7 +12,7 @@
   <view>重写</view>
 </view>
 <view class='module2'>
-  <view class='module2-title'>
+  <view class='module2-title' wx:if="{{course.gradeName}}">
     {{course.gradeName}}  {{course.coursename}}
   </view>
   <view class='module2-content1'>
@@ -21,6 +21,9 @@
         <view bindtap="showDetail" data-character="{{item.character}}" class="learning-fontBgImg" >{{item.character}}</view>
       </view>
     </scroll-view>
+    <view wx:if="{{character}}" class="font">
+      <view class="learning-fontBgImg" >{{character}}</view>
+    </view>
   </view>
   <view class='module2-content2'>
     <view class="top" wx:if="{{course.charList.length != 0}}">
