@@ -4,6 +4,7 @@
 const app = getApp()
 
 const common = require('../../utils/common.js');
+import Toast from '../../dist/toast/toast';
 
 Page({
 
@@ -172,9 +173,13 @@ Page({
 
   //进入学字详情
   goWordsDetail:function(e){
-    console.log("e",e.currentTarget.dataset.item.character)
-    wx.navigateTo({
-      url: '../learningClassrom/learningClassrom?character=' + e.currentTarget.dataset.item.character,
-    })   
+    console.log("e",e.currentTarget.dataset.item.hasBuy)
+    if(e.currentTarget.dataset.item.hasBuy == 0){
+      wx.navigateTo({
+        url: '../learningClassrom/learningClassrom?character=' + e.currentTarget.dataset.item.character,
+      })  
+    }else{
+      Toast.fail('未购买该课件,无法学习')
+    }
   },
 })

@@ -32,3 +32,5 @@
     <div style="text-align: center;display: block;line-height: 47px;">暂无数据</div>
   </block>
 </view>
+
+<van-toast id="van-toast" />
