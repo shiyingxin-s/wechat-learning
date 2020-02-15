@@ -66,7 +66,8 @@
           </van-cell-group> -->
           <van-collapse value="{{ activeNames }}"  bind:change="onChangeCourse">
             <van-collapse-item title="个人信息" wx:for="{{studyList}}" data-courseno="{{item.courseno}}" wx:key="{{index}}"
-              title="{{item.gradename}}" value="{{item.learnStatus === 0 ? '未开始':item.learnStatus === 1 ?'学习中' : '已学完'}}" border="{{ false }}" name="{{item.courseno}}"
+              title="{{item.gradename}}" value="{{item.learnStatus === 0 ? '未开始':item.learnStatus === 1 ?'学习中' : '已学完'}}" border="{{ false }}" 
+              name="{{item.gradeno}}"
               content-class="removePadding">
                 <van-cell-group>
                   <van-cell icon="add" color="#ffd31e" wx:for="{{courseList}}" wx:key="index" bindtap="goStudentDetail"
