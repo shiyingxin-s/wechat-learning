@@ -53,8 +53,11 @@
             </view>
           </view> -->
         </block>
+        <block wx:if="{{informationList.length === 0}}">
+          <div style="text-align: center;display: block;line-height: 47px;"> 暂无数据</div>
+        </block>
       </scroll-view>
-
+      <loading wx:if="{{showLoading}}">加载中</loading>
     <!-- </van-tab>
     <van-tab title="成人字帖">
       <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerCopyBookList"

@@ -14,7 +14,7 @@ Page({
       isBackPer: false, //不显示返回按钮,
       bgColor:'#ffffff' //导航背景色
     },
-
+    showLoading: true,
     //informationList
     informationList:[],
     copyBookList:[],
@@ -47,6 +47,10 @@ Page({
   
   },
   onShow:function(){
+    wxs.setData({
+      showLoading:true,
+      informationList: []
+    })
     this.getInformationList()
     // this.getCopybookList()
   },
@@ -79,6 +83,9 @@ Page({
         common.showToast(res.msg, 3000)
       },
       complete: () => {
+        wxs.setData({
+          showLoading:false
+        })
         //complete接口执行后的回调函数，无论成功失败都会调用
       }
     })
