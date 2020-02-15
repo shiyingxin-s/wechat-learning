@@ -47,7 +47,7 @@ Page({
   
   },
   onShow:function(){
-    wxs.setData({
+    this.setData({
       showLoading:true,
       informationList: []
     })
