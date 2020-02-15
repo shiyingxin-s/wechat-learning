@@ -234,6 +234,9 @@ Page({
 
   },
   onShow:function(){
+    this.setData({
+      orderList: [],
+    })
     this.getOrderList()
   },
   getUserInfo: function(e) {
