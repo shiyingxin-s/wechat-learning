@@ -85,7 +85,7 @@
     </view>
   </view>
 
-  <view class='content-box'>
+  <view class='content-box' style="margin-bottom: 15px;">
     <view class='content-box-top'>
       <view>
         <image src='{{knowledgeIcon}}'></image>
