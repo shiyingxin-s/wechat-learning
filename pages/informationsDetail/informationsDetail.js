@@ -11,7 +11,7 @@ Page({
      nvabarData: {
       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
       title: '资讯', //导航栏 中间的标题,
-      isBackPer: false, //不显示返回按钮,
+      isBackPer: true, //不显示返回按钮,
       bgColor:'#ffffff' //导航背景色
     },
     showLoading: true,
@@ -149,19 +149,5 @@ Page({
     //   icon: 'none'
     // });
   },
-  goBuy:function(e){
-    debugger
-    if (e.currentTarget.dataset.hasbuy === 0) {
-      wx.navigateTo({
-        url: '/pages/buy/buy?id='+ e.currentTarget.dataset.id,
-      })
-    } 
-  },
-   //跳转到详情页
-   goDetails: function (e) {
-    console.log("e", e)
-    wx.navigateTo({
-      url: '/pages/informationsDetail/informationsDetail?id=' + e.currentTarget.dataset.id,
-    })
-  },
+   
 })

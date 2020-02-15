@@ -17,9 +17,9 @@
       <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerGetInformationList"
         scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
 
-        <block >
-          <view class="margin-bottom bgColor padding videoList" data-id="item.newsno" 
-          wx:for="{{informationList}}" wx:key="{{index}}"
+        <block>
+          <view class="margin-bottom bgColor padding videoList" 
+          wx:for="{{informationList}}" wx:key="{{index}}" data-id="item.newsno"
           bindtap="goDetails">
             <view class="v-left textStyle">
               <view class="v-con">{{item.contenttext}}</view>

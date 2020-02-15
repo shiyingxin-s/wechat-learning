@@ -9,6 +9,7 @@
     "pages/informations/information",
     "pages/logs/logs",
     "pages/learningClassrom/learningClassrom",
+    "pages/informationsDetail/informationsDetail",
     "pages/search/search"
   ],
   "window": {
