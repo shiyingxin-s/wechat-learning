@@ -6,7 +6,7 @@
       <block>
         <video class="myVideo" id="myVideo" src="{{informationList[0].video}}" autoplay="false" enable-danmu danmu-btn controls>
         </video>
-        <view class="margin-bottom bgColor padding textStyle">
+        <view class="margin-bottom bgColor padding textStyle" bindtap="goDetails" data-id="{{informationList[0].newsno}}">
           <text class="text">{{informationList[0].contenttext}}</text>
           <text>天天学习</text>
           <!-- <text>6条评论</text> -->
@@ -18,7 +18,7 @@
         scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
 
         <block >
-          <view class="margin-bottom bgColor padding videoList" data-id="item.newsno" 
+          <view class="margin-bottom bgColor padding videoList" data-id="{{item.newsno}}" 
           wx:for="{{informationList}}" wx:key="{{index}}"
           bindtap="goDetails">
             <view class="v-left textStyle">

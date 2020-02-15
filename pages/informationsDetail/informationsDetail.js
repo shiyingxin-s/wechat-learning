@@ -3,7 +3,7 @@
 const app = getApp()
 
 const common = require('../../utils/common.js');
-
+const util = require('../../utils/util.js')
 Page({
   data: {
      viewHeight:app.globalData.navHeight,
@@ -15,27 +15,10 @@ Page({
       bgColor:'#ffffff' //导航背景色
     },
     showLoading: true,
-    //informationList
-    informationList:[],
-    copyBookList:[],
-    
-
-    //分页参数
-    //当前页
-    page: "1",
-    //总页数
-    pageSize: 1,
-    //总记录数
-    total: 1,
-    //每页记录数
-    pageSize: "5",
-    //总页数
-    totalPage: "10",
-
-    scrollHeight:''
-
+    detailData: '',
+    newsNo: '',
   },
-  onLoad: function () {
+  onLoad: function (options) {
     let wxs = this
     wx.getSystemInfo({
       success: function (res) {
@@ -44,6 +27,9 @@ Page({
         })
       },
     })
+    wxs.setData({
+      newsNo: options.id
+    })
   
   },
   onShow:function(){
@@ -51,30 +37,23 @@ Page({
       showLoading:true,
       informationList: []
     })
-    this.getInformationList()
+    this.getInformationInfo()
     // this.getCopybookList()
   },
   //资讯列表
-  getInformationList:function(){
+  getInformationInfo:function(){
     let wxs = this
     app.httpRequest({
-      api: '/xbg-api/api/news/list',
+      api: '/xbg-api/api/news/info',
       method: "POST",
       data: {
-        page: wxs.data.page + '',
-        limit: wxs.data.pageSize
+        newsNo: wxs.data.newsNo
       },
       success: function (res) {
-        console.log("资讯列表的响应", res)
         if (res.code === 0) {
-
           wxs.setData({
-            informationList: wxs.data.informationList.concat(res.page.list),
-            page: res.page.currPage,
-            totalPage: res.page.totalPage,
-            total: res.page.total
+            detailData: res.news
           })
-
         } else {
           common.showToast(res.msg, 3000)
         }
@@ -89,65 +68,6 @@ Page({
         //complete接口执行后的回调函数，无论成功失败都会调用
       }
     })
-  },
-
-  //成人字帖列表
-  getCopybookList:function(){
-    let wxs = this
-    app.httpRequest({
-      api: '/xbg-api/api/course/list',
-      method: "POST",
-      data: {
-        page: wxs.data.page +'',
-        limit: wxs.data.pageSize,
-        gradeNo:0
-      },
-      success: function (res) {
-        console.log("成人字帖列表数据响应", res)
-        if (res.code === 0) {
-          wxs.setData({
-            copyBookList: res.page.list,
-            page: res.page.currPage,
-            totalPage: res.page.totalPage,
-            total: res.page.total
-          })
-
-        } else {
-
-          common.showToast(res.msg, 3000)
-        }
-      },
-      fail: function (res) {
-
-        common.showToast(res.msg, 3000)
-      },
-      complete: () => {
-        //complete接口执行后的回调函数，无论成功失败都会调用
-      }
-    })
-  },
-   //上拉加载社区列表数据
-   lowerGetInformationList: function (e) {
-    let wxs = this
-    if (wxs.data.page < wxs.data.totalPage) {
-      wxs.setData({
-        page: (wxs.data.page + 1).toString()
-      })
-      wxs.getInformationList()
-    }
-  },
-  // 切换tab
-  onClick(event) {
-    let wxs = this
-    if(event.detail.index === 0){
-      wxs.getInformationList()
-    }else{
-      wxs.getCopybookList()
-    }
-    // wx.showToast({
-    //   title: `点击标签 ${event.detail.index + 1}`,
-    //   icon: 'none'
-    // });
-  },
+  }
    
 })

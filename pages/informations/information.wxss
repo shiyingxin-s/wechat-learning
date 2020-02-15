@@ -26,7 +26,12 @@ page {
 .text{
   color: #3d3d3d;
   float: left;
-  margin-left: 0 !important
+  margin-left: 0 !important;
+  display: block;
+  height: 149rpx;
+  line-height: 49rpx;
+  overflow:hidden;
+  text-overflow: ellipsis;
 }
 .videoList{
   display: flex;
@@ -42,12 +47,16 @@ page {
   font-size: 32rpx;
   height: 150rpx;
   margin-right: 10rpx;
+  line-height: 48rpx;
   overflow:hidden;
   text-overflow: ellipsis;
 }
 .v-left .text{
   margin-left: 0 !important;
   color: #a6a6a6;
+  display: block;
+  height: 73px;
+  line-height: 22px;
 }
 .v-right image{
   width: 300rpx;
