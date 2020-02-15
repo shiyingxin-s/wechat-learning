@@ -41,6 +41,7 @@ Page({
     courseList: [],
     //知识超市的数据集合
     marketList: [],
+    allCourseList: [],
 
     //分页参数
     //当前页
@@ -192,7 +193,43 @@ Page({
       }
     })
   },
+  openCourse (event) {
+    this.setData({
+      activeNames: event.detail
+    })
+    let wxs = this
+    app.httpRequest({
+      api: '/xbg-api/api/user/getMyCourseList',
+      method: "POST",
+      data: {
+        gradeNo: event.currentTarget.dataset.gradeno,
+        page: "1",
+        limit: "999"
+      },
+      success: function (res) {
+        console.log("查询课程响应", res)
+        if (res.code === 0) {
+          wxs.setData({
+            allCourseList: res.page.list,
+            // page: res.page.currPage,
+            // totalPage: res.page.totalPage,
+            // total: res.page.total
+          })
 
+        } else {
+
+
+        }
+      },
+      fail: function (res) {
+
+        common.showToast(res.msg, 3000)
+      },
+      complete: () => {
+        //complete接口执行后的回调函数，无论成功失败都会调用
+      }
+    })
+  },
 
   //查询我的学习课程列表
   getMySbujectList: function () {
@@ -307,11 +344,10 @@ Page({
   //跳转到详情页
   goDetails: function (e) {
     console.log("e", e)
-    if (e.currentTarget.dataset.hasbuy == 1) {
-      wx.navigateTo({
-        url: '/pages/buy/buy?id=' + e.currentTarget.dataset.id,
-      })
-    }
+    wx.navigateTo({
+      url: '/pages/buy/buy?id=' + e.currentTarget.dataset.id,
+    })
+    
     // else {
     //   wx.navigateTo({
     //     url: '../learningClassrom/learningClassrom?sbujectId=' + e.currentTarget.dataset.courseno,
