@@ -16,7 +16,7 @@
       <van-cell-group border="{{false}}">
           <block wx:for="{{orderList}}" wx:for-item="items" wx:key="index">
             <block wx:for="{{items.courseList}}" wx:key="index">
-              <van-cell wx:if="{{item.paystatus === 1}}" wx:key="index" title="{{item.gradeName}}" value="已支付" />
+              <van-cell  wx:key="index" title="{{item.gradeName}}" value="已支付" />
             </block>
           </block>
           <block wx:if="{{orderList.length === 0}}">
