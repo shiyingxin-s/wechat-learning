@@ -1,10 +1,8 @@
 <!--pages/learnings/learningClassrom/learningClassrom.wxml-->
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
 <view class="videoBox" style='margin-top:{{viewHeight* 2 + 20}}px'>
-  <video  id="myVideo" wx:if="{{course.charList.length != 0}}" 
-  src="{{defaultCourseDetail.url}}" autoplay="false" 
-  height="100%" width="100%" 
-  controls></video>
+  <video id="myVideo" wx:if="{{course.charList.length != 0}}" src="{{defaultCourseDetail.url}}" autoplay="false"
+    height="100%" width="100%" controls></video>
 </view>
 <view class='module1'>
   <view bindtap="bindButtonRate" data-rate='1'>慢放</view>
@@ -13,16 +11,17 @@
 </view>
 <view class='module2'>
   <view class='module2-title' wx:if="{{course.gradeName}}">
-    {{course.gradeName}}  {{course.coursename}}
+    {{course.gradeName}} {{course.coursename}}
   </view>
   <view class='module2-content1'>
     <scroll-view scroll-x class="fontBox">
       <view wx:for="{{course.charList}}" wx:key="{{item.characterno}}" class="font">
-        <view bindtap="showDetail" data-character="{{item.character}}" class="learning-fontBgImg" >{{item.character}}</view>
+        <view bindtap="showDetail" data-character="{{item.character}}" data-item="{{item}}" class="learning-fontBgImg {{index == idx ? 'hoverClass' : ''}}" data-index="{{index}}">
+          {{item.character}}</view>
       </view>
     </scroll-view>
     <view wx:if="{{character}}" class="font">
-      <view class="learning-fontBgImg" >{{character}}</view>
+      <view class="learning-fontBgImg">{{character}}</view>
     </view>
   </view>
   <view class='module2-content2'>

@@ -23,7 +23,7 @@ Page({
       title: '习字格', //导航栏 中间的标题,
       isBackPer: true, //不显示返回按钮,
       bgColor: '#5773fd', //导航背景色
-      textcolor:'#ffffff'
+      textcolor: '#ffffff'
     },
 
     //扫码图标
@@ -40,9 +40,9 @@ Page({
     //搜索内容
     searchTxt: "",
 
-    searchList:[],
+    searchList: [],
 
-    words:[],
+    words: [],
   },
 
   bindKeyInput: function (e) {
@@ -51,17 +51,17 @@ Page({
       searchTxt: e.detail
     })
 
-    if(e.detail == ""){
+    if (e.detail == "") {
       this.setData({
-        words:{},
-        searchList:[]
+        words: {},
+        searchList: []
       })
     }
   },
 
   searchFun: function () {
     this.setData({
-      searchList:"",
+      searchList: "",
 
     })
     console.log("searchTxt", this.data.searchTxt)
@@ -83,10 +83,10 @@ Page({
       success: function (res) {
         console.log("res", res)
         if (res.code === 0) {
-          if(res.page || res.words){
+          if (res.page || res.words) {
             wxs.setData({
               searchList: res.page.list,
-              words:res.words,
+              words: res.words,
               page: res.page.currPage,
               totalPage: res.page.totalPage,
               total: res.page.total
@@ -166,19 +166,25 @@ Page({
   },
   //进入视频课堂页面
   goStudentDetail: function (e) {
-    wx.navigateTo({
-      url: '../learningClassrom/learningClassrom?courseno=' + e.currentTarget.dataset.courseno,
-    })
+    console.log("e", e.currentTarget.dataset.item.hasBuy)
+    if (e.currentTarget.dataset.item.hasBuy == 0) {
+      wx.navigateTo({
+        url: '../learningClassrom/learningClassrom?courseno=' + e.currentTarget.dataset.item.courseno + "&learnstatus=" + e.currentTarget.dataset.item.learnStatus,
+      })
+    } else {
+      Toast.fail('未购买该课件,无法学习')
+    }
+
   },
 
   //进入学字详情
-  goWordsDetail:function(e){
-    console.log("e",e.currentTarget.dataset.item.hasBuy)
-    if(e.currentTarget.dataset.item.hasBuy == 0){
+  goWordsDetail: function (e) {
+    console.log("e", e.currentTarget.dataset.item.hasBuy)
+    if (e.currentTarget.dataset.item.hasBuy == 0) {
       wx.navigateTo({
         url: '../learningClassrom/learningClassrom?character=' + e.currentTarget.dataset.item.character,
-      })  
-    }else{
+      })
+    } else {
       Toast.fail('未购买该课件,无法学习')
     }
   },

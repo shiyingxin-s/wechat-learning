@@ -18,7 +18,7 @@ Page({
       title: '习标格', //导航栏 中间的标题,
       isBackPer: false, //不显示返回按钮,
       bgColor: '#5773fd', //导航背景色
-      textcolor:'#ffffff'
+      textcolor: '#ffffff'
     },
     showLoading: true,
     //扫码图标
@@ -53,36 +53,35 @@ Page({
     totalPage: "10",
     //搜索内容
     searchTxt: "",
-    statistical:{
-     current: 0,
-     words: 0,
-     readyLearn: 0
+    statistical: {
+      current: 0,
+      words: 0,
+      readyLearn: 0
     }
 
   },
-  onLoad: function () {
-  },
-  onShow:function(){
+  onLoad: function () {},
+  onShow: function () {
     let wxs = this
     wxs.setData({
-      showLoading:true,
+      showLoading: true,
       page: '1',
-      marketList:[],
+      marketList: [],
     })
     // 获取缓存
     wxs.setData({
       userData: common.getStorageSync('userData')
     })
-    common.setStorageSync('userData',wxs.data.userData)
+    common.setStorageSync('userData', wxs.data.userData)
     // 无缓存时
-    if (!wxs.data.userData || !wxs.data.userData.token){
+    if (!wxs.data.userData || !wxs.data.userData.token) {
       wxs.loginFun()
     } else {
       wxs.getStatistical()
     }
   },
   // 登录
-  loginFun(){
+  loginFun() {
     var wxs = this
     app.wxLogin().then(res => {
       if (res.code === 0) {
@@ -105,7 +104,7 @@ Page({
   goStudentDetail: function (e) {
     console.log("e", e)
     wx.navigateTo({
-      url: '../learningClassrom/learningClassrom?courseno=' + e.currentTarget.dataset.courseno,
+      url: '../learningClassrom/learningClassrom?courseno=' + e.currentTarget.dataset.item.courseno + "&learnstatus=" + e.currentTarget.dataset.item.learnStatus,
     })
   },
 
@@ -127,23 +126,23 @@ Page({
       searchTxt: e.detail
     })
   },
-  
+
   // 获取统计
-  getStatistical: function() {
+  getStatistical: function () {
     let wxs = this
     app.httpRequest({
       api: '/xbg-api/api/statistics/getStatisticsInfo',
       method: "POST",
       data: {},
-      success: function(res) {
+      success: function (res) {
         if (res.code == 0) {
           let datas = res.data
           wxs.setData({
-            statistical:{
+            statistical: {
               current: datas.totalCourse,
               readyLearn: datas.unLearnCourse,
               words: datas.totalCharacter
-             },
+            },
           })
           wxs.getMySbujectList()
         } else {
@@ -151,7 +150,7 @@ Page({
           wxs.loginFun()
         }
       }
-    })  
+    })
   },
 
   onChangeCourse: function (event) {
@@ -267,8 +266,8 @@ Page({
       },
       complete: () => {
         wxs.setData({
-          showLoading:false
-       })
+          showLoading: false
+        })
         //complete接口执行后的回调函数，无论成功失败都会调用
       }
     })
@@ -295,7 +294,7 @@ Page({
 
 
 
- 
+
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -310,9 +309,9 @@ Page({
     console.log("e", e)
     if (e.currentTarget.dataset.hasbuy == 1) {
       wx.navigateTo({
-        url: '/pages/buy/buy?id='+ e.currentTarget.dataset.id,
+        url: '/pages/buy/buy?id=' + e.currentTarget.dataset.id,
       })
-    } 
+    }
     // else {
     //   wx.navigateTo({
     //     url: '../learningClassrom/learningClassrom?sbujectId=' + e.currentTarget.dataset.courseno,
@@ -329,10 +328,10 @@ Page({
   scroll: function (e) {
     console.log(e)
   },
-   /**
+  /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     return {
       title: '教每一个学生写好字', //转发页面的标题
       imageUrl: "/images/common/share.jpeg",

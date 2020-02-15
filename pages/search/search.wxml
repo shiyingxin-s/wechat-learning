@@ -23,9 +23,9 @@
 <view class='searchBox'>
   <block wx:if="{{searchList.length != 0 && words.length != 0}}">
     <van-cell-group>
-      <van-cell color="#ffd31e" wx:if="{{words && words.length != 0}}" title="{{words[0].character}}" border="{{ false }}" bindtap="goWordsDetail" data-item="{{words[0]}}" />
-      <van-cell color="#ffd31e" wx:if="{{searchList.length != 0}}" wx:for="{{searchList}}" wx:key="{{index}}"  data-courseno="{{item.courseno}}" 
-      title="{{item.coursename}}" border="{{ false }}" bindtap="goStudentDetail" />
+      <van-cell color="#ffd31e" wx:if="{{words && words.length != 0}}" title="{{words[0].character}}" border="{{ false }}" catchtap="goWordsDetail" data-item="{{words[0]}}" />
+      <van-cell color="#ffd31e" wx:if="{{searchList.length != 0}}" wx:for="{{searchList}}" wx:key="{{index}}"  data-item="{{item}}" 
+      title="{{item.coursename}}" border="{{ false }}" catchtap="goStudentDetail" />
     </van-cell-group>
   </block>
   <block wx:else>

@@ -16,7 +16,7 @@ Page({
       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
       title: '课程', //导航栏 中间的标题,
       isBackPer: true, //显示返回按钮,
-      bgColor:'#ffffff' //导航背景色
+      bgColor: '#ffffff' //导航背景色
     },
     //视频demo
     videoDemo: 'http://gsxcxbucket-1254282420.coscd.myqcloud.com/staticResource/video/index/show.mp4',
@@ -47,12 +47,20 @@ Page({
     //课程ID
     courseno: "",
 
+    //学习状态
+    learnstatus: "",
+
     //课程详情
     course: null,
 
     defaultCourseDetail: null,
 
-    character:""
+    character: "",
+
+    hoverNo: "",
+
+    idx:0
+
   },
   onReady(e) {
     this.videoContext = wx.createVideoContext('myVideo'); //创建播放器
@@ -64,23 +72,62 @@ Page({
    */
   onLoad: function (options) {
     if (options) {
-      if(options.courseno){
+      if (options.courseno && options.learnstatus) {
         this.setData({
-          courseno: options.courseno
+          courseno: options.courseno,
+          learnstatus: options.learnstatus
         })
+        this.updateLearnStatus(1)
         this.getSbujectList()
+
       }
 
 
-      if(options.character){
+      if (options.character) {
         this.setData({
-          character:options.character
+          character: options.character
+
         })
         this.showCharacter()
       }
     }
   },
-  bindButtonRate(e){
+  //修改学习状态
+  updateLearnStatus: function (learnStatus) {
+    let wxs = this
+    //如果学习状态不是已学完，则修改成学习中
+    if (wxs.data.learnstatus != 2) {
+      app.httpRequest({
+        api: '/xbg-api/api/user/changLearnStatus',
+        method: "POST",
+        data: {
+          userId: common.getStorageSync('userData').userNo,
+          courseNo: parseInt(wxs.data.courseno),
+          learnStatus: learnStatus
+        },
+        success: function (res) {
+          console.log("修改学习状态", res)
+          if (res.code == 0) {
+
+
+          } else {
+
+            common.showToast(res.msg, 3000)
+          }
+        },
+        fail: function (res) {
+
+          common.showToast(res.msg, 3000)
+        },
+        complete: () => {
+          //complete接口执行后的回调函数，无论成功失败都会调用
+        }
+      })
+    }
+
+  },
+
+  bindButtonRate(e) {
     let rate = e.currentTarget.dataset.rate
     this.videoContext.playbackRate(Number(rate))
   },
@@ -123,43 +170,53 @@ Page({
   },
 
   //显示生字信息
-    showCharacter: function () {
-      let wxs = this
-      app.httpRequest({
-        api: '/xbg-api/api/course/search',
-        method: "POST",
-        data: {
-          page: "1",
-          limit: "999",
-          keyWord: wxs.data.character
-        },
-        success: function (res) {
-          console.log("课程检索", res)
-          if (res.code == 0) {
-            wxs.setData({
-              defaultCourseDetail: res.words[0]
-            })
-  
-  
-          } else {
-  
-            common.showToast(res.msg, 3000)
-          }
-        },
-        fail: function (res) {
-  
+  showCharacter: function () {
+    let wxs = this
+    app.httpRequest({
+      api: '/xbg-api/api/course/search',
+      method: "POST",
+      data: {
+        page: "1",
+        limit: "999",
+        keyWord: wxs.data.character
+      },
+      success: function (res) {
+        console.log("课程检索", res)
+        if (res.code == 0) {
+          wxs.setData({
+            defaultCourseDetail: res.words[0]
+          })
+
+
+        } else {
+
           common.showToast(res.msg, 3000)
-        },
-        complete: () => {
-          //complete接口执行后的回调函数，无论成功失败都会调用
         }
-      })
-  
-    },
+      },
+      fail: function (res) {
+
+        common.showToast(res.msg, 3000)
+      },
+      complete: () => {
+        //complete接口执行后的回调函数，无论成功失败都会调用
+      }
+    })
+
+  },
+
+
 
   //切换生字
   showDetail: function (e) {
     let wxs = this
+    this.setData({
+      idx:e.currentTarget.dataset.index
+    })
+    //如果点击了当前课时的最后一个生字 将学习状态更改为已学完
+    if (e.currentTarget.dataset.item.characterno == wxs.data.course.charList[wxs.data.course.charList.length - 1].characterno) {
+      wxs.updateLearnStatus(2)
+    }
+
     console.log("e", e)
     app.httpRequest({
       api: '/xbg-api/api/course/search',

@@ -70,7 +70,7 @@
               content-class="removePadding">
                 <van-cell-group>
                   <van-cell icon="add" color="#ffd31e" wx:for="{{courseList}}" wx:key="index" bindtap="goStudentDetail"
-                    data-courseno="{{item.courseno}}" wx:key="{{index}}" title="{{item.coursename}}"
+                    data-item="{{item}}" wx:key="{{index}}" title="{{item.coursename}}"
                     value="{{item.learnStatus === 0 ? '未开始':item.learnStatus === 1 ?'学习中' : '已学完'}}" border="{{ false }}" />
                 </van-cell-group>
 

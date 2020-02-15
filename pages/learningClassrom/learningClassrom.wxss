@@ -134,3 +134,6 @@ writing-mode: tb-rl;
 .videoBox{width: 100%;}
 .videoBox video{width: 100%;}
 
+.hoverClass{
+  color:#4488fd;
+}
