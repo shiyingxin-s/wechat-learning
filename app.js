@@ -54,12 +54,6 @@ App({
    *  参数：method
    *  返回：header
    */
-  // {
-  //       "pagePath": "pages/informations/information",
-  //       "text": "资讯",
-  //       "iconPath": "images/tab/information.png",
-  //       "selectedIconPath": "images/tab/information_hl.png"
-  //     },
   settingHeader(cfg) {
     var wxs = this
     var header = {}
