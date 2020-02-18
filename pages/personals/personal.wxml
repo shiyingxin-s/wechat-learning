@@ -15,7 +15,7 @@
         scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
       <van-cell-group border="{{false}}">
           <block wx:for="{{orderList}}" wx:for-item="items" wx:key="index">
-            <block wx:for="{{items.courseList}}" wx:key="index">
+            <block wx:for="{{items.courseList}}" wx:key="index"  wx:if="{{index<1}}">
               <van-cell  wx:key="index" title="{{item.gradeName}}" value="已支付" />
             </block>
           </block>

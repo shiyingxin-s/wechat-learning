@@ -20,7 +20,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     nvabarData: {
       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '习字格', //导航栏 中间的标题,
+      title: '习标格', //导航栏 中间的标题,
       isBackPer: true, //不显示返回按钮,
       bgColor: '#5773fd', //导航背景色
       textcolor: '#ffffff'
