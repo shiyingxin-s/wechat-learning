@@ -60,6 +60,17 @@
 /* .item-images{
   flex: 1
 } */
+
+.item-imgVoide{
+  width: 100%;
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.item-images{
+  width: calc(calc(100% / 3) - 10px);
+
+}
 .item-images image{
   width: 80px;
   height: 80px;
