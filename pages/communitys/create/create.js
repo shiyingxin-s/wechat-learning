@@ -79,7 +79,7 @@ Page({
       sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
       success: res => {
         console.log("选择照片的响应", res)
-        if (this.data.imgalist.length == 0) {
+        if (this.data.imgalist.length === 0) {
           wxs.setData({
             imgalist: res.tempFilePaths
           })
@@ -134,7 +134,7 @@ Page({
         console.log("发布动态的响应", res)
         if (res.code == 0) {
           console.log("wxs.data.imgalist", wxs.data.imgalist)
-          if (wxs.data.imgalist.length == 0) {
+          if (wxs.data.imgalist.length === 0) {
             console.log("没有上传图片")
             // wx.navigateTo({
             //   url: '../community',

@@ -6,18 +6,27 @@
     <van-tab title="视频资讯"> -->
       <view style=" height: 225px;" wx:if="{{detailData.video}}">
         <view class="videos" style='top:{{viewHeight* 2 + 20}}px' >
-          <video id="myVideo" class="myVideo" src="{{detailData.video}}" autoplay="false" enable-danmu danmu-btn controls></video>
+          <video id="myVideo" class="myVideo" wx:if="{{detailData.video}}" src="{{detailData.video}}" autoplay enable-danmu danmu-btn controls></video>
         </view>
       </view>
       <!-- <scroll-view scroll-y style="height: {{scrollHeight}}px;" 
          scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}"> -->
       <view class="margin-bottom bgColor textStyle {{detailData.video.length !== 0 ?'marginTop':''}}"  >
           <view class="top padding">
-            <text class="top-title">{{detailData.title}}</text>
-            <text class="top-date">{{filter.getDateDiff(detailData.createtime)}}</text>
+            <view>
+              <text class="top-title">{{detailData.title}}</text>
+            </view>
+            <view>
+              <text class="top-date">{{filter.getDateDiff(detailData.createtime)}}</text>
+            </view>
           </view>
-          <image class="padding" src="{{detailData.images}}"></image>
-          <text class="text padding">{{detailData.contenttext}}</text>
+          <view>
+            <image class="padding" src="{{detailData.images}}"></image>
+          </view>
+          <view class="padding">
+            <text class="text">{{detailData.contenttext}}</text>
+          </view>
+          
         </view>
         
     <!-- </scroll-view> -->

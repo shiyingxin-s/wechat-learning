@@ -32,10 +32,10 @@ Page({
   
   },
   onShow:function(){
-    this.setData({
-      showLoading:true,
-      informationList: []
-    })
+    // this.setData({
+    //   showLoading:true,
+    //   informationList: []
+    // })
     this.getInformationInfo()
     // this.getCopybookList()
   },

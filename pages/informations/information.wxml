@@ -5,7 +5,7 @@
   <!-- <van-tabs bind:click="onClick">
     <van-tab title="视频资讯"> -->
       <block>
-        <video class="myVideo" id="myVideo" src="{{informationList[0].video}}" autoplay="false" enable-danmu danmu-btn controls>
+        <video class="myVideo" id="myVideo" wx:if="{{informationList.length != 0}}" src="{{informationList[0].video}}" autoplay enable-danmu danmu-btn controls>
         </video>
         <view class="margin-bottom bgColor padding textStyle" bindtap="goDetails" data-id="{{informationList[0].newsno}}">
           <text class="text">{{informationList[0].contenttext}}</text>

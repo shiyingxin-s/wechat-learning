@@ -68,7 +68,7 @@
 }
 
 .item-images{
-  width: calc(calc(100% / 3) - 10px);
+  flex-basis:33%;
 
 }
 .item-images image{
