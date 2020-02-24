@@ -20,7 +20,7 @@
             <input type="number" min="1" placeholder="购买数量" value="{{count}}" bindinput="bindCount"/>
             <label>必填</label>
         </view>
-        <view class="b-input bgColor" wx:if="{{course.type === 1}}">
+        <view class="b-input bgColor">
             <input bindtap="getAddress" placeholder="请选择收货地址" value="{{address}}" bindinput="bindAddress"/>
             <label>必填</label>
         </view>
@@ -39,5 +39,14 @@
             <button wx:if="{{orderNo}}" bindtap="toPayBtn">去支付</button>
         </view>
     </footer>
+    <van-dialog
+        use-slot
+        show="{{ show }}"
+        show-cancel-button
+        confirm-button-open-type="getPhoneNumber"
+        bind:getphonenumber="getPhoneNumber"
+        >
+        <view style="height: 100px;line-height: 100px;text-align: center;">请允许授权手机号码</view>
+    </van-dialog>
 </view>
 

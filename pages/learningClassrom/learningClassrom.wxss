@@ -112,7 +112,6 @@ writing-mode: tb-rl;
   flex: 1;
   display: flex;
   justify-content: space-between;
-  background: #3f9ee1;
 }
 
 .module {
@@ -124,6 +123,7 @@ writing-mode: tb-rl;
   justify-content: center;
   box-sizing: border-box;
   background: #ebf5fc;
+  border-left: 1px solid #3f9ee1;
 }
 
 .module .module-top {

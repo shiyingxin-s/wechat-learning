@@ -47,3 +47,13 @@
 </van-popup>
 
 <van-toast id="van-toast" />
+
+<van-dialog
+use-slot
+show="{{ isAuto }}"
+show-cancel-button
+confirm-button-open-type="getUserInfo"
+bind:getuserinfo="getAutoUserInfo"
+>
+<view style="height: 100px;line-height: 100px;text-align: center;">请允许微信授权登录</view>
+</van-dialog>

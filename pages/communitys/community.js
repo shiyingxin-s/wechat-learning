@@ -134,6 +134,9 @@ Page({
   },
   onShow: function () {
     let wxs = this
+    wxs.setData({
+      communityList: []
+    })
     wxs.getCommunityList()
   },
   previewImage: function (e) {

@@ -51,4 +51,5 @@ image{
   line-height: 60rpx;
   margin-left: 0 !important;
   padding-bottom: 30px;
+  width: 100%;
 }

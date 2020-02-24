@@ -24,7 +24,7 @@
         </view>
         <view class="item-d">
           <wxs module="filter" src="../../utils/filter.wxs"></wxs>
-          <text class="item-time">{{filter.getDateDiff(item.createtime)}}</text>
+          <text class="item-time">{{filter.timestampFormat(item.createtime)}}</text>
           <image src="../../images/common/review.png" data-communityno="{{item.communityno}}" bindtap="review"></image>
           <image src="../../images/common/likes.png" data-communityno="{{item.communityno}}" bindtap="clickLikes">
           </image>

@@ -160,12 +160,11 @@ Page({
       activeNames: event.detail
     })
     let wxs = this
-
     app.httpRequest({
       api: '/xbg-api/api/user/getMyCourseList',
       method: "POST",
       data: {
-        gradeNo: event.detail[0],
+        gradeNo: event.detail,
         page: "1",
         limit: "999"
       },

@@ -3,12 +3,14 @@
 const app = getApp()
 import Toast from '../../dist/toast/toast';
 const common = require('../../utils/common.js');
+const commonServe = require('../../utils/commServe.js');
 
 Page({
   data: {
     // 此页面 页面内容距最顶部的距离
     height: app.globalData.navHeight * 2 + 25 ,
     motto: 'Hello World',
+    userData:'',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -38,7 +40,7 @@ Page({
     orderList: [],
 
     show: false,
-
+    isAuto: false,
     nikiname:"",
     age:"",
     grade:""
@@ -236,8 +238,14 @@ Page({
   onShow:function(){
     this.setData({
       orderList: [],
+      userData: common.getStorageSync('userData')
     })
     this.getOrderList()
+    if(!common.getStorageSync('userData').nickName ){
+      this.setData({
+       isAuto : true
+      })
+    }
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -266,6 +274,49 @@ Page({
     wxs.getOrderList()
   }
 },
+ /**
+   * 获取用户 -- 头像、昵称、手机号 数据处理
+   * @param {number} type, 1 -- 昵称，头像；2 -- 手机号(2暂时废弃)
+   * 
+   */
+  userInfoHandle(type,user) {
+    var wxs = this
+    let nickName,avatarUrl,tel
+    if (type === 1){
+      [nickName,avatarUrl,tel] = [user.nickName,user.avatarUrl, wxs.data.userData.telephone]
+    }
+    if (type === 2){
+      [nickName,avatarUrl,tel] = [wxs.data.userData.nickName,wxs.data.userData.avatarUrl,user.telephone]
+    }
+    let userInfo= {
+      nickName: nickName,
+      openId: wxs.data.userData.openId,
+      grade: wxs.data.userData.grade,
+      telephone: tel,
+      address: wxs.data.userData.address,
+      avatarUrl: avatarUrl,
+      userNo: wxs.data.userData.userNo +''
+    }
+    return userInfo
+  },
+/**
+   * 获取用户 -- 昵称、头像
+   * @param {*} e 
+   */
+  getAutoUserInfo: function(e) {
+    var wxs = this
+    let userInfo = wxs.userInfoHandle(1,e.detail.userInfo)
+    commonServe.saveUserInfo(userInfo).then(res => {
+      if (res.code === 0) {
+        wxs.setData({
+          'userData.nickName': userInfo.nickName,
+          'userData.avatarUrl': userInfo.avatarUrl
+        })
+        common.setStorageSync('userData', wxs.data.userData)
+        wxs.getUserInfoApi()
+      }
+    })
+  },
   //获取用户收货地址
   getAddress:function(){
     let wxs = this

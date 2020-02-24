@@ -4,11 +4,11 @@
   <video id="myVideo" wx:if="{{course.charList.length != 0}}" src="{{defaultCourseDetail.url}}" autoplay="false"
     height="100%" width="100%" controls></video>
 </view>
-<view class='module1'>
+<!-- <view class='module1'>
   <view bindtap="bindButtonRate" data-rate='1'>慢放</view>
   <view>正常</view>
   <view>重写</view>
-</view>
+</view> -->
 <view class='module2'>
   <view class='module2-title' wx:if="{{course.gradeName}}">
     {{course.gradeName}} {{course.coursename}}
@@ -52,6 +52,10 @@
         <view class="module" wx:for="{{defaultCourseDetail.phraseList}}">
           <!-- <view class="module-top">部首</view> -->
           <view class="module-bottom">{{item}}</view>
+        </view>
+        <view class="module" wx:if= "{{defaultCourseDetail.phraseList.length === 2}}">
+          <!-- <view class="module-top">部首</view> -->
+          <!-- <view class="module-bottom">{{item}}</view> -->
         </view>
         <!-- <view class="module">
           <view class="module-top">结构</view>

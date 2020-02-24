@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 const common = require('../../utils/common.js');
+const commonServe = require('../../utils/commServe.js');
 // const util = require('../../utils/util.js')
 Page({
   data: {
@@ -14,12 +15,13 @@ Page({
       isBackPer: true, //显示返回按钮,
       bgColor:'#ffffff' //导航背景色
     },
+    show: false,
     id: 0,
     course: {},
     //收货地址
     address: null,
     openId: common.getStorageSync('userData').openId,
-    phone: common.getStorageSync('userData').telephone,
+    phone: '',
     remarks: '',
     orderNo: null,
     count: 1
@@ -35,6 +37,60 @@ Page({
   },
   onShow:function(){
     let wxs = this
+    wxs.setData({
+      userData: common.getStorageSync('userData')
+    })
+    if(!common.getStorageSync('userData').telephone){
+      this.setData({
+        show: true
+      })
+    } else{
+      this.setData({
+        phone: wxs.data.userData.telephone
+      })
+    }
+  },
+  /**
+   * 获取用户手机号
+   * @param {} e 
+   */
+  getPhoneNumber: function (e){
+    var wxs = this
+    var detail = e.detail
+    // 获取用户手机号
+    app.httpRequest({
+      api: '/xbg-api/api/parsePhoneNo',
+      method: "POST",
+      data: {
+        openId: wxs.data.userData.openId,
+        encrypted: detail.encryptedData,
+        iv: detail.iv
+      },
+      complete: function(res){
+        if (res.code == 0 ){
+          wxs.setData({
+            phone: res.data.phoneno,
+            'userData.telephone': res.data.phoneno
+          })
+          common.setStorageSync('userData', wxs.data.userData)
+          var userInfo = {
+            nickName: wxs.data.userData.nickName,
+            openId: wxs.data.userData.openId,
+            grade: wxs.data.userData.grade,
+            telephone: wxs.data.userData.telephone,
+            address: wxs.data.userData.address,
+            avatarUrl: wxs.data.userData.avatarUrl,
+            userNo: wxs.data.userData.userNo +''
+          }
+          commonServe.saveUserInfo(userInfo).then(res => {
+            if (res.code === 0) {
+            }
+          })
+        } else {
+          common.showToast(res.msg)
+        }
+      }
+    })
   },
   //获取用户收货地址
   getAddress:function(){
@@ -124,7 +180,7 @@ Page({
       common.showToast('请输入正确的手机号码', 3000)
       return
     }
-    if(!data.address && wxs.data.course.type === 1){
+    if(!data.address){
       common.showToast('请选择收货地址', 3000)
       return
     }

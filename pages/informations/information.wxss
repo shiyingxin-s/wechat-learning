@@ -32,6 +32,7 @@ page {
   line-height: 49rpx;
   overflow:hidden;
   text-overflow: ellipsis;
+  text-align: left
 }
 .videoList{
   display: flex;

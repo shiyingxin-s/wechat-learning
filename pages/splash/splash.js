@@ -28,9 +28,9 @@ Page({
     app.wxLogin().then(res => {
       if (res.code === 0) {
         // 成功
-        wxs.setData({
-          userData: common.getStorageSync('userData')
-        })
+        // wxs.setData({
+        //   userData: common.getStorageSync('userData')
+        // })
         wxs.goUrl()
       }
     })
@@ -38,13 +38,13 @@ Page({
   // 欢迎页消失
   goUrl: function(){
     var wxs = this
-    if(wxs.data.userData.avatarUrl && wxs.data.userData.telephone){
+    // if(wxs.data.userData.avatarUrl && wxs.data.userData.telephone){
       setTimeout(function () {
         wx.switchTab({
           url: '/pages/learnings/learning',
         })
       }, 1000)
-    }
+    // }
   },
   /**
    * 获取用户 -- 头像、昵称、手机号 数据处理

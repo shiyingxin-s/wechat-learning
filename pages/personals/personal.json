@@ -9,6 +9,7 @@
     "van-popup": "../../dist/popup/index",
     "van-button":"../../dist/button/index",
     "van-field": "../../dist/field/index",
-    "van-toast": "../../dist/toast/index"
+    "van-toast": "../../dist/toast/index",
+    "van-dialog": "../../../dist/dialog/index"
   }
 }
