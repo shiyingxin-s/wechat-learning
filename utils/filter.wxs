@@ -7,6 +7,9 @@ var getDateDiff = function (timestamp) {
   //       arrTimestamp[start] = '0';
   //     }
   // }
+  if(!timestamp){
+    return
+  }
   timestamp = timestamp.split(".")[0] + "Z";
   timestamp = getDate(timestamp).getTime();
 
