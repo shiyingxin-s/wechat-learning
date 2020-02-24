@@ -16,9 +16,7 @@ Page({
       bgColor: '#f4f4f4' //导航背景色
     },
     show: false,
-    actions: [{
-        name: '视频'
-      },
+    actions: [
       {
         name: '照片',
       }
@@ -90,9 +88,13 @@ Page({
         } else {
           const images = this.data.imgalist.concat(res.tempFilePaths)
           // 限制最多只能留下3张照片
-          wxs.setData({
-            imgalist: images.length <= 3 ? images : images.slice(0, 3)
-          })
+          if(images.length <= 9){
+            wxs.setData({
+              imgalist: images
+            })
+          }else{
+            common.showToast("最多只能上传9张")
+          }
 
         }
 
@@ -140,7 +142,10 @@ Page({
             //   url: '../community',
             // })
             common.showToast("发表成功")
-            wx.navigateBack()
+            // wx.navigateBack()
+            wx.reLaunch({
+              url: '../community',
+            })
           } else {
             console.log("上传了图片")
 
@@ -182,7 +187,9 @@ Page({
           // wx.redirectTo({
           //   url: '../community',
           // })
-          wx.navigateBack()
+          wx.reLaunch({
+            url: '../community',
+          })
         }
       })
     }
