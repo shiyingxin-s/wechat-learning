@@ -131,13 +131,15 @@ Page({
         })
       },
     })
-  },
-  onShow: function () {
-    let wxs = this
+    
     wxs.setData({
+      page: "1",
       communityList: []
     })
     wxs.getCommunityList()
+  },
+  onShow: function () {
+
   },
   previewImage: function (e) {
     console.log("e",e)
@@ -150,6 +152,8 @@ Page({
       current: e.currentTarget.dataset.url, // 当前显示图片的http链接
       urls: imgUrlList // 需要预览的图片http链接列表
     })
+
+    
   },
   create: function () {
     let wxs = this

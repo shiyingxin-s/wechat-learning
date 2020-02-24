@@ -16,11 +16,9 @@ Page({
       bgColor: '#f4f4f4' //导航背景色
     },
     show: false,
-    actions: [
-      {
-        name: '照片',
-      }
-    ],
+    actions: [{
+      name: '照片',
+    }],
 
     //文字动态
     contenttext: '',
@@ -88,11 +86,11 @@ Page({
         } else {
           const images = this.data.imgalist.concat(res.tempFilePaths)
           // 限制最多只能留下3张照片
-          if(images.length <= 9){
+          if (images.length <= 9) {
             wxs.setData({
               imgalist: images
             })
-          }else{
+          } else {
             common.showToast("最多只能上传9张")
           }
 
@@ -198,6 +196,10 @@ Page({
   //发布动态
   send: function () {
     if (this.data.contenttext) {
+      wx.showLoading({
+        title: '发布中',
+        mask: true
+      })
       this.addDynamic()
     } else {
       common.showToast("请填写动态", 3000)
