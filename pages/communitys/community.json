@@ -1,7 +1,5 @@
 {
   "usingComponents": {
-    "myHeader": "../../components/header/header",
-    "van-grid": "../../dist/grid/index",
-    "van-grid-item": "../../dist/grid-item/index"
+    "myHeader": "../../components/header/header"
   }
 }
