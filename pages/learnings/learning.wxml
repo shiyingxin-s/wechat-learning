@@ -111,7 +111,7 @@
                 content-class="removePadding">
                   <van-cell-group>
                     <block wx:for="{{allCourseList}}" wx:for-item="items" wx:key="index">
-                      <van-cell icon="add" wx:if="{{index < 4 }}"  color="#ffd31e"  value="免费"
+                      <van-cell icon="add" wx:if="{{index < 3 }}"  color="#ffd31e"  value="免费"
                         value-class="fontColor07c160"
                         data-item="{{items}}" title="{{items.coursename}}" 
                         border="{{ false }}" bindtap="goStudentDetail" />
