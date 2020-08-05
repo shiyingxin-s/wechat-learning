@@ -57,7 +57,7 @@
     <loading wx:if="{{showLoading}}">加载中</loading>
     <view class='content-box-bottom'>
       <view class='listItemInfo'>
-        <scroll-view scroll-y style="height: 132px;" bindscrolltolower="lowerGetMySbujectList"
+        <scroll-view scroll-y style="height: 230px;" bindscrolltolower="lowerGetMySbujectList"
           scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
           <!-- <van-cell-group>
             <van-cell icon="add" color="#ffd31e" wx:for="{{studyList}}" wx:key="index" bindtap="goStudentDetail"
@@ -104,13 +104,14 @@
               value-class="{{item.hasBuy === 1 ? 'fontColorFf7672':'fontColorBebebe'}}" 
               />
             </van-cell-group>
-            <van-collapse value="{{ activeNames }}" data-gradeno="{{item.gradeno}}" accordion bind:change="openCourse" wx:if="{{item.hasBuy === 1 && item.type === 0}}">
+            <van-collapse value="{{ activeNames }}" data-gradeno="{{item.gradeno}}"
+              accordion bind:change="openCourse" wx:if="{{item.hasBuy === 1 && item.type === 0}}">
               <van-collapse-item data-courseno="{{item.courseno}}"
                 title="{{item.gradename}}"  border="{{ false }}" name="{{item.gradeno}}"
                 content-class="removePadding">
                   <van-cell-group>
                     <block wx:for="{{allCourseList}}" wx:for-item="items" wx:key="index">
-                      <van-cell icon="add" wx:if="{{index < 3 }}"  color="#ffd31e"  value="免费"
+                      <van-cell icon="add" wx:if="{{index < 4 }}"  color="#ffd31e"  value="免费"
                         value-class="fontColor07c160"
                         data-item="{{items}}" title="{{items.coursename}}" 
                         border="{{ false }}" bindtap="goStudentDetail" />
@@ -118,7 +119,7 @@
                         data-item="{{items}}"  title="{{items.coursename}}"
                         value="购买"
                         value-class="fontColorFf7672"  
-                        data-hasBuy="{{items.hasBuy}}" bindtap="goDetails" data-id="{{item.id}}"
+                        data-hasBuy="{{items.hasBuy}}" bindtap="goTips" data-id="{{item.id}}"
                         border="{{ false }}" />
                     </block>
                     <block wx:if="{{allCourseList.length === 0}}">

@@ -80,6 +80,15 @@ Page({
   //点赞
   clickLikes: function (e) {
     let wxs = this
+    if (!common.getStorageSync('userData').nickName){
+      common.showToast('需要授权', 2000)
+      setTimeout(()=>{
+        wx.reLaunch({
+          url: '../personals/personal',
+        })
+      },2000)
+      return
+    }
     app.httpRequest({
       api: '/xbg-api/api/community/clickLikes',
       method: "POST",
@@ -178,6 +187,15 @@ Page({
   },
 
   review:function(e){
+    if (!common.getStorageSync('userData').nickName) {
+      common.showToast('需要授权', 2000)
+      setTimeout(() => {
+        wx.reLaunch({
+          url: '../personals/personal',
+        })
+      }, 2000)
+      return
+    }
     this.setData({
       isInputShow:true,
       communityno:e.currentTarget.dataset.communityno,

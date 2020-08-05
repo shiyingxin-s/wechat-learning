@@ -85,11 +85,11 @@ Page({
         if (res.code === 0) {
           if (res.page || res.words) {
             wxs.setData({
-              searchList: res.page.list,
+              searchList: res.page?res.page.list:'',
               words: res.words,
-              page: res.page.currPage,
-              totalPage: res.page.totalPage,
-              total: res.page.total
+              page: res.page ?res.page.currPage : 0,
+              totalPage: res.page ?res.page.totalPage:0,
+              total: res.page ?res.page.total:0
             })
           }
 
@@ -167,6 +167,15 @@ Page({
   //进入视频课堂页面
   goStudentDetail: function (e) {
     console.log("e", e.currentTarget.dataset.item.hasBuy)
+    if (!common.getStorageSync('userData').nickName) {
+      common.showToast('需要授权', 2000)
+      setTimeout(() => {
+        wx.reLaunch({
+          url: '../personals/personal',
+        })
+      }, 2000)
+      return
+    }
     if (e.currentTarget.dataset.item.hasBuy == 0) {
       wx.navigateTo({
         url: '../learningClassrom/learningClassrom?courseno=' + e.currentTarget.dataset.item.courseno + "&learnstatus=" + e.currentTarget.dataset.item.learnStatus,
@@ -180,6 +189,15 @@ Page({
   //进入学字详情
   goWordsDetail: function (e) {
     console.log("e", e.currentTarget.dataset.item.hasBuy)
+    if (!common.getStorageSync('userData').nickName) {
+      common.showToast('需要授权', 2000)
+      setTimeout(() => {
+        wx.reLaunch({
+          url: '../personals/personal',
+        })
+      }, 2000)
+      return
+    }
     if (e.currentTarget.dataset.item.hasBuy == 0) {
       wx.navigateTo({
         url: '../learningClassrom/learningClassrom?character=' + e.currentTarget.dataset.item.character,

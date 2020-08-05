@@ -104,8 +104,17 @@ Page({
   //进入视频课堂页面
   goStudentDetail: function (e) {
     console.log("e", e)
+    if (!common.getStorageSync('userData').nickName) {
+      common.showToast('需要授权', 2000)
+      setTimeout(() => {
+        wx.reLaunch({
+          url: '../personals/personal',
+        })
+      }, 2000)
+      return
+    }
     wx.navigateTo({
-      url: '../learningClassrom/learningClassrom?courseno=' + e.currentTarget.dataset.item.courseno + "&learnstatus=" + e.currentTarget.dataset.item.learnStatus,
+      url: '../learningClassrom/learningClassrom?courseno=' +   e.currentTarget.dataset.item.courseno + "&learnstatus=" + e.currentTarget.dataset.item.learnStatus,
     })
   },
 
@@ -207,6 +216,7 @@ Page({
       },
       success: function (res) {
         console.log("查询课程响应", res)
+        res.page.list[0].hasBuy = 1
         if (res.code === 0) {
           wxs.setData({
             allCourseList: res.page.list,
@@ -283,7 +293,7 @@ Page({
       },
       success: function (res) {
         console.log("查询知识超市", res)
-        if (res.code == 0) {
+        if (res.code == 0) {          
           wxs.setData({
             marketList: wxs.data.marketList.concat(res.page.list),
             page: res.page.currPage,
@@ -339,7 +349,28 @@ Page({
       hasUserInfo: true
     })
   },
-
+  //  虚拟产品提示
+  
+  goTips: function(e) {
+    let platform =''
+    wx.getSystemInfo({
+      success:function(res){
+        platform = res.platform == 'ios'? true : false
+      }
+    })
+    if(platform){
+      wx.showModal({
+        title: '提示',
+        showCancel:false,
+        content: '苹果公司禁止小程序虚拟产品线上支付功能，如需要购买请联系客服',
+        success (res) { }
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/buy/buy?id=' + e.currentTarget.dataset.id,
+      })
+    }
+  },
   //跳转到详情页
   goDetails: function (e) {
     console.log("e", e)
@@ -370,7 +401,7 @@ Page({
     return {
       title: '教每一个学生写好字', //转发页面的标题
       imageUrl: "/images/common/share.jpeg",
-      path: '/pages/learning/learning',
+      path: '/pages/learnings/learning',
     }
   }
 
