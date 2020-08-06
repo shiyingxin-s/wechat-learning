@@ -362,7 +362,7 @@ Page({
       wx.showModal({
         title: '提示',
         showCancel:false,
-        content: '苹果公司禁止小程序虚拟产品线上支付功能，如需要购买请联系客服',
+        content: '苹果公司禁止小程序虚拟产品线上支付功能，如需要购买请联系客服，微信号：17324488229',
         success (res) { }
       })
     } else {
