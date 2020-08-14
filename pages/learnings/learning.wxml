@@ -77,7 +77,7 @@
 
             </van-collapse-item>
             <block wx:if="{{studyList.length === 0}}">
-              <div style="text-align: center;display: block;line-height: 47px;"> 请购买学习任务</div>
+              <div style="text-align: center;display: block;line-height: 47px;"> 暂无学习任务</div>
             </block>
           </van-collapse>
         </scroll-view>
@@ -100,7 +100,7 @@
          <block wx:for="{{marketList}}" wx:key="{{index}}">
             <van-cell-group wx:if="{{item.hasBuy === 0}}">
               <van-cell title="{{item.gradename}}"
-              value="{{item.hasBuy === 0 ? '已购买': '购买'}}" border="{{ false }}" 
+              value="{{item.hasBuy === 0 ? '学习': '解锁'}}" border="{{ false }}" 
               value-class="{{item.hasBuy === 1 ? 'fontColorFf7672':'fontColorBebebe'}}" 
               />
             </van-cell-group>
@@ -111,13 +111,13 @@
                 content-class="removePadding">
                   <van-cell-group>
                     <block wx:for="{{allCourseList}}" wx:for-item="items" wx:key="index">
-                      <van-cell icon="add" wx:if="{{index < 3 }}"  color="#ffd31e"  value="免费"
+                      <van-cell icon="add" wx:if="{{index < 3 }}"  color="#ffd31e"  value="学习"
                         value-class="fontColor07c160"
                         data-item="{{items}}" title="{{items.coursename}}" 
                         border="{{ false }}" bindtap="goStudentDetail" />
                       <van-cell wx:else icon="add" color="#ffd31e" 
                         data-item="{{items}}"  title="{{items.coursename}}"
-                        value="购买"
+                        value="解锁"
                         value-class="fontColorFf7672"  
                         data-hasBuy="{{items.hasBuy}}" bindtap="goTips" data-id="{{item.id}}"
                         border="{{ false }}" />
@@ -130,7 +130,7 @@
             </van-collapse>
             <van-cell-group wx:if="{{item.hasBuy === 1 && item.type === 1}}">
               <van-cell title="{{item.gradename}}"
-              value="{{item.hasBuy === 0 ? '已购买': '购买'}}" border="{{ false }}" 
+              value="{{item.hasBuy === 0 ? '学习': '解锁'}}" border="{{ false }}" 
               value-class="{{item.hasBuy === 1 ? 'fontColorFf7672':'fontColorBebebe'}}" 
               bindtap="goDetails" data-id="{{item.id}}"
               />

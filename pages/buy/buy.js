@@ -19,6 +19,7 @@ Page({
     id: 0,
     course: {},
     //收货地址
+    name: null,
     address: null,
     openId: common.getStorageSync('userData').openId,
     phone: '',
@@ -108,6 +109,11 @@ Page({
       phone: e.detail.value
     });
   },
+  bindName: function(e) {
+    this.setData({
+      name: e.detail.value
+    });
+  },
   bindCount: function(e) {
     this.setData({
       count: e.detail.value
@@ -161,6 +167,7 @@ Page({
     const wxs = this
     let data = {
       openId: wxs.data.openId,
+      name: wxs.data.name,
       gradeId: wxs.data.course.id,  //购买课程必须以年级为单位
       phone: wxs.data.phone, //如果是赠送就填受赠人的电话
       address: wxs.data.address, //收货地址
@@ -172,6 +179,10 @@ Page({
       common.showToast('请填写手机号码', 3000)
       return
     } 
+    if(!data.name){
+      common.showToast('请填写收货人姓名', 3000)
+      return
+    }     
     if(!parseInt(data.count) && wxs.data.course.type === 1){
       common.showToast('购买数量必须大于0', 3000)
       return

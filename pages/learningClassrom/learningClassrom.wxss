@@ -41,7 +41,10 @@ page {
   height: 58rpx;
   display: flex;
   align-items: center;
-  padding: 0 40rpx;
+  padding:40rpx;
+  font-size: 36rpx;
+  color: #333333;
+  line-height: 58rpx;
 }
 
 .module2 .module2-content1 {

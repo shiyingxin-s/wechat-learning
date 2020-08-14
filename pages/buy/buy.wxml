@@ -16,6 +16,10 @@
             <input maxlength="11" type="number" placeholder="手机号" value="{{phone}}"  auto-focus bindinput="bindPhone"/>
             <label>必填</label>
         </view>
+        <view class="b-input bgColor">
+            <input type="text" placeholder="收货人姓名" value="{{name}}" bindinput="bindName"/>
+            <label>必填</label>
+        </view>
         <view class="b-input bgColor" wx:if="{{course.type === 1}}">
             <input type="number" min="1" placeholder="购买数量" value="{{count}}" bindinput="bindCount"/>
             <label>必填</label>
