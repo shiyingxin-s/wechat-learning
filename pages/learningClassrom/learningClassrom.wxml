@@ -10,10 +10,13 @@
   <view>重写</view>
 </view> -->
 <view class='module2'>
-  <view class='module2-title' wx:if="{{course.gradeName}}">
+  <view class='module2-title' wx:if="{{course.gradeName && course.type === 0}}" >
     {{course.gradeName}} {{course.coursename}}
   </view>
-  <view class='module2-content1'>
+  <view class='tilteType' wx:if="{{course.gradeName && course.type != 0}}">
+    {{course.gradeName}} {{course.coursename}}
+  </view>
+  <view class='module2-content1' wx:if="{{course.type === 0}}">
     <scroll-view scroll-x class="fontBox">
       <view wx:for="{{course.charList}}" wx:key="{{item.characterno}}" class="font">
         <view bindtap="showDetail" data-character="{{item.character}}" data-item="{{item}}" class="learning-fontBgImg {{index == idx ? 'hoverClass' : ''}}" data-index="{{index}}">
@@ -24,7 +27,7 @@
       <view class="learning-fontBgImg">{{character}}</view>
     </view>
   </view>
-  <view class='module2-content2'>
+  <view class='module2-content2' wx:if="{{course.type === 0}}">
     <view class="top" wx:if="{{course.charList.length != 0}}">
       <view class="lt">
         字体结构

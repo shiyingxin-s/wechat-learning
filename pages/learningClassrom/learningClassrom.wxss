@@ -46,6 +46,17 @@ page {
   color: #333333;
   line-height: 58rpx;
 }
+.module2 .tilteType{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding:40rpx;
+  font-size: 36rpx;
+  color: #333333;
+  line-height: 58rpx;
+  background: #ffffff;
+  margin-top: 10px;
+}
 
 .module2 .module2-content1 {
   margin-top: 7rpx;
