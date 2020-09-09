@@ -17,7 +17,7 @@
             <label>必填</label>
         </view>
         <view class="b-input bgColor">
-            <input type="text" placeholder="收货人姓名" value="{{name}}" bindinput="bindName"/>
+            <input type="text" placeholder="收货人姓名" value="{{receiver}}" bindinput="bindName"/>
             <label>必填</label>
         </view>
         <view class="b-input bgColor" wx:if="{{course.type === 1}}">
