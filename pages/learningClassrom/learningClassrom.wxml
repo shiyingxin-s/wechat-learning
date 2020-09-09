@@ -16,6 +16,9 @@
   <view class='tilteType' wx:if="{{course.gradeName && course.type != 0}}">
     {{course.gradeName}} {{course.coursename}}
   </view>
+  <view class='tilteType' wx:if="{{course.picPath && course.type != 0}}">
+    <image  src="{{ course.picPath }}" />
+  </view>
   <view class='module2-content1' wx:if="{{course.type === 0}}">
     <scroll-view scroll-x class="fontBox">
       <view wx:for="{{course.charList}}" wx:key="{{item.characterno}}" class="font">
