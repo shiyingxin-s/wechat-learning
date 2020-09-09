@@ -66,6 +66,7 @@ page {
 }
 .module2 .imgPic image{
   width: calc(100% - 32px);
+  height: 40vh;
 }
 
 
