@@ -57,6 +57,17 @@ page {
   background: #ffffff;
   margin-top: 10px;
 }
+.module2 .imgPic{
+  padding: 15px;
+  width: 100%;
+  margin-top: 10px;
+  background: #ffffff;
+  
+}
+.module2 .imgPic image{
+  width: calc(100% - 32px);
+}
+
 
 .module2 .module2-content1 {
   margin-top: 7rpx;
