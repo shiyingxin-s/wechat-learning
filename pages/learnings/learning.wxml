@@ -130,7 +130,7 @@
             </van-collapse>
             <van-cell-group wx:if="{{item.hasBuy === 1 && item.type === 1}}">
               <van-cell title="{{item.gradename}}"
-              value="{{item.hasBuy === 0 ? '学习': '解锁'}}" border="{{ false }}" 
+              value="{{item.hasBuy === 0 ? '学习': '购买'}}" border="{{ false }}" 
               value-class="{{item.hasBuy === 1 ? 'fontColorFf7672':'fontColorBebebe'}}" 
               bindtap="goDetails" data-id="{{item.id}}"
               />
