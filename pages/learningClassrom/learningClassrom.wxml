@@ -11,9 +11,7 @@
   <view class='tilteType' wx:if="{{course.gradeName && course.type != 0}}">
     {{course.gradeName}} {{course.coursename}}
   </view>
-  <view class='imgPic' wx:if="{{course.type === 1}}">
-    <image  src="{{ course.type === 1 ? course.picPath :defaultCourseDetail.imgurl}}" />
-  </view>
+ 
   <view class='module2-content1' wx:if="{{course.type === 0}}">
     <scroll-view scroll-x class="fontBox">
       <view wx:for="{{course.charList}}" wx:key="{{item.characterno}}" class="font">
@@ -69,4 +67,15 @@
       </view>
     </view>
   </view>
+    
+  <block wx:if="{{course.type === 0 && defaultCourseDetail.type === 1}}">
+    <view class='imgPic' >
+      <image  src="{{ defaultCourseDetail.imgurl }}" />
+    </view>
+  </block>
+  <block  wx:if="{{course.type === 1}}">
+    <view  class='imgPic'>
+      <image  src="{{ course.picPath }}" />
+    </view >
+  </block>
 </view>

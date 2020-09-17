@@ -59,13 +59,12 @@ page {
 }
 .module2 .imgPic{
   padding: 15px;
-  width: 100%;
   margin-top: 10px;
   background: #ffffff;
   height: 42vh;
 }
 .module2 .imgPic image{
-  width: calc(100% - 32px);
+  width: 100%;
   height: 40vh;
 }
 
