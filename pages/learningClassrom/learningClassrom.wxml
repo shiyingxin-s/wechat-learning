@@ -4,11 +4,6 @@
   <video id="myVideo" wx:if="{{course.charList.length != 0}}" src="{{defaultCourseDetail.url}}" autoplay="false"
     height="100%" width="100%" controls></video>
 </view>
-<!-- <view class='module1'>
-  <view bindtap="bindButtonRate" data-rate='1'>慢放</view>
-  <view>正常</view>
-  <view>重写</view>
-</view> -->
 <view class='module2'>
   <view class='module2-title' wx:if="{{course.gradeName && course.type === 0}}" >
     {{course.gradeName}} {{course.coursename}}
@@ -16,21 +11,21 @@
   <view class='tilteType' wx:if="{{course.gradeName && course.type != 0}}">
     {{course.gradeName}} {{course.coursename}}
   </view>
-  <view class='imgPic' wx:if="{{course.picPath && course.type != 0}}">
-    <image  src="{{ course.picPath }}" />
+  <view class='imgPic' wx:if="{{course.type === 1}}">
+    <image  src="{{ course.type === 1 ? course.picPath :defaultCourseDetail.imgurl}}" />
   </view>
   <view class='module2-content1' wx:if="{{course.type === 0}}">
     <scroll-view scroll-x class="fontBox">
       <view wx:for="{{course.charList}}" wx:key="{{item.characterno}}" class="font">
         <view bindtap="showDetail" data-character="{{item.character}}" data-item="{{item}}" class="learning-fontBgImg {{index == idx ? 'hoverClass' : ''}}" data-index="{{index}}">
-          {{item.character}}</view>
+          {{item.type === 1 ?item.startposition:item.character}}</view>
       </view>
     </scroll-view>
     <view wx:if="{{character}}" class="font">
       <view class="learning-fontBgImg">{{character}}</view>
     </view>
   </view>
-  <view class='module2-content2' wx:if="{{course.type === 0}}">
+  <view class='module2-content2' wx:if="{{course.type === 0 && defaultCourseDetail.type !== 1}}">
     <view class="top" wx:if="{{course.charList.length != 0}}">
       <view class="lt">
         字体结构
