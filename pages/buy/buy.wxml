@@ -29,7 +29,7 @@
             <label>必填</label>
         </view>
         <view class="b-input bgColor">
-            <input type="text" placeholder="备注：本人使用；若赠送他人留手机号或微信号" value="{{remarks}}" bindinput="bindRemark"/>
+            <input type="text" placeholder="备注：请填写学校与班级" value="{{remarks}}" bindinput="bindRemark"/>
             <label></label>
         </view>
     </block>

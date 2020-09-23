@@ -1,7 +1,9 @@
 <!--pages/learnings/learningClassrom/learningClassrom.wxml-->
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
 <view class="videoBox" style='margin-top:{{viewHeight* 2 + 20}}px'>
-  <video id="myVideo" wx:if="{{course.charList.length != 0}}" src="{{defaultCourseDetail.url}}" autoplay="false"
+  <video id="myVideo" wx:if="{{course.charList.length != 0 && course.type === 0}}" src="{{defaultCourseDetail.url}}" autoplay="false"
+    height="100%" width="100%" controls></video>
+  <video id="myVideo" wx:elif="{{course.videoPath}}" src="{{course.videoPath}}" autoplay="false"
     height="100%" width="100%" controls></video>
 </view>
 <view class='module2'>
