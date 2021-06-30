@@ -1,0 +1,87 @@
+<!--pages/personals/myStudy/myStudy.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="container" style='margin-top:{{height}}px'>    
+    <view class="top-box">
+        <view class="top-item">
+            <view class="top-num">25</view>
+            <view class="top-text">累计学习</view>
+        </view>
+        <view class="top-item">
+            <view class="top-num">1</view>
+            <view class="top-text">今日学习</view>
+        </view>
+    </view>
+
+    <!-- 学习记录 -->
+    <view class="study-record-box">
+        <view class="sr-top">
+            <text class="iconfont iconlishijilu" style="font-size: 30px; color: #333333;"></text>
+            <text class="sr-title">学习记录</text>
+            <view class="sr-more">
+                <text>更多</text>
+                <van-icon name="arrow" />
+            </view>
+        </view>
+        <!-- 学习记录列表 -->
+        <view class="sr-list">
+            <scroll-view  class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+                <view class="sr-l-item">
+                    <image class="sr-l-img" src="../../../images/img/bg_my.png"></image>
+                    <view class="sr-l-text">课程时尚大方课程时尚大方课程时尚大方....</view>
+                    <view class="sr-l-tag">当前学习</view>
+                </view>
+                <view class="sr-l-item">
+                    <image class="sr-l-img" src="../../../images/img/bg_my.png"></image>
+                    <view class="sr-l-text">课程时尚大方....</view>
+                </view>
+                <view class="sr-l-item">
+                    <image class="sr-l-img" src="../../../images/img/bg_my.png"></image>
+                    <view class="sr-l-text">课程时尚大方....</view>
+                </view>
+                <view class="sr-l-item">
+                    <image class="sr-l-img" src="../../../images/img/bg_my.png"></image>
+                    <view class="sr-l-text">课程时尚大方....</view>
+                </view>
+                <view class="sr-l-item">
+                    <image class="sr-l-img" src="../../../images/img/bg_my.png"></image>
+                    <view class="sr-l-text">课程时尚大方....</view>
+                </view>
+                <view class="sr-l-item">
+                    <image class="sr-l-img" src="../../../images/img/bg_my.png"></image>
+                    <view class="sr-l-text">课程时尚大方....</view>
+                </view>
+                <view class="sr-l-item">
+                    <image class="sr-l-img" src="../../../images/img/bg_my.png"></image>
+                    <view class="sr-l-text">课程时尚大方....</view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+
+    <!-- 已购买课程 -->
+    <view class="buy-course-box">
+        <view class="bc-top">
+            <text class="iconfont icongouwuchekong" style="font-size: 30px; color: #333333;"></text>
+            <text class="bc-title">已购买课程</text>
+        </view>
+        <!-- 已购课程列表 -->
+        <view class="bc-list">
+            <view class="bc-l-item">
+                <image class="bc-l-img" src="../../../images/img/bg_my.png"></image>
+                <view class="bc-l-text">课程时尚大方课程时尚大方课程时尚大方....</view>
+            </view>
+            <view class="bc-l-item">
+                <image class="bc-l-img" src="../../../images/img/bg_my.png"></image>
+                <view class="bc-l-text">课程时尚大方课程时尚大方课程时尚大方....</view>
+            </view>
+            <view class="bc-l-item">
+                <image class="bc-l-img" src="../../../images/img/bg_my.png"></image>
+                <view class="bc-l-text">课程时尚大方课程时尚大方课程时尚大方....</view>
+            </view>
+            <view class="bc-l-item">
+                <image class="bc-l-img" src="../../../images/img/bg_my.png"></image>
+                <view class="bc-l-text">课程时尚大方课程时尚大方课程时尚大方....</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "myHeader": "../../components/header/header",
+    "van-grid": "../../dist/grid/index",
+    "van-grid-item": "../../dist/grid-item/index",
+    "van-icon": "../../dist/icon/index"
+  }
+}

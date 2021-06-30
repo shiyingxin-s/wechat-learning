@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "myHeader": "../../../components/header/header",
+    "van-icon": "../../../dist/icon/index"
+  }
+}

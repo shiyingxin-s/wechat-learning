@@ -1,0 +1,28 @@
+/**personal.wxss**/
+
+.removePadding{padding: 0 !important}
+.hover-class{background: none;}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.block {
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+}
+
+.vanpopup{
+  border-radius:10px;
+  padding: 30rpx;
+  width:80%;
+}
+
+.vanpopup-btn{
+  
+  padding: 20rpx 0;
+}

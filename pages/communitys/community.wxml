@@ -1,61 +1,117 @@
 <!--社区.wxml-->
-<view class="createBtn" bindtap="create" style='height:{{viewHeight*2 + 20}}px; line-height:{{viewHeight*2 + 33}}px;'>创建
-</view>
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
-
-
 <view class="container" style='margin-top:{{viewHeight* 2 + 14}}px'>
-  <loading wx:if="{{showLoading}}">加载中</loading>
-  <scroll-view scroll-y style="height: {{scrollHeight}}px" bindscrolltolower="lowerGetCommunityList"
-    scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <view class="item" wx:for="{{communityList}}" wx:key="{{index}}">
-      <view class="item-left">
-        <image class="userinfo-avatar" src="{{item.userinfoEntity.avatar}}" mode="cover"></image>
+  <view class="works-section w-one">
+    <view class="w-one-title">打卡榜</view>
+    <view class="w-one-con">
+      <view class="w-one-item">
+        <view class="w-one-img-box"> 
+          <image class="w-one-img" src="../../images/img/banner1.png"/>
+        </view>
+        <view class="w-one-name">小张</view>
+        <view class="w-one-num">11.3万赞</view>
+        <view class="w-one-day">123天打卡</view>
       </view>
-      <view class="item-right">
-        <view class="nickName">{{item.userinfoEntity. nikiname}}</view>
-        <view class="item-con">{{item.contenttext}}</view>
-        <view class="item-imgVoide">
-
-          <view class="item-images" wx:for="{{item.images}}" wx:key='{{idx}}' wx:for-item="items">
-            <image bindtap="previewImage" data-url="{{items.url}}" data-imgList="{{item.images}}"  
-              src="{{items.url}}"></image>
-
+      <view class="w-one-item">
+        <view class="w-one-img-box"> 
+          <image class="w-one-img" src="../../images/img/banner1.png"/>
+        </view>
+        <view class="w-one-name">小张</view>
+        <view class="w-one-num">11.3万赞</view>
+        <view class="w-one-day">123天打卡</view>
+      </view>
+      <view class="w-one-item">
+        <view class="w-one-img-box"> 
+          <image class="w-one-img" src="../../images/img/banner1.png"/>
+        </view>
+        <view class="w-one-name">小张</view>
+        <view class="w-one-num">11.3万赞</view>
+        <view class="w-one-day">123天打卡</view>
+      </view>
+    </view>
+  </view>
+  <view class="w-two">
+    <van-tabs active="{{activeIndex}}">
+      <van-tab title="打卡社区"/>
+      <van-tab title="我的作品"/>
+    </van-tabs>
+    <view>
+      <scroll-view scroll-y style="height: {{scrollHeight}}px" bindscrolltolower="lowerGetCommunityList"
+        scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <view class="item">
+          <view class="item-top">
+            <image class="userinfo-avatar" src="../../images/img/banner1.png" mode="cover"></image>
+            <view class="nickName">安安</view>
+            <text class="date">4-14</text>
           </view>
-        </view>
-        <view class="item-d">
-          <wxs module="filter" src="../../utils/filter.wxs"></wxs>
-          <text class="item-time">{{filter.timestampFormat(item.createtime)}}</text>
-          <image src="../../images/common/review.png" data-communityno="{{item.communityno}}" bindtap="review"></image>
-          <image src="../../images/common/likes.png" data-communityno="{{item.communityno}}" bindtap="clickLikes">
-          </image>
-
-        </view>
-        <block wx:if="{{item.likesUser || item.reviews}}">
-          <view class="triangle"></view>
-          <view class="item-f" wx:if="{{item.likesUser || item.reviews}}">
-            <view class="likes">
-              <block wx:for="{{item.likesUser}}" wx:key="{{idx}}" wx:for-item="items">
-                {{items.nikiname}},
-              </block>
+          <view class="item-center">
+            <view class="item-con">这里是文案这里是文案这里是文案这里是文案这里
+              这里是文案这里是文案这里是文案这里是文案...</view>
+            <view class="item-imgVoide">
+              <view class="item-images" >
+                <image bindtap="previewImage" data-url="../../images/img/banner1.png" data-imgList="../../images/img/banner1.png"  
+                  src="../../images/img/banner1.png"></image>
+                <image bindtap="previewImage" data-url="../../images/img/banner1.png" data-imgList="../../images/img/banner1.png"  
+                src="../../images/img/banner1.png"></image>
+                <image bindtap="previewImage" data-url="../../images/img/banner1.png" data-imgList="../../images/img/banner1.png"  
+                src="../../images/img/banner1.png"></image>
+              </view>
             </view>
-            <view class="review">
-              <view wx:for="{{item.reviews}}" wx:key="{{dix}}" wx:for-item="items">{{items.userName}}:
-                <text>{{items.commenttext}}</text>
+            <view class="item-d">
+              <wxs module="filter" src="../../utils/filter.wxs"></wxs>
+              <view class="item-bottom">
+                <text class="iconfont iconzhuanfa" style="font-size: 20px; color: #B3B3B3;"></text>
+                <text>转发</text>
+              </view>
+              <view class="item-bottom">
+                <text class="iconfont iconpinglun" style="font-size: 20px; color: #B3B3B3;"></text>
+                <text>10</text>
+              </view>
+              <view class="item-bottom">
+                <text class="iconfont iconzanpress" style="font-size: 22px; color: #B3B3B3;"></text>
+                <text>1.3万</text>
               </view>
             </view>
           </view>
-        </block>
-      </view>
+        </view>
+        <view class="item">
+          <view class="item-top">
+            <image class="userinfo-avatar" src="../../images/img/banner1.png" mode="cover"></image>
+            <view class="nickName">安安</view>
+            <text class="date">4-14</text>
+          </view>
+          <view class="item-center">
+            <view class="item-con">这里是文案这里是文案这里是文案这里是文案这里
+              这里是文案这里是文案这里是文案这里是文案...</view>
+            <view class="item-imgVoide">
+              <view class="item-images" >
+                <image bindtap="previewImage" data-url="../../images/img/banner1.png" data-imgList="../../images/img/banner1.png"  
+                  src="../../images/img/banner1.png"></image>
+                <image bindtap="previewImage" data-url="../../images/img/banner1.png" data-imgList="../../images/img/banner1.png"  
+                src="../../images/img/banner1.png"></image>
+                <image bindtap="previewImage" data-url="../../images/img/banner1.png" data-imgList="../../images/img/banner1.png"  
+                src="../../images/img/banner1.png"></image>
+              </view>
+            </view>
+            <view class="item-d">
+              <wxs module="filter" src="../../utils/filter.wxs"></wxs>
+              <view class="item-bottom">
+                <text class="iconfont iconzhuanfa" style="font-size: 20px; color: #B3B3B3;"></text>
+                <text>转发</text>
+              </view>
+              <view class="item-bottom">
+                <text class="iconfont iconpinglun" style="font-size: 20px; color: #B3B3B3;"></text>
+                <text>10</text>
+              </view>
+              <view class="item-bottom">
+                <text class="iconfont iconzanpress" style="font-size: 22px; color: #B3B3B3;"></text>
+                <text>1.3万</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+      </scroll-view>
     </view>
-
-  </scroll-view>
-
-
-  <view class='inputBottom' style='bottom:{{inputBottom}}px' wx:if="{{isInputShow}}">
-    <input type='text' auto-focus="true" class='textInput' value='{{inputText}}' placeholder-class='textInputPlaceHolder'
-      placeholder='输入你想要说的...' bindinput='getInputText' bindfocus="foucus" bindblur="blur" bindconfirm='submit'
-      adjust-position='{{false}}'></input>
-    <text bindtap='submit' class='submit'>评论</text>
   </view>
 </view>

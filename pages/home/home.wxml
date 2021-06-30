@@ -1,0 +1,75 @@
+<!--pages/home/home.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="container" style='margin-top:{{viewHeight* 2 + 20}}px'>
+    <view class="page-section page-section-spacing swiper">
+        <swiper indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{background}}" wx:key="*this">
+            <swiper-item>
+              <view class="swiper-item {{item}}">
+                  <image class="s_img" src="../../images/img/banner1.png"></image>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+    </view>
+    <view class="notice bgColor">
+        <text class="iconfont icongonggao"></text>
+        <text class="n_text">通知公告：今天不上班</text>
+    </view>
+    <view>
+        <van-grid border="{{false}}" >
+            <van-grid-item use-slot bindtap="goPath" data-route="../home/onlineCourse/onlineCourse">
+                <image class="g_img" src="../../images/img/ic_g1.png" />
+                <text class="g_text">线上课程</text>
+            </van-grid-item>
+            <van-grid-item use-slot >
+                <image class="g_img" src="../../images/img/ic_g2.png" />
+                <text class="g_text">教材订购</text>
+            </van-grid-item>
+            <van-grid-item use-slot >
+                <image class="g_img" src="../../images/img/ic_g3.png" />
+                <text class="g_text">我的学习</text>
+            </van-grid-item>
+            <van-grid-item use-slot >
+                <image class="g_img" src="../../images/img/ic_g4.png" />
+                <text class="g_text">每日打卡</text>
+            </van-grid-item>
+        </van-grid>
+    </view>
+    <view class="introduce bgColor">
+        <view class="in_title">习标格介绍</view>
+        <view class="in_text">习标格是文案这里是文案这里是文案这里是文案这
+            里这里是文案这里是文案这习标格是文案这里是文案这里是文案这里是文案这
+            里这里是文案这里是文案这习标格是文案这里是文案这里是文案这里是文案这
+            里这里是文案这里是文案这习标格是文案这里是文案这里是文案这里是文案这
+            里这里是文案这里是文案这
+        </view>
+        <view class="video_box">
+            <video class="myVideo" id="myVideo" src="https://www.xbgxizi.com:8089/news/8606d42c-d7c3-4ef0-97a4-ba5d2def9e9b.mp4"  enable-danmu danmu-btn controls>
+            </video>
+        </view>
+    </view>
+    <view class="bgColor photo">
+        <view class="p_title">习标格相册</view>
+        <view class="photo_box">
+            <view class="p_item">
+                <image class="p_img" src="../../images/img/banner1.png"></image>
+            </view>
+            <view class="p_item">
+                <image class="p_img" src="../../images/img/banner1.png"></image>
+            </view>
+            <view class="p_item">
+                <image class="p_img" src="../../images/img/banner1.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="service bgColor bottom_float">
+        <text class="iconfont iconkefu" style="font-size: 30px; color: #808080;"></text>
+    </view>
+    <view class="scan bottom_float">
+        <van-icon class="scan_icon" name="scan" />
+        <view class="scan_text">扫字评分</view>
+    </view>
+    
+</view>

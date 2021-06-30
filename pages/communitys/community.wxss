@@ -1,65 +1,155 @@
 /**index.wxss**/
-.createBtn{
-  text-align:center;
-  box-sizing:border-box;
-  width:71px;
-  padding:5px 16px;
-  color:#737373;
-  font-size:16px;
-  position:fixed;
-  left:0;
-  z-index:99999999;
-  top:0
+.container{
+  background: #FFFFFF;
+  min-height: 736px;
+  padding-top: 10px;
+}
+.works-section {
+  margin: 25rpx 25rpx 0;
+  padding: 25rpx 12rpx;
+  box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+}
+.w-one-title{
+  padding: 0rpx 25rpx 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #4D4D4D;
+  line-height: 35px;
+}
+.w-one-con{
+  display: flex;
+}
+.w-one-item{
+  margin: 20rpx 13rpx 0 13rpx;
+  padding: 25rpx;
+  flex:  1;
+  text-align: center;
+  box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+}
+.w-one-img-box{
+  height: 134rpx;
+  width: 134rpx;
+  background-color: #FFFFFF;
+  border:2px solid #C2232E;
+  border-radius: 100%;
+  line-height: 134rpx;
+  margin: 0 auto;
+}
+.w-one-img {
+  margin-top: 6rpx;
+  height: 118rpx;
+  width: 118rpx;
+  background-color: #FFFFFF;
+  border:1px solid #C2232E;
+  border-radius: 100%;
+}
+.w-one-name{
+  font-size: 16px;
+  font-weight: bold;
+  color: #4D4D4D;
+  line-height: 32px;
+}
+.w-one-num{
+  font-size: 16px;
+  font-weight: bold;
+  color: #808080;
+  line-height: 32px;
+}
+.w-one-day{
+  font-size: 14px;
+  font-weight: 400;
+  color: #B3B3B3;
+  line-height: 12px;
+}
+.w-two{
+  margin-top: 10px;
+}
+.w-two .van-hairline--top-bottom:after{
+  border-width: 0;
+}
+.w-two .van-tab{
+  color: #000000;
+  font-size: 16px;
+ }
+.w-two .van-tab--active{
+  color:#E73440;
 }
 .item{
-  border-top:1rpx solid #e4e4e4;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+  box-shadow: 0px 1px 12px 1px rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
   box-sizing: border-box;
   padding: 15px;
   background-color: #fff;
   overflow: hidden;
+  margin: 25rpx;
 }
-
+.item-top{
+  height: 80rpx;
+}
 .nickName{
-  height:88rpx;
-  line-height:98rpx;
-  padding:5px 0 0 5px;
-  color:#1e226d;
+  max-width: 150rpx;
+  float: left;
+  overflow: hidden;
+  height: 68rpx;
+  line-height: 68rpx;
+  padding:0 0 0 30rpx;
+  color: #808080;
 }
-.item-left{
-  width:128rpx;
+.date{
+  float: right;
+  font-size: 12px;
+  font-weight: 400;
+  color: #808080;
+  line-height: 68rpx;
 }
-.item-left image{
-  width: 128rpx;
-  height: 128rpx;
+.item-top image{
+  float: left;
+  width: 68rpx;
+  height: 68rpx;
   border-radius: 50%;
 }
-.item-right{
-  flex: 1;
+.item-center{
   margin-left: 10rpx;
 }
 .item-d{
+  display: flex;
   height:27px;
   line-height:24px;
+  margin-top: 30rpx;
 }
-.item-d image{
+.item-bottom{
+  flex: 1;
+}
+.item-bottom text{
+  font-size: 14px;
+  font-weight: 400;
+  color: #4D4D4D;
+  margin-left: 5rpx;
+}
+.item-bottom:nth-child(2){
+  text-align: center;
+}
+.item-bottom:last-child{
+  text-align: right;
+}
+.item-d .iconfont{
   width: 25px;
   height:25px;
-  float: right;
+  vertical-align: bottom;
 }
 .item-con{
   margin-bottom: 10px;
-  color: #333333
+  color: #4D4D4D;
 }
 .item-imgVoide video{
   width: 100px;
   height:157px;
 }
-/* .item-images{
+.item-images{
   flex: 1
-} */
+}
 
 .item-imgVoide{
   width: 100%;
@@ -74,74 +164,12 @@
 .item-images image{
   width: 80px;
   height: 80px;
-  margin:0 5px 2px 0;
-}
-.item-time{
-  color:#a6a6a6;
-  font-size:0.9rem;
+  margin:0 10px 2px 0;
+  border: 1px solid #E4E4E4;
 }
 .item-f{
   background: #f4f4f4;
 }
-.triangle{
-  margin-left:8px;
-  width:0;
-  height:0;
-	border-right:8px solid transparent;
-	border-left:8px solid transparent;
-	border-bottom:8px solid #f4f4f4;
-}
-.likes, .review{
-  padding:3px 8px;
-  color:#335172;
-  font-size: 0.9rem;
-}
-.review {
-  border-top:1rpx solid #e7e8e9;
-}
-.review text{
-  color:#1a1a1a;
-  letter-spacing:2rpx;
-  font-size:0.8rem;
-}
 
 
 
-.inputBottom{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  position: fixed;
-  left: 0rpx;
-  bottom: 0rpx;
-  background: #fff;
-  height: 100rpx;
-  box-sizing: border-box;
-  padding: 18rpx 15rpx;
-  }
-   
-  .inputBottom .textInput{
-  /* border-bottom: 2rpx solid #000; */
-  display: inline-block;
-  width: 80%;
-  border: 1px solid #ccc;
-  border-radius: 10rpx;
-  height: 75rpx;
-  padding: 0 15rpx;
-  }
-   
-  .inputBottom .textInputPlaceHolder{
-  font-size: 30rpx;
-  }
-   
-  .inputBottom .submit{
-  font-size: 34rpx;
-  display: inline-block;
-  text-align: center;
-  float: right;
-  background: green;
-  border-radius: 10rpx;
-  color: #fff;
-  padding: 5rpx 10rpx;
-  }

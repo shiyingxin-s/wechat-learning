@@ -10,31 +10,34 @@
     "pages/logs/logs",
     "pages/learningClassrom/learningClassrom",
     "pages/informationsDetail/informationsDetail",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/home/home",
+    "pages/personals/myStudy/myStudy",
+    "pages/home/onlineCourse/onlineCourse"
   ],
   "window": {
     "backgroundColor": "#f4f4f4",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationStyle": "custom",
-    "withShareTicket":true
+    "withShareTicket": true
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "color": "#9d9d9d",
-    "selectedColor": "#009afe",
-    "backgroundColor": "#f4f4f4",
+    "color": "#424242",
+    "selectedColor": "#E73440",
+    "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/learnings/learning",
-        "text": "教学",
-        "iconPath": "images/tab/learning.png",
-        "selectedIconPath": "images/tab/learning_hl.png"
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/tab/index.png",
+        "selectedIconPath": "images/tab/index_hl.png"
       },
       {
         "pagePath": "pages/communitys/community",
-        "text": "社区",
-        "iconPath": "images/tab/community.png",
-        "selectedIconPath": "images/tab/community_hl.png"
+        "text": "作品",
+        "iconPath": "images/tab/works.png",
+        "selectedIconPath": "images/tab/works_hl.png"
       },
       {
         "pagePath": "pages/informations/information",
@@ -45,8 +48,8 @@
       {
         "pagePath": "pages/personals/personal",
         "text": "我的",
-        "iconPath": "images/tab/personal.png",
-        "selectedIconPath": "images/tab/personal_hl.png"
+        "iconPath": "images/tab/my.png",
+        "selectedIconPath": "images/tab/my_hl.png"
       }
     ]
   }

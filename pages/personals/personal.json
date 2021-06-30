@@ -10,6 +10,8 @@
     "van-button":"../../dist/button/index",
     "van-field": "../../dist/field/index",
     "van-toast": "../../dist/toast/index",
-    "van-dialog": "../../../dist/dialog/index"
+    "van-dialog": "../../../dist/dialog/index",
+    "van-grid": "../../dist/grid/index",
+    "van-grid-item": "../../dist/grid-item/index"
   }
 }

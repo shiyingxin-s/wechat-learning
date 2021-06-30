@@ -1,0 +1,59 @@
+<!--personal.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="container" style='margin-top:{{height}}px'>
+  <van-collapse value="{{ activeNames }}" bind:change="onChange" accordion>
+    <van-collapse-item title="个人信息" name="1" content-class="removePadding">
+      <van-cell-group border="{{false}}">
+        <van-cell title="昵称" value="{{userInfo.nikiname}}" bind:click="showPopup"></van-cell>
+        <van-cell title="年龄" value="{{userInfo.age}}" bind:click="showPopup" />
+        <van-cell title="年级" value="{{userInfo.grade}}" bind:click="showPopup" />
+        <van-cell title="收货地址" value="{{userInfo.address}}" bind:click="getAddress" />
+      </van-cell-group>
+    </van-collapse-item>
+    <van-collapse-item title="我的订单" name="2" content-class="removePadding">
+      <scroll-view scroll-y style="height: {{scrollHeight}}px" bindscrolltolower="lowerGetOrderList"
+        scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+      <van-cell-group border="{{false}}">
+          <block wx:for="{{orderList}}" wx:for-item="items" wx:key="index">
+            <!-- <block wx:for="{{items.courseList}}" wx:key="index"  wx:if="{{index<1}}"> -->
+              <van-cell  title="{{items.ordername}}" value="已支付" />
+            <!-- </block> -->
+          </block>
+          <block wx:if="{{orderList.length === 0}}">
+            <div style="text-align: center;display: block;line-height: 47px;"> 暂无订单</div>
+          </block>
+      </van-cell-group>
+    </scroll-view>
+  </van-collapse-item>
+</van-collapse>
+
+</view>
+
+<van-popup show="{{ show }}" bind:close="onClose" custom-class="vanpopup">
+  <van-cell-group>
+    <view class="vanpopup-form">
+      <van-field value="{{ userInfo.nikiname }}" bind:input="inputNikiname" required label="昵称" placeholder="请输入昵称" />
+
+      <van-field value="{{ userInfo.age }}" bind:input="inputAge" type="number" label="年龄" placeholder="请输入年龄"
+        required />
+
+      <van-field value="{{ userInfo.grade }}" bind:input="inputGrade" type="number" label="年级" placeholder="请输入年级"
+        required />
+    </view>
+    <view class="vanpopup-btn">
+      <van-button type="primary" bind:click="updateUserInfo" block color="#42a2fd" >修改</van-button>
+    </view>
+  </van-cell-group>
+</van-popup>
+
+<van-toast id="van-toast" />
+
+<van-dialog
+use-slot
+show="{{ isAuto }}"
+show-cancel-button
+confirm-button-open-type="getUserInfo"
+bind:getuserinfo="getAutoUserInfo"
+>
+<view style="height: 100px;line-height: 100px;text-align: center;">请允许微信授权登录</view>
+</van-dialog>

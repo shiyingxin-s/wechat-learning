@@ -1,0 +1,43 @@
+<!--pages/home/onlineCourse/onlineCourse.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="container" style='margin-top:{{height}}px'>
+    <view class="course-type-box">
+        <view class="ct-title">课堂分类</view>
+        <view class="ct-list">
+            <view class="ct-l-item">
+                <image class="ct-l-img" src="../../../images/img/banner1.png"></image>
+                <view class="ct-l-text">小学同步教材</view>
+            </view>
+            <view class="ct-l-item">
+                <image class="ct-l-img" src="../../../images/img/banner1.png"></image>
+                <view class="ct-l-text">成人通用教材</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="video-box">
+        <view class="v-title">视频推荐</view>
+        <view class="v-list">
+            <view class="v-l-item">
+                <image class="v-l-img" src="../../../images/img/banner1.png"></image>
+                <view class="v-l-text">小学同步教材</view>
+            </view>
+            <view class="v-l-item">
+                <video class="myVideo"  src="https://www.xbgxizi.com:8089/news/8606d42c-d7c3-4ef0-97a4-ba5d2def9e9b.mp4"  enable-danmu danmu-btn controls>
+                </video>
+                <view class="v-l-text">小学同步教材</view>
+            </view>
+            <view class="v-l-item">
+                <video class="myVideo"  src="https://www.xbgxizi.com:8089/news/8606d42c-d7c3-4ef0-97a4-ba5d2def9e9b.mp4"  enable-danmu danmu-btn controls>
+                </video>
+                <view class="v-l-text">小学同步教材</view>
+            </view>
+            <view class="v-l-item">
+                <video class="myVideo"  src="https://www.xbgxizi.com:8089/news/8606d42c-d7c3-4ef0-97a4-ba5d2def9e9b.mp4"  enable-danmu danmu-btn controls>
+                </video>
+                <view class="v-l-text">小学同步教材</view>
+            </view>
+        </view>
+    </view>
+    
+</view>

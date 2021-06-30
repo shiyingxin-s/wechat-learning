@@ -1,0 +1,49 @@
+/**index.wxss**/
+.container{
+ background: #ffffff;
+ height: -webkit-fill-available;
+ position: fixed;
+ width:100%;
+}
+.addImg{
+  background: #ededed;
+  width: 82px;
+  height: 82px;
+}
+.addIcon{
+  color:#a5a5a5;
+  text-align:center;
+  top:30px;
+}
+.addIcon.van-icon,.addIcon.van-icon:before {
+  display:block !important;
+}
+.item-images{
+  margin:10px 15px;
+}
+.item-images image{
+  width: 82px;
+  height: 82px;
+  margin:0 5px 2px 0;
+}
+.msgView{
+  height: 160rpx;
+  overflow: hidden;
+}
+.msgText{
+  height: 160rpx;
+  font-size: 1rem;
+  width: 89.3%;
+  margin: 40rpx;
+  overflow: hidden;
+}
+.btn{
+  margin: 38rpx;
+  width: 90%;
+}
+.button-hover {
+  background-color:#ededed;
+}
+.other-button-hover {
+  background-color: blue;
+}

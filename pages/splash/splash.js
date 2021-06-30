@@ -41,7 +41,7 @@ Page({
     // if(wxs.data.userData.avatarUrl && wxs.data.userData.telephone){
       setTimeout(function () {
         wx.switchTab({
-          url: '/pages/learnings/learning',
+          url: '/pages/home/home',
         })
       }, 1000)
     // }

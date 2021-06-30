@@ -8,10 +8,10 @@ const commonServe = require('../../utils/commServe.js');
 Page({
   data: {
     // 此页面 页面内容距最顶部的距离
-    height: app.globalData.navHeight * 2 + 25 ,
+    height: app.globalData.navHeight * 2 + 20 ,
     motto: 'Hello World',
     userData:'',
-    userInfo: {},
+    // userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     // 组件所需的参数
@@ -144,6 +144,7 @@ Page({
             age:res.data.age,
             grade:res.data.grade
           })
+          
           if(!wxs.data.userInfo.address){
             wxs.getAddress()
 
@@ -248,6 +249,7 @@ Page({
     }
   },
   getUserInfo: function(e) {
+    debugger
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -355,4 +357,16 @@ Page({
       }
     })
   },
+
+
+
+  // 最新 方法
+
+  // 功能区 模块跳转
+  goPath:function(e){
+    let path = e.currentTarget.dataset.route
+    wx.navigateTo({
+      url: path
+    })
+  }
 })

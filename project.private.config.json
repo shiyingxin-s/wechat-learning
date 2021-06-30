@@ -1,0 +1,35 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/informations/information",
+          "pathName": "pages/informations/information",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/personals/personal",
+          "pathName": "pages/personals/personal",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/communitys/community",
+          "pathName": "pages/communitys/community",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

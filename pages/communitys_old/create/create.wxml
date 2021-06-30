@@ -1,0 +1,21 @@
+<!--社区.wxml-->
+<myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
+<view class="container" style='top:{{viewHeight* 2 + 14}}px'>
+    <textarea class="msgText" fixed="true" placeholder="这一刻的想法..." value="{{contenttext}}" bindinput="bindText"></textarea> 
+    <view class="item-images">
+        <label bindtap="previewImage" wx:for="{{imgalist}}" wx:key='{{idx}}'>
+            <image src="{{item}}"  ></image>
+        </label>
+        <image bindtap="addImg" src="../../../images/common/addIcon.jpg"></image>
+    </view>
+    <van-action-sheet
+     show="{{ show }}"
+     actions="{{ actions }}"
+     cancel-text="取消"
+     bind:cancel="onClose"
+     bind:close="onClose"
+     bind:select="onSelect"
+    />
+    <button class="btn" bindtap="send"> 发表 </button>
+</view>
+

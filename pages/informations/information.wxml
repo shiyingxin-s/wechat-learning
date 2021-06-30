@@ -2,21 +2,31 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <myHeader id="myHeader" navbar-data='{{nvabarData}}'></myHeader>
 <view class="container" style='margin-top:{{viewHeight* 2 + 20}}px'>
-  <!-- <van-tabs bind:click="onClick">
-    <van-tab title="视频资讯"> -->
-      <block>
-        <video class="myVideo" id="myVideo" wx:if="{{informationList.length != 0 && informationList[0].video}}" src="{{informationList[0].video}}" autoplay enable-danmu danmu-btn controls>
-        </video>
-        <view class="margin-bottom bgColor padding textStyle" bindtap="goDetails" data-id="{{informationList[0].newsno}}">
-          <text class="text">{{informationList[0].contenttext}}</text>
-          <text>天天学习</text>
-          <!-- <text>6条评论</text> -->
-          <text>{{filter.getDateDiff(informationList[0].createtime)}}</text>
+      <view class="top_bg bg_color">
+        <image class="bg_img" src="../../images/img/bg_information.png"></image>
+      </view>
+      <view class="viwe_box bg_color marginBottom">
+        <view class="b_title">公司支柱</view>
+        <view class="c_list">
+          <view class="c_item">
+            <view class="c_i_title">大家一起学国学可以充实自己也可以愉悦心情</view>
+            <view class="c_i_time">2021-04-12</view>
+          </view>
+          <view class="c_item">
+            <view class="c_i_title">大家一起学国学可以充实自己也可以愉悦心情</view>
+            <view class="c_i_time">2021-04-12</view>
+          </view>
+          <view class="c_item">
+            <view class="c_i_title">大家一起学国学可以充实自己也可以愉悦心情</view>
+            <view class="c_i_time">2021-04-12</view>
+          </view>
         </view>
-      </block>
+      </view>
+      <view class="viwe_box bg_color ">
+        <view class="b_title">行业动态</view>
+      </view>
       <scroll-view scroll-y style="height: {{scrollHeight}}px;" bindscrolltolower="lowerGetInformationList"
         scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-
         <block >
           <view class="margin-bottom bgColor padding videoList" data-id="{{item.newsno}}" 
           wx:for="{{informationList}}" wx:key="{{index}}"
@@ -31,28 +41,6 @@
               <image src="{{item.images}}"></image>
             </view>
           </view>
-          <!-- <view class="margin-bottom bgColor padding videoList">
-            <view class="v-left textStyle">
-              <view class="v-con">j今天学习状态超级棒，为自己点赞，加油努力吧！努力学习让自己更丰富。</view>
-              <text class="text">天天学习</text>
-              <text>6条评论</text>
-              <text>15分钟前</text>
-            </view>
-            <view class="v-right">
-              <image src="../../images/common/2.png"></image>
-            </view>
-          </view>
-          <view class="margin-bottom bgColor padding videoList">
-            <view class="v-left textStyle">
-              <view class="v-con">j今天学习状态超级棒，为自己点赞，加油努力吧！努力学习让自己更丰富。</view>
-              <text class="text">天天学习</text>
-              <text>6条评论</text>
-              <text>15分钟前</text>
-            </view>
-            <view class="v-right">
-              <image src="../../images/common/2.png"></image>
-            </view>
-          </view> -->
         </block>
         <block wx:if="{{informationList.length === 0}}">
           <div style="text-align: center;display: block;line-height: 47px;"> 暂无数据</div>
